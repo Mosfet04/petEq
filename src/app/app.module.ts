@@ -22,6 +22,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { AtividadesComponent } from "./views/atividades/atividades.component";
 
 // components for views and layouts
 
@@ -86,6 +87,7 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    AtividadesComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
