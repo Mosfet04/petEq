@@ -19,6 +19,8 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { EnsinoComponent } from "./views/atividades/ensino/ensino.component";
+import { AtividadesComponent } from "./views/atividades/atividades.component";
 
 const routes: Routes = [
   // admin views
@@ -45,6 +47,8 @@ const routes: Routes = [
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
+  { path: "atividades/ensino", component: EnsinoComponent },
+  { path: "atividades", component: AtividadesComponent},
   { path: "landing", component: LandingComponent },
   { path: "", component: IndexComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },

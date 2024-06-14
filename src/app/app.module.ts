@@ -22,6 +22,8 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { EnsinoComponent } from "./views/atividades/ensino/ensino.component";
+import { AtividadesComponent } from "./views/atividades/atividades.component";
 
 // components for views and layouts
 
@@ -44,6 +46,7 @@ import { MapExampleComponent } from "./components/maps/map-example/map-example.c
 import { IndexDropdownComponent } from "./components/dropdowns/index-dropdown/index-dropdown.component";
 import { TableDropdownComponent } from "./components/dropdowns/table-dropdown/table-dropdown.component";
 import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pages-dropdown.component";
+import { AtividadesDropdownComponent } from "./components/dropdowns/atividades-dropdown/atividades-dropdown.component";
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
@@ -56,6 +59,7 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     CardLineChartComponent,
     IndexDropdownComponent,
     PagesDropdownComponent,
+    AtividadesDropdownComponent,
     TableDropdownComponent,
     NotificationDropdownComponent,
     UserDropdownComponent,
@@ -84,6 +88,8 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    EnsinoComponent,
+    AtividadesComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
