@@ -49,8 +49,8 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "atividades/ensino", component: EnsinoComponent },
   { path: "atividades", component: AtividadesComponent},
-  { path: "landing", component: LandingComponent },
-  { path: "", component: IndexComponent },
+  { path: "", component: LandingComponent },
+  { path: "page", component: IndexComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 
