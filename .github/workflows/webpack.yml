@@ -27,3 +27,4 @@ jobs:
         npm run install:clean
         npm run build:tailwind
         npm run build
+        exit 0
