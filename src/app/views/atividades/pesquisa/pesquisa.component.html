@@ -1,0 +1,242 @@
+<app-auth-navbar></app-auth-navbar>
+<main class="ensino-page">
+  <section class="relative block h-500-px">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
+        background-image: url('https://i1.wp.com/www.dci.com.br/wp-content/uploads/2020/10/Uberlandia.jpg?fit=2048%2C1365&ssl=1');
+      ">
+      <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+    </div>
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="relative py-16 bg-blueGray-200">
+    <div class="container mx-auto px-4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+        <div class="px-6">
+          <div class="flex flex-wrap justify-center">
+            <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+              <div class="relative">
+                <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-500" style="width: 100px; height: 100px; margin-top: 20px; font-size: 48px;">
+                  <i class="fas fa-flask"></i>
+                </div>
+              </div>
+            </div>
+            <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"></div>
+            <div class="w-full lg:w-4/12 px-4 lg:order-1"></div>
+          </div>
+          <div class="text-center mt-12">
+            <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"> Pesquisa </h3>
+          </div>
+          <p class="mb-4 text-lg leading-relaxed text-blueGray-700">As atividades de pesquisa do PET-EQ tem como objetivo capacitar os petianos em relação aos métodos e metodologias de produção de conhecimento científico e análise crítica dos resultados. Sendo assim, todos os membros são responsáveis por uma pesquisa coletiva do grupo, além da pesquisa individual.</p>
+          <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+            <div class="container mx-auto px-4">      
+              <div class="flex flex-wrap items-center">
+                <div class="w-full px-4 mr-auto ml-auto">
+                  <div
+                    class="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-500"
+                  >
+                    <i class="fas fa-user-friends text-xl"></i>
+                  </div>
+                  <h3 class="text-3xl mb-2 font-semibold leading-normal">
+                    Pesquisas Coletivas Atuais:
+                  </h3>
+                  <div class="flex flex-wrap">
+                    <div class="w-full">
+                      <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+                        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsAtual(1)" [ngClass]="{'text-red-600 bg-white': openTabAtual !== 1, 'text-white bg-red-600': openTabAtual === 1}">
+                  <i class="fas fa-space-shuttle text-base mr-1"></i> Economia popular solidária: obtenção de farinha de jatobá
+                          </a>
+                        </li>
+                        
+                      </ul>
+                      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                        <div class="px-4 py-5 flex-auto">
+                          <div class="tab-content tab-space">
+                            <div [ngClass]="{'hidden': openTabAtual !== 1, 'block': openTabAtual === 1}">
+                              <div class="items-center flex flex-wrap">
+                                <!-- <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+                                  <img
+                                    alt="..."
+                                    class="max-w-full rounded-lg shadow-lg"
+                                    src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055727.png"
+                                  />
+                                </div> -->
+                                <div class="w-full ml-auto mr-auto px-4">
+                                  <div class="md:pr-12">
+                                    <p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;">
+                                      O grupo PET-EQ tem como objetivo fornecer pesquisa e inovação tecnológica à comunidade externa, especificamente no processo de obtenção da farinha de jatobá. O projeto visa capacitar a comunidade por meio do contato com a produção da farinha, promovendo empreendedorismo e melhorias socioeconômicas. O trabalho envolve revisões bibliográficas, identificação das necessidades do público-alvo e o desenvolvimento de procedimentos acessíveis para a produção do alimento. Ao final, espera-se que os membros estejam aptos ao desenvolvimento tecnológico e ao aperfeiçoamento educacional.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+                <!-- <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                  <div
+                    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-red-600"
+                  >
+                    <img
+                      alt="..."
+                      src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_054216.png"
+                      class="w-full align-middle rounded-t-lg"
+                    />
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+          <div
+      class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
+      style="transform: translateZ(0)"
+    >
+      <svg
+        class="absolute bottom-0 overflow-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        version="1.1"
+        viewBox="0 0 2560 100"
+        x="0"
+        y="0"
+      >
+        <polygon
+          class="text-white fill-current"
+          points="2560 0 2560 100 0 100"
+        ></polygon>
+      </svg>
+    </div>
+
+    <div class="container mx-auto px-4">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full ml-auto mr-auto px-4">
+          <div class="md:pr-12">
+            <div
+              class="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-400"
+            >
+              <i class="fas fa-rocket text-xl"></i>
+            </div>
+            <h3 class="text-3xl mb-2 font-semibold leading-normal">Pesquisas Coletivas Anteriores</h3>
+            <div class="flex flex-wrap">
+              <div class="w-full">
+                <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+                  <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsAnterior(1)" [ngClass]="{'text-red-600 bg-white': openTabAnterior !== 1, 'text-white bg-red-600': openTabAnterior === 1}">
+            <i class="fas fa-space-shuttle text-base mr-1"></i> Evasão no curso de Engenharia Química
+                    </a>
+                  </li>
+                  <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsAnterior(2)" [ngClass]="{'text-red-600 bg-white': openTabAnterior !== 2, 'text-white bg-red-600': openTabAnterior === 2}">
+            <i class="fas fa-cog text-base mr-1"></i> Restauração de equipamentos utilizados nas aulas de laboratório
+                    </a>
+                  </li>
+                  <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsAnterior(3)" [ngClass]="{'text-red-600 bg-white': openTabAnterior !== 3, 'text-white bg-red-600': openTabAnterior === 3}">
+                <i class="fas fa-briefcase text-base mr-1"></i> Desenvolvimento de modelos de carros movidos a reações químicas
+                    </a>
+                  </li>
+                  <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsAnterior(4)" [ngClass]="{'text-red-600 bg-white': openTabAnterior !== 4, 'text-white bg-red-600': openTabAnterior === 4}">
+                <i class="fas fa-briefcase text-base mr-1"></i> Projeto e construção de uma unidade de tratamento de água em escala de bancada
+                    </a>
+                  </li>
+                </ul>
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                  <div class="px-4 py-5 flex-auto">
+                    <div class="tab-content tab-space">
+                      <div [ngClass]="{'hidden': openTabAnterior !== 1, 'block': openTabAnterior === 1}">
+                        <div class="items-center flex flex-wrap">
+                          <div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+                            <div class="md:pr-12">
+                              <p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;">
+                                O grupo PET Engenharia Química realizou uma pesquisa de evasão no curso de Engenharia Química para otimizar suas atividades. A pesquisa visava identificar as disciplinas e conteúdos com maior dificuldade para os discentes, a fim de reduzir a evasão e retenção no curso. Inicialmente, foi avaliada a taxa quantitativa de desistência, relacionando-a com a taxa anual. Em seguida, uma pesquisa qualitativa com os alunos foi planejada para reformular as atividades do PET e atender melhor às necessidades dos graduandos. No entanto, a pesquisa não foi concluída devido a pendências documentais na submissão ao Comitê de Ética e Pesquisa.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div [ngClass]="{'hidden': openTabAnterior !== 2, 'block': openTabAnterior === 2}">
+                        <div class="items-center flex flex-wrap">
+                          <div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+                            <div class="md:pr-12">
+                              <p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;">
+                                O curso de graduação em Engenharia Química da Universidade Federal de Uberlândia oferece a disciplina “Laboratório de Engenharia Química”. Essa disciplina tem como objetivo proporcionar treinamento prático na aplicação dos conceitos teóricos de termodinâmica, cinética, reatores, fenômenos de transporte e operações unitárias. No entanto, devido à falta de manutenção dos equipamentos e à escassez de recursos financeiros, alguns experimentos não puderam ser realizados. Em 2018, o grupo PET Engenharia Química, em colaboração com os docentes responsáveis pela disciplina, iniciou um trabalho de restauração dos equipamentos. A primeira unidade experimental restaurada foi aquela que permite medir a perda de carga em tubulações. Essa unidade apresentava diversos defeitos, como vazamentos na linha, erros de medida devido à perda de pressão, distanciamento entre o diâmetro real da tubulação e o valor especificado, além de problemas de escoamento em regiões obstruídas e vazamento do fluido manométrico devido ao aumento da pressão no sistema. A restauração envolveu a substituição de tubulações, conexões e válvulas danificadas. Além disso, os manômetros de tubo em U foram substituídos por um sensor de pressão e um sensor de velocidade foi adicionado para calcular a vazão. Um novo método de calibração para o sensor de pressão também foi desenvolvido. Com essas melhorias, a unidade está agora apta para ser utilizada no ensino da disciplina de Laboratórios de Engenharia Química na Faculdade de Engenharia Química da Universidade Federal de Uberlândia. Ao final, foi elaborado um roteiro de experimento para aplicação nessa disciplina.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div [ngClass]="{'hidden': openTabAnterior !== 3, 'block': openTabAnterior === 3}">
+                        <div class="items-center flex flex-wrap">
+                          <div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+                            <div class="md:pr-12">
+                              <p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;">
+                                O projeto consistiu na construção de carrinhos movidos por reações químicas, de forma limpa, segura e sustentável. Esses carrinhos foram utilizados em uma competição interna chamada TEQ Car, inspirada na Chem E Car Competition realizada em vários países. Na competição, os alunos projetaram automóveis em escala reduzida que funcionavam por meio de reações químicas. Além disso, eles apresentaram o embasamento teórico da construção dos carrinhos e as pesquisas realizadas para aprimorá-los. Durante o ano de 2016, os participantes do grupo PET/Engenharia Química foram divididos em equipes para construir um protótipo inicial e definir o funcionamento do carrinho, incluindo as etapas necessárias para sua montagem. Foram conduzidas pesquisas e testes nas áreas de alimentação (combustível ou bateria), mecanismo de parada (reações relógio) e aquisição de dados por meio de respostas elétricas. Para a alimentação, desenvolveu-se uma pilha de zinco e ar que fornecia energia para quatro motores de corrente contínua. O mecanismo de parada escolhido foi uma reação relógio, combinada com um sensor de luminosidade LDR (Light Dependent Resistor) conectado a um Arduino. O sensor LDR varia sua resistência conforme a luz incidente, permitindo o controle da luminosidade no sensor. Com isso, foi possível identificar o tempo de movimentação do protótipo e controlar sua velocidade por meio da programação no Arduino. O projeto explorou diversas áreas da engenharia, incluindo eletrônica, estrutural e processos químicos.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div [ngClass]="{'hidden': openTabAnterior !== 4, 'block': openTabAnterior === 4}">
+                        <div class="items-center flex flex-wrap">
+                          <div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+                            <div class="md:pr-12">
+                              <p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;">
+                                O projeto consistiu na construção de uma miniestação de tratamento de água pelos membros do PET EQ – UFU e alunos do Ensino Médio. Essa unidade de bancada foi utilizada em palestras educativas nas escolas públicas de Uberlândia. Os objetivos incluíam possibilitar aos alunos a visualização de fenômenos físico-químicos (como escoamento, floculação, sedimentação, filtração e neutralização), conscientizar sobre a importância dos recursos hídricos e motivar o interesse pelas ciências exatas e pela Engenharia. O projeto equilibrou pesquisa, ensino e extensão, envolvendo conceitos fundamentais para a formação de engenheiros químicos.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+      <div class="container mx-auto px-4">      
+        <div class="flex flex-wrap items-center">
+          <div class="w-full px-4 mr-auto ml-auto">
+            <div
+              class="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-500"
+            >
+              <i class="fas fa-user-friends text-xl"></i>
+            </div>
+            <h3 class="text-3xl mb-2 font-semibold leading-normal">
+              Pesquisas Individuais
+            </h3>
+            
+            <p
+              class="text-lg leading-relaxed mt-4 mb-4 text-blueGray-700"
+            >
+            Como forma de pesquisa individual, os petianos se distribuem em atividades de pesquisa das diversas áreas da Engenharia Química.
+
+            (Duvida Desenvolvimento: Deve-se listar as pesquisas individuais de cada membro infinitamente? A quantidade de registros não ficaria muito grande?)
+            </p>
+          </div>
+  
+        </div>
+        
+      </div>
+    </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>
