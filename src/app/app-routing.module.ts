@@ -22,6 +22,7 @@ import { ProfileComponent } from "./views/profile/profile.component";
 import { EnsinoComponent } from "./views/atividades/ensino/ensino.component";
 import { AtividadesComponent } from "./views/atividades/atividades.component";
 import { PesquisaComponent } from "./views/atividades/pesquisa/pesquisa.component";
+import { ExtensaoComponent } from "./views/atividades/extensao/extensao.component";
 
 const routes: Routes = [
   // admin views
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: "atividades/ensino", component: EnsinoComponent },
   { path: "atividades", component: AtividadesComponent},
   { path: "atividades/pesquisa", component: PesquisaComponent},
+  { path: "atividades/extensao", component: ExtensaoComponent},
   { path: "", component: LandingComponent },
   { path: "page", component: IndexComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },

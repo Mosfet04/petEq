@@ -48,6 +48,7 @@ import { IndexDropdownComponent } from "./components/dropdowns/index-dropdown/in
 import { TableDropdownComponent } from "./components/dropdowns/table-dropdown/table-dropdown.component";
 import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pages-dropdown.component";
 import { AtividadesDropdownComponent } from "./components/dropdowns/atividades-dropdown/atividades-dropdown.component";
+import { ExtensaoComponent } from "./views/atividades/extensao/extensao.component";
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
@@ -91,7 +92,8 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     ProfileComponent,
     EnsinoComponent,
     AtividadesComponent, 
-    PesquisaComponent
+    PesquisaComponent,
+    ExtensaoComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
