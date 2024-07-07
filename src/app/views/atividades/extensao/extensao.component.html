@@ -1,0 +1,240 @@
+<app-auth-navbar></app-auth-navbar>
+<main class="extensao-page">
+	<section class="relative block h-500-px">
+		<div class="absolute top-0 w-full h-full bg-center bg-cover" style="
+        background-image: url('https://i1.wp.com/www.dci.com.br/wp-content/uploads/2020/10/Uberlandia.jpg?fit=2048%2C1365&ssl=1');
+      ">
+			<span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+		</div>
+		<div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0)">
+			<svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+				<polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+			</svg>
+		</div>
+	</section>
+	<section class="relative py-16 bg-blueGray-200">
+		<div class="container mx-auto px-4">
+			<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+				<div class="px-6">
+					<div class="flex flex-wrap justify-center">
+						<div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+							<div class="relative">
+								<div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-500" style="width: 100px; height: 100px; margin-top: 20px; font-size: 48px;">
+									<i class="fas fa-fingerprint"></i>
+								</div>
+							</div>
+						</div>
+						<div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"></div>
+						<div class="w-full lg:w-4/12 px-4 lg:order-1"></div>
+					</div>
+					<div class="text-center mt-12">
+						<h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"> Extensão </h3>
+					</div>
+					<p class="mb-4 text-lg leading-relaxed text-blueGray-700">As atividades de extensão têm como objetivo divulgar o curso de Engenharia Química da UFU e aplicar os conhecimentos adquiridos na graduação de forma a aprimorar a formação voltada às demandas da sociedade, do contexto profissional e da responsabilidade social. Atualmente, as atividades de extensão do grupo PET-EQ são:</p>
+					<div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+						<div class="container mx-auto px-4">
+							<div class="flex flex-wrap items-center">
+								<div class="w-full px-4 mr-auto ml-auto">
+									<div class="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-500">
+										<i class="fas fa-user-friends text-xl"></i>
+									</div>
+									<h3 class="text-3xl mb-2 font-semibold leading-normal"> Ensino para além da UFU </h3>
+									<div class="flex flex-wrap">
+										<div class="w-full">
+											<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsEnsino(1)" [ngClass]="{'text-emerald-500 bg-white': openTabEnsino !== 1, 'text-black bg-emerald-500': openTabEnsino === 1}">
+														<i class="fas fa-space-shuttle text-base mr-1"></i> Minicurso: "Aprendendo a Brincar com a Química" </a>
+												</li>
+												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsEnsino(2)" [ngClass]="{'text-emerald-500 bg-white': openTabEnsino !== 2, 'text-black bg-emerald-500': openTabEnsino === 2}">
+														<i class="fas fa-space-shuttle text-base mr-1"></i> Minicurso: “Teoria e Prática Fundamentada em Engenharia Química” </a>
+												</li>
+											</ul>
+											<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+												<div class="px-4 py-5 flex-auto">
+													<div class="tab-content tab-space">
+														<div [ngClass]="{'hidden': openTabEnsino !== 1, 'block': openTabEnsino === 1}">
+															<div class="items-center flex flex-wrap">
+																<!-- <div class="w-full md:w-4/12 ml-auto mr-auto px-4"><img
+                                    alt="..."
+                                    class="max-w-full rounded-lg shadow-lg"
+                                    src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055727.png"
+                                  /></div> -->
+																<div class="w-full ml-auto mr-auto px-4">
+																	<div class="md:pr-12">
+																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Com o intuito de despertar a curiosidade, reforçar conceitos e noções práticas de alguns fenômenos da química dentro e fora do dia-a-dia, o grupo PET Engenharia Química realiza o minicurso “Aprendendo a Brincar com a Química”, em parceria com algumas escolas públicas de ensino fundamental na cidade de Uberlândia. Os resultados positivos da atividade ao longo dos anos e a receptividade e expectativa dos alunos das escolas estimulam a continuação da mesma. As práticas demonstradas dentro das salas de aulas durante a atividade utilizam materiais simples, tais como vinagre, sal, açúcar, cigarro, repolho roxo, óleo, bicarbonato de cálcio, incentivando os jovens a perceberem a ciência envolvida em processos rotineiros e despertando o interesse pelo conhecimento. </p>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div [ngClass]="{'hidden': openTabEnsino !== 2, 'block': openTabEnsino === 2}">
+															<div class="items-center flex flex-wrap">
+																<!-- <div class="w-full md:w-4/12 ml-auto mr-auto px-4"><img
+                                    alt="..."
+                                    class="max-w-full rounded-lg shadow-lg"
+                                    src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055727.png"
+                                  /></div> -->
+																<div class="w-full ml-auto mr-auto px-4">
+																	<div class="md:pr-12">
+																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Analogamente ao minicurso aplicado para o ensino fundamental, o minicurso “Teoria e Prática Fundamentada em Engenharia Química”, lecionado aos alunos do ensino médio das escolas públicas de Uberlândia, objetiva promover uma aproximação entre os estudantes e os conceitos de engenharia por meio de atividades práticas que estabelecem uma conexão entre esses conceitos e fenômenos ligados a área deste curso. Esta atividade utiliza alguns conceitos mais científicos no intuito de esclarecer alguns fenômenos de transporte, cinéticos, termodinâmicos, diferindo, assim, do Minicurso “Aprendendo a Brincar com a Química” </p>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div [ngClass]="{'hidden': openTabEnsino !== 3, 'block': openTabEnsino === 3}">
+															<div class="items-center flex flex-wrap">
+																<!-- <div class="w-full md:w-4/12 ml-auto mr-auto px-4"><img
+                                    alt="..."
+                                    class="max-w-full rounded-lg shadow-lg"
+                                    src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055727.png"
+                                  /></div> -->
+																<div class="w-full ml-auto mr-auto px-4">
+																	<div class="md:pr-12">
+																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Visando o contato entre a comunidade acadêmica e a comunidade externa, respeitando as restrições estabelecidas devido à pandemia, o grupo PET Engenharia Química desenvolveu uma atividade em parceria com a Organização Não Governamental ABC do Glória, que visa auxiliar o crescimento econômico das famílias, principalmente, do público infanto-juvenil do bairro Élison Pietro. Dessa forma, a atividade desenvolvida nomeada como PET Ensinando o ABC consistiu em explicar conceitos de química, física e matemática de maneira lúdica, atrativa e acessível ao público atendido pela ONG, por meio de vídeos explicativos com experimentos práticos sobre o assunto e cartilhas informativas com exercícios dos temas apresentados. Por conseguinte, foi possível aprofundar o conhecimento das crianças e adolescentes na área das ciências exatas, além de mostrar as possibilidades existentes dentro da universidade. </p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="w-full md:w-4/12 px-4 mr-auto ml-auto"><div
+                    class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-red-600"
+                  ><img
+                      alt="..."
+                      src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_054216.png"
+                      class="w-full align-middle rounded-t-lg"
+                    /></div></div> -->
+							</div>
+						</div>
+					</div>
+					<div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+						<div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20" style="transform: translateZ(0)">
+							<svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+								<polygon class="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
+							</svg>
+						</div>
+						<div class="container mx-auto px-4">
+							<div class="items-center flex flex-wrap">
+								<div class="w-full ml-auto mr-auto px-4">
+									<div class="md:pr-12">
+										<div class="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-400">
+											<i class="fas fa-rocket text-xl"></i>
+										</div>
+										<h3 class="text-3xl mb-2 font-semibold leading-normal">Ações Sociais</h3>
+										<div class="flex flex-wrap">
+											<div class="w-full">
+												<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+													<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+														<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsSocial(1)" [ngClass]="{'text-emerald-500 bg-white': openTabSocial !== 1, 'text-black bg-emerald-500': openTabSocial === 1}">
+															<i class="fas fa-space-shuttle text-base mr-1"></i> Visitas de caráter social </a>
+													</li>
+													<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+														<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsSocial(2)" [ngClass]="{'text-emerald-500 bg-white': openTabSocial !== 2, 'text-black bg-emerald-500': openTabSocial === 2}">
+															<i class="fas fa-cog text-base mr-1"></i> Pet ensinando o ABC </a>
+													</li>
+												</ul>
+												<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+													<div class="px-4 py-5 flex-auto">
+														<div class="tab-content tab-space">
+															<div [ngClass]="{'hidden': openTabSocial !== 1, 'block': openTabSocial === 1}">
+																<div class="items-center flex flex-wrap">
+																	<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+																		<div class="md:pr-12">
+																			<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Todo ano são realizadas visitas de caráter social na cidade de Uberlândia pelo grupo PET Engenharia Química. O objetivo é cooperar com a comunidade local, conscientizando e transformando as pessoas que necessitam de auxílio. A visita é realizada com o intuito de detectar possíveis faltas na vida dessas pessoas, podendo preenchê-las com o que o grupo pode oferecer, tais como a leitura de livros, reforço das matérias básicas até práticas de química envolvendo reagentes do cotidiano. As visitas geralmente são realizadas em um centro de assistência, casa de auxílio para idosos ou abrigo infantil. No ano de 2021, devido à pandemia do COVID-19, a qual dificultou o acesso aos locais mencionados, o grupo realizou uma arrecadação de brinquedos na época do Natal, juntamente com outras entidades do curso de Engenharia Química e da UFU, a fim de entregá-los às crianças do Centro Comunitário Sal da Terra. </p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div [ngClass]="{'hidden': openTabSocial !== 2, 'block': openTabSocial === 2}">
+																<div class="items-center flex flex-wrap">
+																	<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+																		<div class="md:pr-12">
+																			<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Visando o contato entre a comunidade acadêmica e a comunidade externa, respeitando as restrições estabelecidas devido à pandemia, o grupo PET Engenharia Química desenvolveu uma atividade em parceria com a Organização Não Governamental ABC do Glória, que visa auxiliar o crescimento econômico das famílias, principalmente, do público infanto-juvenil do bairro Élison Pietro. Dessa forma, a atividade desenvolvida nomeada como PET Ensinando o ABC consistiu em explicar conceitos de química, física e matemática de maneira lúdica, atrativa e acessível ao público atendido pela ONG, por meio de vídeos explicativos com experimentos práticos sobre o assunto e cartilhas informativas com exercícios dos temas apresentados. Por conseguinte, foi possível aprofundar o conhecimento das crianças e adolescentes na área das ciências exatas, além de mostrar as possibilidades existentes dentro da universidade.</p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+						<div class="container mx-auto px-4">
+							<div class="flex flex-wrap items-center">
+								<div class="w-full px-4 mr-auto ml-auto">
+									<div class="p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-emerald-500">
+										<i class="fas fa-user-friends text-xl"></i>
+									</div>
+									<h3 class="text-3xl mb-2 font-semibold leading-normal"> Divulgação e Esclarecimento </h3>
+									<div class="flex flex-wrap">
+										<div class="w-full">
+											<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsDivulga(1)" [ngClass]="{'text-emerald-500 bg-white': openTabDivulga !== 1, 'text-black bg-emerald-500': openTabDivulga === 1}">
+														<i class="fas fa-space-shuttle text-base mr-1"></i> Vem pra UFU </a>
+												</li>
+												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsDivulga(2)" [ngClass]="{'text-emerald-500 bg-white': openTabDivulga !== 2, 'text-black bg-emerald-500': openTabDivulga === 2}">
+														<i class="fas fa-cog text-base mr-1"></i> Vem pra Engenharia </a>
+												</li>
+												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsDivulga(3)" [ngClass]="{'text-emerald-500 bg-white': openTabDivulga !== 3, 'text-black bg-emerald-500': openTabDivulga === 3}">
+														<i class="fas fa-cog text-base mr-1"></i> Atividades temáticas </a>
+												</li>
+											</ul>
+											<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+												<div class="px-4 py-5 flex-auto">
+													<div class="tab-content tab-space">
+														<div [ngClass]="{'hidden': openTabDivulga !== 1, 'block': openTabDivulga === 1}">
+															<div class="items-center flex flex-wrap">
+																<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+																	<div class="md:pr-12">
+																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Todos os anos os grupos PET auxiliam a Pró-Reitoria de Graduação da UFU – PROGRAD na realização do “Vem pra UFU”, um evento oferecido pela universidade anualmente. O objetivo desta atividade é divulgar os cursos oferecidos pela UFU em seus diversos campi aos alunos das escolas de Uberlândia e região. Além da divulgação dos programas acadêmicos e extracurriculares da UFU aos alunos do ensino médio, como as bolsas de auxílio, atividades dos diretórios acadêmicos e atléticas, programa de mobilidade internacional e programas de Iniciação Científica. Como mencionado anteriormente, o público alvo da atividade são alunos do ensino médio das escolas púbicas e privadas da cidade de Uberlândia e região. As diversas atividades desenvolvidas ao longo dos dias do evento são voltadas ao esclarecimento acerca das peculiaridades de cada curso oferecido dentro da Universidade, em suas diferentes áreas: exatas, humanas e biológicas. Com este programa têm sido alcançados expressivos resultados na identificação, pelos candidatos, das diversas opções de cursos ofertados pela instituição, levando a uma melhor definição da demanda e, consequentemente, a possibilidade de redução das taxas de desistência. </p>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div [ngClass]="{'hidden': openTabDivulga !== 2, 'block': openTabDivulga === 2}">
+															<div class="items-center flex flex-wrap">
+																<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+																	<div class="md:pr-12">
+																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Vários estudantes não têm conhecimento sobre a formação em Engenharia enquanto outros têm interesse no curso de Engenharia, porém acreditam erroneamente que não estão aptos a cursar uma Universidade. Em vista que muitos estudantes do ensino médio da rede pública têm reduzido acesso às informações sobre os diversos cursos de Engenharia, esta atividade, criada em junção com variados grupos PET, tem o objetivo de despertar o interesse dos estudantes do ensino médio da rede pública de Uberlândia nos diferentes cursos de Engenharia através de informações apresentadas sobre os cursos, grades curriculares, atividades extracurriculares relacionadas ao curso e áreas de atuação dos engenheiros. Além disso, espera-se incentivar os alunos da rede pública sobre a possibilidade de ingresso na Universidade, estimulando-o que este sonho pode realmente tornar-se factível. Desse modo, foi feito entre os grupos PET um canal no YouTube para essa atividade, o <strong><a style="color:blue" href="https://youtube.com/channel/UCPuxX26p6_AD7V33wzB7a3Q">Vem Pra Engenharia - UFU</a></strong>, o qual contém vídeos de diferentes cursos de Engenharia. </p>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div [ngClass]="{'hidden': openTabDivulga !== 3, 'block': openTabDivulga === 3}">
+															<div class="items-center flex flex-wrap">
+																<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
+																	<div class="md:pr-12">
+																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Baseado no princípio de que o preconceito e a discriminação são frutos da ausência de conhecimento, o PET – Engenharia Química realiza algumas atividades temáticas durante o ano direcionadas a comunidade acadêmica da Universidade Federal de Uberlândia e público externo à esta. O objetivo principal é promover a discussão - geralmente com a participação de palestrantes externos - de temas polêmicos, tendo como base a conscientização e educação da sociedade, alimentando o respeito e a tolerância entre as pessoas ali presentes. Nesse sentido, as atividades são capazes de aclarar e conscientizar as pessoas dos paradigmas existentes na sociedade, evidenciando as suas mais variadas dificuldades decorrentes do preconceito.</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+<app-footer></app-footer>
