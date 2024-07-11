@@ -23,6 +23,7 @@ import { EnsinoComponent } from "./views/atividades/ensino/ensino.component";
 import { AtividadesComponent } from "./views/atividades/atividades.component";
 import { PesquisaComponent } from "./views/atividades/pesquisa/pesquisa.component";
 import { ExtensaoComponent } from "./views/atividades/extensao/extensao.component";
+import { NoticiasComponent } from "./views/noticias/noticias.component";
 
 const routes: Routes = [
   // admin views
@@ -55,6 +56,7 @@ const routes: Routes = [
   { path: "atividades/extensao", component: ExtensaoComponent},
   { path: "", component: LandingComponent },
   { path: "page", component: IndexComponent },
+  { path: "noticias", component: NoticiasComponent},
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 

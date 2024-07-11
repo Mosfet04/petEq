@@ -52,6 +52,7 @@ import { ExtensaoComponent } from "./views/atividades/extensao/extensao.componen
 import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
+import { NoticiasComponent } from "./views/noticias/noticias.component";
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
     EnsinoComponent,
     AtividadesComponent, 
     PesquisaComponent,
-    ExtensaoComponent
+    ExtensaoComponent,
+    NoticiasComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

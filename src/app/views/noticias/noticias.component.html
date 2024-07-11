@@ -1,0 +1,195 @@
+<app-auth-navbar></app-auth-navbar>
+<main class="ensino-page">
+  <section class="relative block h-500-px">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
+        background-image: url('https://i1.wp.com/www.dci.com.br/wp-content/uploads/2020/10/Uberlandia.jpg?fit=2048%2C1365&ssl=1');
+      ">
+      <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+    </div>
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="relative py-16 bg-blueGray-200">
+    <div class="container mx-auto px-4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+        <div class="px-6">
+          <div class="flex flex-wrap justify-center">
+
+            <!-- Modal de busca de noticias -->
+            <div *ngIf="modalSearch" class=" overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex w-9/12">
+              <div class="relative w-auto my-6 mx-auto max-w-3xl">
+                <!--content-->
+                <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                  <!--header-->
+                  <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                    <h3 class="text-3xl font-semibold"> Realize a busca da noticia requerida </h3>
+                  </div>
+                  <!--body-->
+                  <div class="relative p-6 flex-auto">
+					<div class="flex flex-wrap">
+						<div class="w-full lg:w-4/12 px-4">
+						  <div class="relative w-full mb-3">
+							<label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"> Categoria </label>
+							<select class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" [(ngModel)]="opcaoSelecionada">
+								<option *ngFor="let opcao of opcoes" [value]="opcao">{{ opcao }}</option>
+							</select>
+						  </div>
+						</div>
+						<div class="w-full lg:w-4/12 px-4">
+						  <div class="relative w-full mb-3">
+							<label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"> Data Inicial </label>
+							<input type="date" value="jesse@example.com" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+						  </div>
+						</div>
+						<div class="w-full lg:w-4/12 px-4">
+						  <div class="relative w-full mb-3">
+							<label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"> Data Final </label>
+							<input type="date" value="Lucky" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+						  </div>
+						</div>
+					  </div>
+                  </div>
+                  <!--footer-->
+                  <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                    <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModalSearch()"> Fechar </button>
+                    <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModalSearch()"> Buscar </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+			
+            <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center" [ngClass]="{'opacity-50': modalSearch}">
+              <div class="relative">
+                <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-500" style="width: 100px; height: 100px; margin-top: 20px; font-size: 48px;">
+                  <i class="fas fa-newspaper"></i>
+                </div>
+              </div>
+            </div>
+            <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"></div>
+            <div class="w-full lg:w-4/12 px-4 lg:order-1"></div>
+          </div>
+          <div class="text-center" [ngClass]="{'opacity-50': modalSearch}">
+            <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2"> Noticias </h3>
+          </div>
+          <div style="text-align: right;">
+            <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModalSearch()">
+              <i class="fas fa-search"></i> Buscar </button>
+            <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="reloadPage()">
+              <i class="fas fa-check"></i> Ultimas </button>
+          </div>
+          <div [ngClass]="{'opacity-50': modalSearch}">
+            <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+              <div class="container mx-auto px-4">
+                <div class="flex flex-wrap items-center">
+                  <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                    <h3 class="text-3xl mb-2 font-semibold leading-normal"> Noticia 1 </h3>
+                    <p class="text-sm leading-relaxed mt-4 mb-4 text-blueGray-700" style="text-align: right;">Mateus Ribeiro - Desenvolvedor - 10/07/24</p>
+                    <p class="text-lg leading-relaxed mt-4 mb-4 text-blueGray-700"> No Ciclo de Seminários em Língua Portuguesa ou Língua Estrangeira, os temas escolhidos para cada apresentação podem variar de assuntos livres à técnicos científicos. Os seminários visam desenvolver a capacidade de preparação, síntese e apresentação de um determinado assunto a uma plateia variada. </p>
+                    <p class="text-lg leading-relaxed mt-0 mb-4 text-blueGray-700"> Dessa forma, as competências como oratória e linguagem corporal em apresentações técnicas ou informais são implementadas e aprimoradas pelos petianos. Já a diversidade dos temas apresentados permite a todos os participantes da atividade adquirir conhecimentos nos mais diversos assuntos por meio dos debates que ocorrem logo após as apresentações, a fim de sanar as dúvidas a respeito do tema. </p>
+                  </div>
+                  <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-red-600">
+                      <img alt="..." src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_054216.png" class="w-full align-middle rounded-t-lg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+              <div class="container mx-auto px-4">
+                <div class="flex flex-wrap items-center">
+                  <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                    <h3 class="text-3xl mb-2 font-semibold leading-normal"> Noticia 2 </h3>
+                    <p class="text-sm leading-relaxed mt-4 mb-4 text-blueGray-700" style="text-align: right;">Mateus Ribeiro - Desenvolvedor - 10/07/24</p>
+                    <p class="text-lg leading-relaxed mt-4 mb-4 text-blueGray-700"> No Ciclo de Seminários em Língua Portuguesa ou Língua Estrangeira, os temas escolhidos para cada apresentação podem variar de assuntos livres à técnicos científicos. Os seminários visam desenvolver a capacidade de preparação, síntese e apresentação de um determinado assunto a uma plateia variada. </p>
+                    <p class="text-lg leading-relaxed mt-0 mb-4 text-blueGray-700"> Dessa forma, as competências como oratória e linguagem corporal em apresentações técnicas ou informais são implementadas e aprimoradas pelos petianos. Já a diversidade dos temas apresentados permite a todos os participantes da atividade adquirir conhecimentos nos mais diversos assuntos por meio dos debates que ocorrem logo após as apresentações, a fim de sanar as dúvidas a respeito do tema. </p>
+                  </div>
+                  <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-red-600">
+                      <img alt="..." src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_054216.png" class="w-full align-middle rounded-t-lg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+              <div class="container mx-auto px-4">
+                <div class="flex flex-wrap items-center">
+                  <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+                    <h3 class="text-3xl mb-2 font-semibold leading-normal"> Noticia 3 </h3>
+                    <p class="text-sm leading-relaxed mt-4 mb-4 text-blueGray-700" style="text-align: right;">Mateus Ribeiro - Desenvolvedor - 10/07/24</p>
+                    <p class="text-lg leading-relaxed mt-4 mb-4 text-blueGray-700"> No Ciclo de Seminários em Língua Portuguesa ou Língua Estrangeira, os temas escolhidos para cada apresentação podem variar de assuntos livres à técnicos científicos. Os seminários visam desenvolver a capacidade de preparação, síntese e apresentação de um determinado assunto a uma plateia variada. </p>
+                    <p class="text-lg leading-relaxed mt-0 mb-4 text-blueGray-700"> Dessa forma, as competências como oratória e linguagem corporal em apresentações técnicas ou informais são implementadas e aprimoradas pelos petianos. Já a diversidade dos temas apresentados permite a todos os participantes da atividade adquirir conhecimentos nos mais diversos assuntos por meio dos debates que ocorrem logo após as apresentações, a fim de sanar as dúvidas a respeito do tema. </p>
+                  </div>
+                  <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-red-600">
+                      <img alt="..." src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_054216.png" class="w-full align-middle rounded-t-lg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+			<!-- Paginação -->
+			<div class="py-2 justify-center items-center flex">
+				<nav class="block">
+				  <ul class="flex pl-0 rounded list-none flex-wrap">
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500">
+						<i class="fas fa-chevron-left -ml-px"></i>
+						<i class="fas fa-chevron-left -ml-px"></i>
+					  </a>
+					</li>
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500">
+						<i class="fas fa-chevron-left -ml-px"></i>
+					  </a>
+					</li>
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 text-white bg-red-500">
+						1
+					  </a>
+					</li>
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500">
+						2
+					  </a>
+					</li>
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500">
+						3
+					  </a>
+					</li>
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500">
+						4
+					  </a>
+					</li>
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500">
+						5
+					  </a>
+					</li>
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500">
+						<i class="fas fa-chevron-right -mr-px"></i>
+					  </a>
+					</li>
+					<li>
+					  <a href="#" class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500">
+						<i class="fas fa-chevron-right -mr-px"></i>
+						<i class="fas fa-chevron-right -mr-px"></i>
+					  </a>
+					</li>
+				  </ul>
+				</nav>
+			  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>
