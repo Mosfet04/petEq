@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from "@angular/core";
 })
 export class PaginationComponent implements OnInit {
   @Input() pages: number;
-  stopViewPages: boolean = false;
+  hasNextPage: boolean = false;
   currentPage : number = 2;
   range : Array<number> = [];
   rangeLimit : number = 3;
@@ -14,7 +14,7 @@ export class PaginationComponent implements OnInit {
   getRange(n: number) {
     this.range = Array.from({ length: Math.min(n, this.rangeLimit) }, (_, i) => i + 1);
     if (this.pages > this.range.length) {
-      this.stopViewPages = true;
+      this.hasNextPage = true;
     }
     this.runUniq = true;
   }
@@ -32,6 +32,8 @@ export class PaginationComponent implements OnInit {
   toggleFirstPage(){
     this.range = Array.from({ length: Math.min(this.pages, this.rangeLimit) }, (_, i) => i + 1);
     this.currentPage = 1;
+    if (this.range[this.range.length-1]<this.pages)
+      this.hasNextPage = true;
   }
 
   nextPage(){
@@ -46,6 +48,8 @@ export class PaginationComponent implements OnInit {
         this.range = emptyArray;
       }
     }
+    if(this.range[this.range.length-1] == this.pages)
+      this.hasNextPage=false;
   }
   backPage(){
     if (this.currentPage > 1){
@@ -59,7 +63,8 @@ export class PaginationComponent implements OnInit {
         this.range = emptyArray.sort();
       }
     }
-
+    if(this.range[this.range.length-1] < this.pages)
+      this.hasNextPage=true;
   }
 
   constructor() {  }
