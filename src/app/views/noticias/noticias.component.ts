@@ -6,13 +6,11 @@ import { Component, OnInit } from "@angular/core";
 })
 export class NoticiasComponent implements OnInit {
   constructor() {}
-  modalSearch = false;
+  pages: number = 10;
+  modalSearch: boolean = false;
   toggleModalSearch(){
     this.modalSearch = !this.modalSearch;
   }
-
-  opcoes = ['Nenhum','Ensino', 'Pesquisa', 'Extensão', 'Processo Seletivo'];
-  opcaoSelecionada: string;
 
   reloadPage(){
     location.reload();

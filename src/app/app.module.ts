@@ -30,6 +30,8 @@ import { PesquisaComponent } from "./views/atividades/pesquisa/pesquisa.componen
 
 import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
 import { AuthNavbarComponent } from "./components/navbars/auth-navbar/auth-navbar.component";
+import { ModalSearchComponent } from "./components/modalSearch/modal-search.component";
+import { PaginationComponent } from "./components/pagination/pagination.component";
 import { CardBarChartComponent } from "./components/cards/card-bar-chart/card-bar-chart.component";
 import { CardLineChartComponent } from "./components/cards/card-line-chart/card-line-chart.component";
 import { CardPageVisitsComponent } from "./components/cards/card-page-visits/card-page-visits.component";
@@ -79,6 +81,8 @@ import { NoticiasComponent } from "./views/noticias/noticias.component";
     HeaderStatsComponent,
     MapExampleComponent,
     AuthNavbarComponent,
+    ModalSearchComponent,
+    PaginationComponent,
     AdminNavbarComponent,
     IndexNavbarComponent,
     AdminComponent,
