@@ -11,6 +11,9 @@
         <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
       </svg>
     </div>
+    <div class = "px-6" *ngIf="modalSearch">
+      <modal-search class = "flex justify-center" (modalSearchAlterado)="toggleModalSearch()"></modal-search>
+    </div>
   </section>
   <section class="relative py-16 bg-blueGray-200">
     <div class="container mx-auto px-4">
@@ -18,9 +21,9 @@
         <div class="px-6">
           <div class="flex flex-wrap justify-center">
             <!-- Modal de busca de noticias -->
-            <div *ngIf="modalSearch">
+            <!-- <div *ngIf="modalSearch">
                 <modal-search (modalSearchAlterado)="toggleModalSearch()"></modal-search>
-            </div>
+            </div> -->
             <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center" [ngClass]="{'opacity-50': modalSearch}">
               <div class="relative">
                 <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-500" style="width: 100px; height: 100px; margin-top: 20px; font-size: 48px;">
