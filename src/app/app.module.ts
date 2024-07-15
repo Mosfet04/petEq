@@ -55,6 +55,7 @@ import { NotificationDropdownComponent } from "./components/dropdowns/notificati
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { NoticiasComponent } from "./views/noticias/noticias.component";
+import { ProcessoSeletivoComponent } from "./views/processoSeletivo/processoSeletivo.component";
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { NoticiasComponent } from "./views/noticias/noticias.component";
     AtividadesComponent, 
     PesquisaComponent,
     ExtensaoComponent,
-    NoticiasComponent
+    NoticiasComponent,
+    ProcessoSeletivoComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
