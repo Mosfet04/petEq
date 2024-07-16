@@ -24,6 +24,7 @@ import { AtividadesComponent } from "./views/atividades/atividades.component";
 import { PesquisaComponent } from "./views/atividades/pesquisa/pesquisa.component";
 import { ExtensaoComponent } from "./views/atividades/extensao/extensao.component";
 import { NoticiasComponent } from "./views/noticias/noticias.component";
+import { ProcessoSeletivoComponent } from "./views/processoSeletivo/processoSeletivo.component";
 
 const routes: Routes = [
   // admin views
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: "", component: LandingComponent },
   { path: "page", component: IndexComponent },
   { path: "noticias", component: NoticiasComponent},
+  { path: "processoSeletivo", component:ProcessoSeletivoComponent},
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 
