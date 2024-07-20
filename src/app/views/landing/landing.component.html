@@ -60,7 +60,7 @@
               <div
                 class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
               >
-                <i class="fas fa-school"></i>
+                <i class="fas fa-book-reader"></i>
               </div>
               <h6 class="text-xl font-semibold">Ensino</h6>
               <p class="mt-2 mb-4 text-blueGray-500">
@@ -108,7 +108,7 @@
       </div>
 
       <div class="flex flex-wrap items-center mt-32">
-        <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+        <div class="w-full md:w-5/12 px-4 mr-auto ml-auto mb-4">
           <div
             class="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white"
           >
@@ -191,7 +191,7 @@
 
     <div class="container mx-auto px-4">
       <div class="items-center flex flex-wrap">
-        <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+        <div *ngIf="timestepsEmBaixo == false" class="w-full md:w-4/12 ml-auto mr-auto px-4 mb-4">
           <div class="mt-12">
             <timesteps [vertical] = "vertical" [dataAtividade] = "dataAtividade"></timesteps>
           </div>
@@ -208,6 +208,12 @@
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
               Logo ao lado você pode acompanhar as ações mais proximas do grupo pet
             </p>
+            
+          </div>
+          <div *ngIf="timestepsEmBaixo" class="w-full md:w-4/12 ml-auto mr-auto px-4 mb-4">
+            <div class="mt-12">
+              <timesteps [vertical] = "vertical" [dataAtividade] = "dataAtividade"></timesteps>
+            </div>
             
           </div>
         </div>
