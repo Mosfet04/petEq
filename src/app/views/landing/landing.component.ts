@@ -8,6 +8,7 @@ import { Component, OnInit } from "@angular/core";
 export class LandingComponent implements OnInit {
   constructor() {}
   vertical = true
+  timestepsEmBaixo = window.innerWidth < 770;
   dataAtividade = [
     {
     nome: "Mini-curso 1",
