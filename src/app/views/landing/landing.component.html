@@ -192,11 +192,34 @@
     <div class="container mx-auto px-4">
       <div class="items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-          <img
-            alt="..."
-            class="max-w-full rounded-lg shadow-lg"
-            src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-          />
+          <div class="mt-12">
+            <mat-vertical-stepper>
+              <!-- #docregion label -->
+                <mat-step label="Minicurso 1" state="phone">
+                  <p class="text-xs text-right leading-relaxed text-blueGray-500">12/12/2022 - 17:20 - Predio 3Q</p>
+                  <p class="text-base leading-relaxed text-blueGray-500">Put down your phones.</p>
+                </mat-step>
+              <!-- #enddocregion label -->
+                <mat-step label="Minicurso 2" state="chat">
+                  <p class="text-xs text-right leading-relaxed text-blueGray-500">12/12/2022 - 17:20 - Predio 3Q</p>
+                  <p class="text-base leading-relaxed text-blueGray-500">Socialize with each other.</p>
+                </mat-step>
+                <mat-step label="Minicurso 3">
+                  <p class="text-xs text-right leading-relaxed text-blueGray-500">12/12/2022 - 17:20 - Predio 3Q</p>
+                  <p class="text-base leading-relaxed text-blueGray-500">You're welcome.</p>
+                </mat-step>
+              
+                <!-- Icon overrides. -->
+              <!-- #docregion override-icons -->
+                <ng-template matStepperIcon="phone">
+                  <mat-icon>call_end</mat-icon>
+                </ng-template>
+                <ng-template matStepperIcon="chat">
+                  <mat-icon>forum</mat-icon>
+                </ng-template>
+            </mat-vertical-stepper>
+          </div>
+          
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12">
@@ -205,58 +228,11 @@
             >
               <i class="fas fa-rocket text-xl"></i>
             </div>
-            <h3 class="text-3xl font-semibold">A growing company</h3>
+            <h3 class="text-3xl font-semibold">Que tal ver nossas proximas atividades?</h3>
             <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
-              The extension comes with three pre-built pages to help you get
-              started faster. You can change the text and images and you're good
-              to go.
+              Logo ao lado você pode acompanhar as ações mais proximas do grupo pet
             </p>
-            <ul class="list-none mt-6">
-              <li class="py-2">
-                <div class="flex items-center">
-                  <div>
-                    <span
-                      class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-red-200 mr-3"
-                    >
-                      <i class="fas fa-fingerprint"></i>
-                    </span>
-                  </div>
-                  <div>
-                    <h4 class="text-blueGray-500">
-                      Carefully crafted components
-                    </h4>
-                  </div>
-                </div>
-              </li>
-              <li class="py-2">
-                <div class="flex items-center">
-                  <div>
-                    <span
-                      class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-red-200 mr-3"
-                    >
-                      <i class="fab fa-html5"></i>
-                    </span>
-                  </div>
-                  <div>
-                    <h4 class="text-blueGray-500">Amazing page examples</h4>
-                  </div>
-                </div>
-              </li>
-              <li class="py-2">
-                <div class="flex items-center">
-                  <div>
-                    <span
-                      class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-red-200 mr-3"
-                    >
-                      <i class="far fa-paper-plane"></i>
-                    </span>
-                  </div>
-                  <div>
-                    <h4 class="text-blueGray-500">Dynamic components</h4>
-                  </div>
-                </div>
-              </li>
-            </ul>
+            
           </div>
         </div>
       </div>
@@ -566,3 +542,13 @@
   </section> -->
 </main>
 <app-footer></app-footer>
+
+<style>
+  .mat-step-icon-state-phone {
+    background-color: red; /* Substitua pela cor desejada */
+  }
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
+    background-color: red;
+  }
+</style>
