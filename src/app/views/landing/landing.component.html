@@ -193,31 +193,7 @@
       <div class="items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
           <div class="mt-12">
-            <mat-vertical-stepper>
-              <!-- #docregion label -->
-                <mat-step label="Minicurso 1" state="phone">
-                  <p class="text-xs text-right leading-relaxed text-blueGray-500">12/12/2022 - 17:20 - Predio 3Q</p>
-                  <p class="text-base leading-relaxed text-blueGray-500">Put down your phones.</p>
-                </mat-step>
-              <!-- #enddocregion label -->
-                <mat-step label="Minicurso 2" state="chat">
-                  <p class="text-xs text-right leading-relaxed text-blueGray-500">12/12/2022 - 17:20 - Predio 3Q</p>
-                  <p class="text-base leading-relaxed text-blueGray-500">Socialize with each other.</p>
-                </mat-step>
-                <mat-step label="Minicurso 3">
-                  <p class="text-xs text-right leading-relaxed text-blueGray-500">12/12/2022 - 17:20 - Predio 3Q</p>
-                  <p class="text-base leading-relaxed text-blueGray-500">You're welcome.</p>
-                </mat-step>
-              
-                <!-- Icon overrides. -->
-              <!-- #docregion override-icons -->
-                <ng-template matStepperIcon="phone">
-                  <mat-icon>call_end</mat-icon>
-                </ng-template>
-                <ng-template matStepperIcon="chat">
-                  <mat-icon>forum</mat-icon>
-                </ng-template>
-            </mat-vertical-stepper>
+            <timesteps [vertical] = "vertical" [dataAtividade] = "dataAtividade"></timesteps>
           </div>
           
         </div>

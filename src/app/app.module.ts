@@ -103,6 +103,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { TimestepsComponent } from "./components/timesteps/timesteps.component";
 
 @NgModule({
   declarations: [
@@ -149,6 +150,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     ExtensaoComponent,
     NoticiasComponent,
     ProcessoSeletivoComponent,
+    TimestepsComponent,
     
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
