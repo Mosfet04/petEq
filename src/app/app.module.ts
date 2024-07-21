@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -59,7 +60,7 @@ import { ProcessoSeletivoComponent } from "./views/processoSeletivo/processoSele
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -104,7 +105,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { TimestepsComponent } from "./components/timesteps/timesteps.component";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -197,7 +197,9 @@ import { TimestepsComponent } from "./components/timesteps/timesteps.component";
     MatTreeModule,
     OverlayModule,
     PortalModule,
-    ScrollingModule ],
+    ScrollingModule,
+    FormsModule,
+    CommonModule ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
   bootstrap: [AppComponent],
 })
