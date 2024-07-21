@@ -7,6 +7,8 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LandingComponent implements OnInit {
   constructor() {}
+  windowWidth: number;
+
   vertical = true
   timestepsEmBaixo = window.innerWidth < 770;
   dataAtividade = [
@@ -32,5 +34,6 @@ export class LandingComponent implements OnInit {
   ]
   
   ngOnInit(): void {
+    this.windowWidth = window.innerWidth;
   }
 }
