@@ -2,41 +2,41 @@
   <nav class="block">
     <ul class="flex pl-0 rounded list-none flex-wrap">
       <li>
-        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500" (click)="toggleFirstPage()">
+        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-emerald-500 bg-white text-emerald-500" (click)="toggleFirstPage()">
           <i class="fas fa-chevron-left -ml-px"></i>
           <i class="fas fa-chevron-left -ml-px"></i>
         </a>
       </li>
       <li>
-        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500" (click)="backPage()">
+        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-emerald-500 bg-white text-emerald-500" (click)="backPage()">
           <i class="fas fa-chevron-left -ml-px"></i>
         </a>
       </li>
       <li *ngIf="range[0]>1">
-        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 text-red-500 bg-white">+</a>
+        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-emerald-500 text-emerald-500 bg-white">+</a>
       </li>
       <li *ngFor="let i of range">
         <a
            [ngClass]="{
              'first:ml-0': i === 1,
-             'text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500': true,
-             'bg-white text-red-500': i !== currentPage,
-             'bg-red-500 text-white': i === currentPage
+             'text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-emerald-500': true,
+             'bg-white text-emerald-500': i !== currentPage,
+             'bg-emerald-500 text-white': i === currentPage
            }">
            {{ i }}
         </a>
       </li>
       <li *ngIf="hasNextPage">
-        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 text-red-500 bg-white">+</a>
+        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-emerald-500 text-emerald-500 bg-white">+</a>
       </li>
       
       <li>
-        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500" (click)="nextPage()">
+        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-emerald-500 bg-white text-emerald-500" (click)="nextPage()">
         <i class="fas fa-chevron-right -mr-px"></i>
         </a>
       </li>
       <li>
-        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-red-500 bg-white text-red-500" (click)="toggleLastPage()">
+        <a class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-emerald-500 bg-white text-emerald-500" (click)="toggleLastPage()">
           <i class="fas fa-chevron-right -mr-px"></i>
           <i class="fas fa-chevron-right -mr-px"></i>
         </a>
