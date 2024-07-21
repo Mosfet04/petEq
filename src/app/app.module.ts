@@ -197,7 +197,8 @@ import { TimestepsComponent } from "./components/timesteps/timesteps.component";
     MatTreeModule,
     OverlayModule,
     PortalModule,
-    ScrollingModule ],
+    ScrollingModule,
+    FormsModule ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
   bootstrap: [AppComponent],
 })

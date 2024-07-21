@@ -7,10 +7,10 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "esnext", // Ou "commonjs" se necessário
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2015", // Ou "es5" se necessário
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -21,6 +21,7 @@
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "enableIvy": true
   }
 }

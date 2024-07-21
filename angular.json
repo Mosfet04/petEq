@@ -22,7 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "notus-angular:build"
+            "buildTarget": "notus-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "notus-angular:build:production"
+              "buildTarget": "notus-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "notus-angular:build"
+            "buildTarget": "notus-angular:build"
           }
         },
         "test": {
@@ -127,6 +127,5 @@
           }
         }
       }
-    }},
-  "defaultProject": "notus-angular"
+    }}
 }

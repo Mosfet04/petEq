@@ -20,7 +20,7 @@
 						<div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
 							<div class="relative">
 								<div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-500" style="width: 100px; height: 100px; margin-top: 10px; font-size: 48px;">
-									<i class="fas fa-pen"></i>
+									<i class="fas fa-clipboard-list"></i>
 								</div>
 							</div>
 						</div>
@@ -38,8 +38,8 @@
 									<div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
 										<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
 											<div class="px-4 py-5 flex-auto">
-												<div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-													<i class="fas fa-school"></i>
+												<div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-500">
+													<i class="fas fa-book-reader"></i>
 												</div>
 												<h6 class="text-xl font-semibold">Ensino</h6>
 												<a [routerLink]="['/atividades/ensino']" class="font-bold text-emerald-500 mt-8"> Que pilar é esse? </a>
@@ -49,7 +49,7 @@
 									<div class="w-full md:w-4/12 px-4 text-center">
 										<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
 											<div class="px-4 py-5 flex-auto">
-												<div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
+												<div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-600">
 													<i class="fas fa-flask"></i>
 												</div>
 												<h6 class="text-xl font-semibold">Pesquisa</h6>
@@ -61,7 +61,7 @@
 										<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
 											<div class="px-4 py-5 flex-auto">
 												<div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-													<i class="fas fa-fingerprint"></i>
+													<i class="fas fa-project-diagram"></i>
 												</div>
 												<h6 class="text-xl font-semibold">Extensão</h6>
 												<a [routerLink]="['/']" class="font-bold text-emerald-500 mt-8"> Que pilar é esse? </a>
@@ -76,11 +76,11 @@
 										<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
 											<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
 												<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(1)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 1, 'text-black bg-emerald-500': openTab === 1}">
-													<i class="fas fa-space-shuttle text-base mr-1"></i> Planejamento </a>
+													<i class="fas fa-edit text-base mr-1"></i> Planejamento </a>
 											</li>
 											<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
 												<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(2)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 2, 'text-black bg-emerald-500': openTab === 2}">
-													<i class="fas fa-cog text-base mr-1"></i> relatório </a>
+													<i class="fas fa-folder text-base mr-1"></i> Relatório </a>
 											</li>
 										</ul>
 										<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
