@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
-import Chart from "chart.js/auto";
+import { Chart, ChartConfiguration, ChartType, registerables } from 'chart.js';
+
+Chart.register(...registerables);
 
 @Component({
   selector: "app-card-bar-chart",
@@ -10,8 +12,8 @@ export class CardBarChartComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {}
   ngAfterViewInit() {
-    let config = {
-      type: "bar",
+    const config: ChartConfiguration<'bar', number[], string> = {
+      type: 'bar',
       data: {
         labels: [
           "January",
@@ -24,16 +26,14 @@ export class CardBarChartComponent implements OnInit, AfterViewInit {
         ],
         datasets: [
           {
-            label: new Date().getFullYear(),
+            label: new Date().getFullYear().toString(),
             backgroundColor: "#ed64a6",
             borderColor: "#ed64a6",
             data: [30, 78, 56, 34, 100, 45, 13],
-            fill: false,
             barThickness: 8,
           },
           {
-            label: new Date().getFullYear() - 1,
-            fill: false,
+            label: (new Date().getFullYear() - 1).toString(),
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
             data: [27, 68, 86, 74, 10, 4, 87],
@@ -44,66 +44,46 @@ export class CardBarChartComponent implements OnInit, AfterViewInit {
       options: {
         maintainAspectRatio: false,
         responsive: true,
-        title: {
-          display: false,
-          text: "Orders Chart",
-        },
-        tooltips: {
-          mode: "index",
-          intersect: false,
-        },
-        hover: {
-          mode: "nearest",
-          intersect: true,
-        },
-        legend: {
-          labels: {
-            fontColor: "rgba(0,0,0,.4)",
+        plugins: {
+          legend: {
+            labels: {
+              color: "rgba(0,0,0,.4)",
+            },
+            align: "end",
+            position: "bottom",
           },
-          align: "end",
-          position: "bottom",
         },
         scales: {
-          xAxes: [
-            {
-              display: false,
-              scaleLabel: {
-                display: true,
-                labelString: "Month",
-              },
-              gridLines: {
-                borderDash: [2],
-                borderDashOffset: [2],
-                color: "rgba(33, 37, 41, 0.3)",
-                zeroLineColor: "rgba(33, 37, 41, 0.3)",
-                zeroLineBorderDash: [2],
-                zeroLineBorderDashOffset: [2],
-              },
-            },
-          ],
-          yAxes: [
-            {
+          x: {
+            display: false,
+            title: {
               display: true,
-              scaleLabel: {
-                display: false,
-                labelString: "Value",
-              },
-              gridLines: {
-                borderDash: [2],
-                drawBorder: false,
-                borderDashOffset: [2],
-                color: "rgba(33, 37, 41, 0.2)",
-                zeroLineColor: "rgba(33, 37, 41, 0.15)",
-                zeroLineBorderDash: [2],
-                zeroLineBorderDashOffset: [2],
-              },
+              text: "Month",
             },
-          ],
+            grid: {
+              display: false,
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: false,
+              text: "Value",
+            },
+            grid: {
+              display: true,
+              color: "rgba(33, 37, 41, 0.2)",
+              //borderColor: "rgba(33, 37, 41, 0.15)", // Use 'borderColor' instead of 'zeroLineColor'
+              //borderDash: [2],
+              //drawBorder: false,
+              //borderDashOffset: [2],
+            },
+          },
         },
       },
     };
-    let ctx: any = document.getElementById("bar-chart");
-    ctx = ctx.getContext("2d");
+
+    const ctx: any = document.getElementById("bar-chart");
     new Chart(ctx, config);
   }
 }
