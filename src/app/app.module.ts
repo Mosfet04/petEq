@@ -57,6 +57,7 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
 import { NoticiasComponent } from "./views/noticias/noticias.component";
 import { ProcessoSeletivoComponent } from "./views/processoSeletivo/processoSeletivo.component";
+import { SobreComponent } from "./views/sobre/sobre.component";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
@@ -105,6 +106,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { TimestepsComponent } from "./components/timesteps/timesteps.component";
+import { ArvoreCargosComponent } from "./components/arvoreCargos/arvoreCargos.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -150,7 +152,9 @@ import { TimestepsComponent } from "./components/timesteps/timesteps.component";
     ExtensaoComponent,
     NoticiasComponent,
     ProcessoSeletivoComponent,
+    SobreComponent,
     TimestepsComponent,
+    ArvoreCargosComponent
     
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
