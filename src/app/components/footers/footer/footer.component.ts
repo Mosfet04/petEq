@@ -6,6 +6,8 @@ import { Component, OnInit } from "@angular/core";
 })
 export class FooterComponent implements OnInit {
   date = new Date().getFullYear();
+
+  telefone = window.innerWidth < 770 ? true : false;
   constructor() {}
 
   ngOnInit(): void {}
