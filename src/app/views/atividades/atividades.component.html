@@ -6,8 +6,8 @@
       ">
 			<span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
 		</div>
-		<div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0)">
-			<svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+		<div class="top-auto bottomMenosUm left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0)">
+			<svg class="absolute bottomMenosUm overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
 				<polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
 			</svg>
 		</div>
@@ -15,6 +15,11 @@
 	<section class="relative py-16 bg-blueGray-200">
 		<div class="container mx-auto px-4">
 			<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+				<div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20" style="transform: translateZ(0)">
+					<svg class="absolute bottomMenosUm overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+						<polygon class="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
+					</svg>
+				</div>
 				<div class="px-6">
 					<div class="flex flex-wrap justify-center">
 						<div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
@@ -69,18 +74,17 @@
 										</div>
 									</div>
 								</div>
-								<p class="mb-4 text-lg leading-relaxed text-blueGray-700"> Todas as atividades são programadas no início de cada ano letivo e ao final é apresentado um relatório do trabalho efetuado ao CLAA (Comitê Local de Acompanhamento e Avaliação), responsável por acompanhar e estabelecer critérios para avaliar as atividades de ensino, pesquisa e extensão desenvolvidas pelos grupos PET da Universidade Federal de Uberlândia. </p>
-								<p class="mb-4 text-lg leading-relaxed text-blueGray-700"> Acesse abaixo os ultimos relátorios: </p>
+								<p class="mb-4 text-lg leading-relaxed text-blueGray-700"> Anualmente, no final de cada ano civil, elaboram-se dois documentos: planejamento das atividades do ano seguinte e relatório do trabalho efetuado no ano corrente. Após apreciação pelo Comitê Local de Acompanhamento e Avaliação (CLAA), que é responsável por acompanhar e estabelecer critérios para avaliar as atividades de ensino, pesquisa e extensão desenvolvidas pelos grupos PET da Universidade Federal de Uberlândia, os documentos são disponibilizados publicamente (a seguir).</p>
 								<div class="flex flex-wrap">
 									<div class="w-full">
 										<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
 											<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
 												<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(1)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 1, 'text-black bg-emerald-500': openTab === 1}">
-													<i class="fas fa-edit text-base mr-1"></i> Planejamento </a>
+													<i class="fas fa-edit text-base mr-1"></i> Planejamentos </a>
 											</li>
 											<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
 												<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(2)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 2, 'text-black bg-emerald-500': openTab === 2}">
-													<i class="fas fa-folder text-base mr-1"></i> Relatório </a>
+													<i class="fas fa-folder text-base mr-1"></i> Relatórios </a>
 											</li>
 										</ul>
 										<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
