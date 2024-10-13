@@ -21,7 +21,7 @@ export class TimestepsComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    console.log(this.vertical)
+
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });

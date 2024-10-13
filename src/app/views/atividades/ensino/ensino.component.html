@@ -97,51 +97,22 @@
 							<div class="flex flex-wrap">
 								<div class="w-full">
 									<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+										<!-- <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
 											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(1)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 1, 'text-black bg-emerald-500': openTab === 1}">
 												<i class="fas fa-caret-right text-base mr-1"></i> Calculadora Básica </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(2)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 2, 'text-black bg-emerald-500': openTab === 2}">
-												<i class="fas fa-caret-right text-base mr-1"></i> Calculadora Avançada </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(3)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 3, 'text-black bg-emerald-500': openTab === 3}">
-												<i class="fas fa-caret-right text-base mr-1"></i> Excel Básico </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(4)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 4, 'text-black bg-emerald-500': openTab === 4}">
-												<i class="fas fa-caret-right text-base mr-1"></i> Introdução ao Adobe Illustrator e CorelDRAW </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(5)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 5, 'text-black bg-emerald-500': openTab === 5}">
-												<i class="fas fa-caret-right text-base mr-1"></i> Introdução ao AutoCAD 2D </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(6)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 6, 'text-black bg-emerald-500': openTab === 6}">
-												<i class="fas fa-caret-right text-base mr-1"></i> Introdução à Lógica de Programação </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(7)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 7, 'text-black bg-emerald-500': openTab === 7}">
-												<i class="fas fa-caret-right text-base mr-1"></i> Noções Básicas de Cálculo </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(8)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 8, 'text-black bg-emerald-500': openTab === 8}">
-												<i class="fas fa-caret-right text-base mr-1"></i> RevisaPET </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(9)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 9, 'text-black bg-emerald-500': openTab === 9}">
-												<i class="fas fa-caret-right text-base mr-1"></i> Introdução ao Python </a>
-										</li>
-										<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(10)" [ngClass]="{'text-emerald-500 bg-white': openTab !== 10, 'text-black bg-emerald-500': openTab === 10}">
-												<i class="fas fa-caret-right text-base mr-1"></i> Matemática Básica para Engenharia Química </a>
-										</li>
+										</li> -->
+										<li *ngFor="let minicurso of miniCursosAtivos; let i = index" class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+											<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
+											   (click)="toggleTabs(i)"
+											   [ngClass]="{'text-emerald-500 bg-white': openTab !== i, 'text-black bg-emerald-500': openTab === i}">
+											  <i class="fas fa-caret-right text-base mr-1"></i> {{minicurso.titulo}}
+											</a>
+										  </li>
 									</ul>
 									<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 										<div class="px-4 py-5 flex-auto">
 											<div class="tab-content tab-space">
-												<div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+												<!-- <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
 													<div class="items-center flex flex-wrap">
 														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
 															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055727.png" />
@@ -152,111 +123,15 @@
 															</div>
 														</div>
 													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+												</div> -->
+												<div *ngFor="let minicurso of miniCursosAtivos; let i = index" [ngClass]="{'hidden': openTab !== i, 'block': openTab === i}">
 													<div class="items-center flex flex-wrap">
 														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055638.png" />
+															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="{{minicurso.imagem}}" />
 														</div>
 														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
 															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> A Calculadora Científica surgiu na segunda metade dos anos de 1960, quando houve uma grande explosão no número de fabricantes desse aparelho. A calculadora é um instrumento indispensável devido à extrema necessidade do engenheiro de efetuar cálculos com maior rapidez e precisão. Esse minicurso desenvolvido pelo PET-EQ tem o objetivo de auxiliar os graduandos de Engenharia Química a operar as ferramentas que a calculadora CASIO FX 991ES oferece, para assim poderem utilizá-las durante o curso facilitando os cálculos no andamento de algumas disciplinas e melhorando dessa forma o desenvolvimento no decorrer da graduação. </p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}">
-													<div class="items-center flex flex-wrap">
-														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055738.png" />
-														</div>
-														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> O minicurso tem como objetivo apresentar técnicas e comandos básicos intermediários para resolução de problemas e auxílio na implementação de métodos matemáticos e lógicos no software Excel. Planilhas eletrônicas são ferramentas de ampla aplicação e fácil manuseio, sendo largamente utilizadas para as mais diversificadas funções por profissionais e engenheiros de todo o mundo. Durante o minicurso, são abordados problemas relacionados à Engenharia Química, especialmente no que tange aos cálculos estequiométricos a nível industrial, conceito fundamental para a atuação do profissional em Engenharia Química. </p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 4, 'block': openTab === 4}">
-													<div class="items-center flex flex-wrap">
-														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055750.png" />
-														</div>
-														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Os softwares Adobe Illustrator e o CorelDRAW são utilizados para design gráfico e são extremamente úteis para várias aplicações. Eles permitem a aplicação e o manejo de diversos produtos, como por exemplo: desenhos artísticos, publicitários, logotipos, discos, capas de revistas, livros, imagens de objetos para aplicação nas páginas de Internet (botões, ícones, animações gráficas, etc), confecção de cartazes, dentre outros. Assim, mostra-se muito útil para o uso em eventos, divulgação profissional e também trabalhos acadêmicos. Devido a isso, os minicursos mostram as principais ferramentas desses aplicativos àqueles interessados em criação artístico-gráfica. </p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 5, 'block': openTab === 5}">
-													<div class="items-center flex flex-wrap">
-														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055809.png" />
-														</div>
-														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Com a evolução dos projetos, desenhos manuais e impressos foram substituídos pelo AutoCAD, uma ferramenta versátil e amplamente utilizada no ramo da engenharia no que se refere ao planejamento de máquinas e equipamentos. Isso ocorre pelas diversas funções de criação, modelagem e visualização de objetos, plantas inteiras, entre outros. A partir desta vasta aplicação, o minicurso visa abordar as funções básicas do AutoCAD para capacitar os alunos ao uso das ferramentas do software, com exemplos específicos aplicados ao curso de graduação de Engenharia Química. </p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 6, 'block': openTab === 6}">
-													<div class="items-center flex flex-wrap">
-														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055909.png" />
-														</div>
-														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Uma grande quantidade de ingressantes de Engenharia costuma ter dificuldades em disciplinas que envolvem a lógica de programação de computadores. Nesse sentido, esse minicurso objetiva uma melhor afinidade desses alunos com os principais conceitos e estruturas relacionadas a esta temática. Essa atividade é realizada no início dos semestres letivos e tem como público alvo os ingressantes em cursos de Engenharia, principalmente em Engenharia Química, com a finalidade de auxiliar e fornecer um conhecimento prévio da matéria ao ingressante. </p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 7, 'block': openTab === 7}">
-													<div class="items-center flex flex-wrap">
-														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055625.png" />
-														</div>
-														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> O minicurso de Noções Básicas de Cálculo é oferecido para nivelar os alunos ingressantes dos cursos de Engenharia, visando reduzir as dificuldades iniciais em disciplinas como Cálculo, Geometria Analítica e Álgebra Linear. O curso revisa conceitos e técnicas matemáticas do ensino médio, essenciais para essas disciplinas, e inclui a resolução de exercícios e atendimento para dúvidas. O objetivo é diminuir as taxas de evasão, especialmente nos cursos de Engenharia Química, sendo oferecido no início dos semestres letivos para todos os alunos ingressantes em cursos de engenharia.</p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 8, 'block': openTab === 8}">
-													<div class="items-center flex flex-wrap">
-														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_060003.png" />
-														</div>
-														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> O RevisaPET propõe auxiliar os estudantes mais avançados no curso de Engenharia Química por meio de vídeos, o qual revisa conteúdos que os alunos apresentam maior grau de dificuldade em disciplinas específicas do curso, assim como resolução de exercícios e tópicos relevantes que devem ser observados e fixados pelos estudantes. Os vídeos podem ser acessados por meio do canal do YouTube do PET Engenharia Química. </p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 9, 'block': openTab === 9}">
-													<div class="items-center flex flex-wrap">
-														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/imagem_2022-01-15_055916.png" />
-														</div>
-														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> O minicurso de Introdução ao Python visa introduzir aos alunos comandos simples de programação do software Python e fazer com que seja adquirido um raciocínio lógico em linguagem de programação. O software possui diversas funcionalidades em diversas áreas como o Data Science, desenvolvimento sites e aplicativos, automação de scripts, entre outros. Atualmente, a programação é uma habilidade essencial tanto para quem pretende entrar no mercado de trabalho, quanto para o meio acadêmico. O uso de algoritmos para organizar dados, reconhecer padrões e realizar previsões é de suma importância para engenheiros e outros profissionais. </p>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div [ngClass]="{'hidden': openTab !== 10, 'block': openTab === 10}">
-													<div class="items-center flex flex-wrap">
-														<div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-															<img alt="..." class="max-w-full rounded-lg shadow-lg" src="http://petequfu.com.br/wp-content/uploads/2022/01/4.jpeg" />
-														</div>
-														<div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-															<div class="md:pr-12">
-																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> O Minicurso de Matemática Básica para Introdução à Engenharia Química é ministrado durante as aulas de Introdução à Engenharia Química. A atividade tem o objetivo de auxiliar os ingressantes em alguns conceitos básicos que são essenciais para a disciplina e para o decorrer do curso, como operações de matemática básica, potenciação, radiciação, notação científica, produtos notáveis, sistemas lineares, equações do segundo grau e trigonometria. Ademais, o minicurso procura nivelar os alunos ingressantes a fim de reduzir as dificuldades encontradas nas disciplinas do ciclo básico. Outro ponto importante é a diminuição da evasão no curso através da revisão dos conceitos básicos no minicurso e motivação dos estudantes. </p>
+																<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> {{minicurso.descricao}} </p>
 															</div>
 														</div>
 													</div>

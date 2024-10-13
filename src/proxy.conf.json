@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://petback1-37607olh.b4a.run",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

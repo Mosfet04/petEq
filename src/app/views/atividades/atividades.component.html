@@ -92,14 +92,10 @@
 											<div class="px-4 py-5 flex-auto">
 												<div class="tab-content tab-space">
 													<div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
-														<p> Planejamento 2024 <br />
-															<br /> Planejamento 2023
-														</p>
+														<a *ngFor="let planejamento of planejamentos" class="font-bold text-emerald-500 mt-8" href="{{planejamento.link}}"> Planejamento {{ converterDataParaAnoSemestre(planejamento.anoDocumento) }} </a>
 													</div>
 													<div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
-														<p> Relatório 2023 <br />
-															<br /> Relatório 2022
-														</p>
+														<a *ngFor="let relatorio of relatorios" class="font-bold text-emerald-500 mt-8" href="{{relatorio.link}}"> Relatorio {{ converterDataParaAnoSemestre(relatorio.anoDocumento) }} </a>
 													</div>
 												</div>
 											</div>

@@ -1,80 +1,67 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, Output, OnInit, EventEmitter, OnChanges, SimpleChanges } from "@angular/core";
 
 @Component({
   selector: "pagination",
   templateUrl: "./pagination.component.html",
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges {
   @Input() pages: number;
+  @Output() pageChanged = new EventEmitter<number>();
+
   hasNextPage: boolean = false;
-  currentPage : number = 2;
-  range : Array<number> = [];
-  rangeLimit : number = 3;
-  runUniq : boolean = false;
-  getRange(n: number) {
-    this.range = Array.from({ length: Math.min(n, this.rangeLimit) }, (_, i) => i + 1);
-    if (this.pages > this.range.length) {
-      this.hasNextPage = true;
-    }
-    this.runUniq = true;
-  }
-  
-
-  toggleLastPage() {
-    this.range = Array.from({ length: this.rangeLimit }, (_, i) => this.pages - i)
-      .filter(page => page > 0) // Filtra os valores maiores que 0
-      .sort((a, b) => a - b); // Ordena em ordem crescente
-    this.currentPage = this.pages;
-  }
-  
-  
-
-  toggleFirstPage(){
-    this.range = Array.from({ length: Math.min(this.pages, this.rangeLimit) }, (_, i) => i + 1);
-    this.currentPage = 1;
-    if (this.range[this.range.length-1]<this.pages)
-      this.hasNextPage = true;
-  }
-
-  nextPage(){
-    if (this.currentPage < this.pages){
-      this.currentPage++;
-      if (this.currentPage>this.range[this.range.length-1]){
-        let emptyArray= [];
-        for (let i = 1; i <= this.rangeLimit; i++) {
-          if(this.currentPage+i-1 <= this.pages)
-            emptyArray.push(this.currentPage+i-1);
-        }
-        this.range = emptyArray;
-      }
-    }
-    if(this.range[this.range.length-1] == this.pages)
-      this.hasNextPage=false;
-  }
-  backPage(){
-    if (this.currentPage > 1){
-      this.currentPage--;
-      let emptyArray = [];
-      if(this.currentPage<this.range[0]){
-        for(let i=1; i<= this.rangeLimit; i++){
-          if(this.currentPage-i+1 > 0 )
-            emptyArray.push(this.currentPage-i+1);
-        }
-        this.range = emptyArray.sort();
-      }
-    }
-    if(this.range[this.range.length-1] < this.pages)
-      this.hasNextPage=true;
-  }
-
-  constructor() {  }
+  currentPage: number = 1;
+  range: Array<number> = [];
+  rangeLimit: number = 3;
 
   ngOnInit(): void {
-    if (this.pages > 0 && this.pages !== undefined && !this.runUniq) {
-      this.getRange(this.pages);
+    this.updateRange();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.pages && changes.pages.currentValue) {
+      this.updateRange();
     }
   }
 
-  
+  updateRange(): void {
+    if (this.pages > 0) {
+      this.range = Array.from({ length: Math.min(this.pages, this.rangeLimit) }, (_, i) => i + 1);
+      this.hasNextPage = this.pages > this.range.length;
+    }
+  }
 
+  changePage(page: number): void {
+    if (page > 0 && page <= this.pages) {
+      this.currentPage = page;
+      this.pageChanged.emit(this.currentPage);
+      this.updateRange();
+    }
+  }
+
+  toggleLastPage(): void {
+    this.range = Array.from({ length: this.rangeLimit }, (_, i) => this.pages - i)
+      .filter(page => page > 0)
+      .sort((a, b) => a - b);
+    this.currentPage = this.pages;
+    this.pageChanged.emit(this.currentPage);
+  }
+
+  toggleFirstPage(): void {
+    this.range = Array.from({ length: Math.min(this.pages, this.rangeLimit) }, (_, i) => i + 1);
+    this.currentPage = 1;
+    this.pageChanged.emit(this.currentPage);
+    this.hasNextPage = this.range[this.range.length - 1] < this.pages;
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.pages) {
+      this.changePage(this.currentPage + 1);
+    }
+  }
+
+  backPage(): void {
+    if (this.currentPage > 1) {
+      this.changePage(this.currentPage - 1);
+    }
+  }
 }

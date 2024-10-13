@@ -16,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [ "chart.js" ],
+            "allowedCommonJsDependencies": ["chart.js"],
             "outputPath": "dist/notus-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -69,7 +69,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "notus-angular:build"
+            "buildTarget": "notus-angular:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -126,5 +127,6 @@
           }
         }
       }
-    }}
+    }
+  }
 }
