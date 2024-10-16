@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
+import { JorneqIndexComponent } from "./layouts/jorneq/jorneq-index.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
@@ -14,6 +15,12 @@ import { TablesComponent } from "./views/admin/tables/tables.component";
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
 import { RegisterComponent } from "./views/auth/register/register.component";
+
+//jorneq views
+import { JorneqComponent } from "./views/jorneq/jorneq.component";
+import { ParticipeComponent } from "./views/jorneq/participe/participe.component";
+import { ResponsaveisComponent } from "./views/jorneq/responsaveis/responsaveis.component";
+import { SobreJorneqComponent } from "./views/jorneq/sobre/sobre-jorneq.component";
 
 // no layouts views
 import { IndexComponent } from "./views/index/index.component";
@@ -26,6 +33,7 @@ import { ExtensaoComponent } from "./views/atividades/extensao/extensao.componen
 import { NoticiasComponent } from "./views/noticias/noticias.component";
 import { ProcessoSeletivoComponent } from "./views/processoSeletivo/processoSeletivo.component";
 import { SobreComponent } from "./views/sobre/sobre.component";
+import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
 
 const routes: Routes = [
   // admin views
@@ -61,7 +69,19 @@ const routes: Routes = [
   { path: "noticias", component: NoticiasComponent},
   { path: "processoSeletivo", component:ProcessoSeletivoComponent},
   { path: "sobre", component:SobreComponent},
-  { path: "**", redirectTo: "", pathMatch: "full" },
+  {
+    path: "jorneq",
+    component: JorneqIndexComponent,
+    children:[
+      {path:"", component: JorneqComponent},
+      {path:"participe", component: ParticipeComponent},
+      {path:"responsaveis", component: ResponsaveisComponent},
+      {path:"sobre", component: SobreJorneqComponent},
+      {path:"contato", component: ContatoJorneqComponent}
+    ]
+  },
+  { path: "**", redirectTo: "", pathMatch: "full" }
+  
 ];
 
 @NgModule({

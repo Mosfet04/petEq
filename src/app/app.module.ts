@@ -107,6 +107,16 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { TimestepsComponent } from "./components/timesteps/timesteps.component";
 import { ArvoreCargosComponent } from "./components/arvoreCargos/arvoreCargos.component";
+import { BackgroundJorneqComponentComponent } from "./components/backgrounds/background-jorneq-component.component";
+import { BotaoPrincipalJorneqComponent } from "./components/botoes/jorneq/botao-principal-jorneq.component";
+import { BotaoSecundarioJorneqComponent } from "./components/botoes/jorneq/botao-secundario-jorneq.component";
+import { NavBarJorneqComponent } from "./components/navbars/jorneq-navbar/navbar-jorneq.component";
+import { JorneqIndexComponent } from "./layouts/jorneq/jorneq-index.component";
+import { JorneqComponent } from "./views/jorneq/jorneq.component";
+import { ParticipeComponent } from "./views/jorneq/participe/participe.component";
+import { ResponsaveisComponent } from "./views/jorneq/responsaveis/responsaveis.component";
+import { SobreJorneqComponent } from "./views/jorneq/sobre/sobre-jorneq.component";
+import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -154,8 +164,17 @@ import { ArvoreCargosComponent } from "./components/arvoreCargos/arvoreCargos.co
     ProcessoSeletivoComponent,
     SobreComponent,
     TimestepsComponent,
-    ArvoreCargosComponent
-    
+    ArvoreCargosComponent,
+    BackgroundJorneqComponentComponent,
+    BotaoPrincipalJorneqComponent,
+    BotaoSecundarioJorneqComponent,
+    NavBarJorneqComponent,
+    JorneqIndexComponent,
+    JorneqComponent,
+    ParticipeComponent,
+    ResponsaveisComponent,
+    SobreJorneqComponent,
+    ContatoJorneqComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,
