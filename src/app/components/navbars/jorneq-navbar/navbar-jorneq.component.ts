@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
 export class NavBarJorneqComponent {
   mobileMenuOpen = false;
   navigation = [
-    { name: 'Início da Jorneq', href: '/jorneq'},
-    { name: 'Sobre a Jorneq', href: '/jorneq/sobre' },
-    { name: 'Inscreva-se', href: '/jorneq/participe' },
-    { name: 'Contato', href: '/jorneq/contato' },
-    { name: 'Conheça o PET-EQ', href: '/'}
+    { name: 'Início da Jorneq', rota: '/jorneq'},
+    { name: 'Sobre a Jorneq', rota: '/jorneq/sobre' },
+    { name: 'Inscreva-se', rota: '/jorneq/participe' },
+    { name: 'Contato', rota: '/jorneq/contato' },
+    { name: 'Conheça o PET-EQ', rota: '/'}
   ];
 
   setMobileMenuOpen(open: boolean) {
