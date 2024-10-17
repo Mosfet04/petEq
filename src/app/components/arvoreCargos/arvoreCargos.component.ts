@@ -77,7 +77,7 @@ export class ArvoreCargosComponent implements OnInit, OnChanges {
     integrantes.orientados.forEach((orientado) => {
       retornoFuncao[0].points.push({
         name: orientado.nome,
-        id: "s",
+        id: orientado.id,
         parent: "md",
         attributes: {
           position: `<span style="font-size:13px;">${orientado.setorNome}</span>`,
