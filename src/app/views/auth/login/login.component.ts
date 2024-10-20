@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (result) => {
           const accessToken = result.accessToken;
+          localStorage.setItem("accessToken", accessToken);
         },
         error: (error) => {
           console.error("Login failed:", error);
