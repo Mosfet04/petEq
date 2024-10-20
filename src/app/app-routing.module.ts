@@ -34,12 +34,14 @@ import { NoticiasComponent } from "./views/noticias/noticias.component";
 import { ProcessoSeletivoComponent } from "./views/processoSeletivo/processoSeletivo.component";
 import { SobreComponent } from "./views/sobre/sobre.component";
 import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
+import { MsalGuard } from "@azure/msal-angular";
 
 const routes: Routes = [
   // admin views
   {
     path: "admin",
     component: AdminComponent,
+    canActivate: [MsalGuard],
     children: [
       { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },

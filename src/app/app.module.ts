@@ -117,6 +117,23 @@ import { ParticipeComponent } from "./views/jorneq/participe/participe.component
 import { ResponsaveisComponent } from "./views/jorneq/responsaveis/responsaveis.component";
 import { SobreJorneqComponent } from "./views/jorneq/sobre/sobre-jorneq.component";
 import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
+import { MsalModule, MsalInterceptor, MsalService, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalInterceptorConfiguration } from "@azure/msal-angular";
+import { PublicClientApplication, InteractionType } from "@azure/msal-browser";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { msalConfig, loginRequest } from "./auth-config";
+export function MSALInstanceFactory(): PublicClientApplication {
+  return new PublicClientApplication(msalConfig);
+}
+
+export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
+  const protectedResourceMap = new Map<string, Array<string>>();
+  protectedResourceMap.set("https://graph.microsoft.com/v1.0/me", ["User.Read"]);
+
+  return {
+    interactionType: InteractionType.Redirect,
+    protectedResourceMap,
+  };
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -222,8 +239,25 @@ import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jo
     PortalModule,
     ScrollingModule,
     FormsModule,
-    CommonModule ],
-  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },],
+    CommonModule,
+    MsalModule,
+   ],
+  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true,
+    },
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory,
+    },
+    {
+      provide: MSAL_INTERCEPTOR_CONFIG,
+      useFactory: MSALInterceptorConfigFactory,
+    },
+    MsalService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
