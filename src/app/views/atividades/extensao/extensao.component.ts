@@ -22,7 +22,6 @@ export class ExtensaoComponent implements OnInit {
     const endpoint = `${environment.urlBackEnd}/extensao?ativo=true`;
 
     axios.get(endpoint+"&tipo=1").then((response) => {
-      console.log(endpoint+"&tipo=1", response);
       this.listEnsinoAlemDaUfu = response.data.items;
     });
     axios.get(endpoint+"&tipo=2").then((response) => {
