@@ -42,41 +42,19 @@
 									<div class="flex flex-wrap">
 										<div class="w-full">
 											<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsEnsino(1)" [ngClass]="{'text-emerald-500 bg-white': openTabEnsino !== 1, 'text-black bg-emerald-500': openTabEnsino === 1}">
-														<i class="fas fa-caret-right text-base mr-1"></i> Minicurso: "Aprendendo a Brincar com a Química" </a>
-												</li>
-												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsEnsino(2)" [ngClass]="{'text-emerald-500 bg-white': openTabEnsino !== 2, 'text-black bg-emerald-500': openTabEnsino === 2}">
-														<i class="fas fa-caret-right text-base mr-1"></i> Minicurso: “Teoria e Prática Fundamentada em Engenharia Química” </a>
+												<li *ngFor="let ensinoAlemDaUfu of listEnsinoAlemDaUfu; let i = index" class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsEnsino(i+1)" [ngClass]="{'text-emerald-500 bg-white': openTabEnsino !== i+1, 'text-black bg-emerald-500': openTabEnsino === i+1}">
+														<i class="fas fa-caret-right text-base mr-1"></i> {{ensinoAlemDaUfu.nome}} </a>
 												</li>
 											</ul>
 											<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 												<div class="px-4 py-5 flex-auto">
 													<div class="tab-content tab-space">
-														<div [ngClass]="{'hidden': openTabEnsino !== 1, 'block': openTabEnsino === 1}">
+														<div *ngFor="let ensinoAlemDaUfu of listEnsinoAlemDaUfu; let i = index" [ngClass]="{'hidden': openTabEnsino !== i+1, 'block': openTabEnsino === i+1}">
 															<div class="items-center flex flex-wrap">
 																<div class="w-full ml-auto mr-auto px-4">
 																	<div class="md:pr-12">
-																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Com o intuito de despertar a curiosidade, reforçar conceitos e noções práticas de alguns fenômenos da química dentro e fora do dia a dia, o grupo PET da Engenharia Química realiza o minicurso “Aprendendo a Brincar com a Química” em parceria com algumas escolas públicas de ensino fundamental na cidade de Uberlândia. As práticas que são demonstradas dentro das salas de aulas durante a atividade utilizam materiais que são bastante simples, como vinagre, sal, açúcar, cigarro, repolho roxo, óleo e bicarbonato de cálcio, fazendo com que os jovens sejam incentivados a perceberem a ciência envolvida em processos rotineiros e despertando o interesse pelo conhecimento. Os resultados positivos da atividade obtidos ao longo dos anos e a grande receptividade e expectativa dos alunos das escolas estimulam a continuação do minicurso no futuro.</p>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div [ngClass]="{'hidden': openTabEnsino !== 2, 'block': openTabEnsino === 2}">
-															<div class="items-center flex flex-wrap">
-																<div class="w-full ml-auto mr-auto px-4">
-																	<div class="md:pr-12">
-																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Comparado ao minicurso aplicado para o ensino fundamental, o minicurso “Teoria e Prática Fundamentada em Engenharia Química” é direcionado aos alunos do ensino médio das escolas públicas de Uberlândia, com objetivo de promover uma aproximação entre os estudantes e os conceitos de engenharia por meio de atividades práticas que estabelecem uma conexão entre esses conceitos e fenômenos ligados à área deste curso. Diferentemente do minicurso “Aprendendo a Brincar com a Química”, essa atividade utiliza alguns conceitos mais científicos no intuito de esclarecer alguns fenômenos de transporte, cinéticos e termodinâmicos.</p>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div [ngClass]="{'hidden': openTabEnsino !== 3, 'block': openTabEnsino === 3}">
-															<div class="items-center flex flex-wrap">
-																<div class="w-full ml-auto mr-auto px-4">
-																	<div class="md:pr-12">
-																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Visando o contato entre a comunidade acadêmica e a comunidade externa, respeitando as restrições estabelecidas devido à pandemia, o grupo PET Engenharia Química desenvolveu uma atividade em parceria com a Organização Não Governamental ABC do Glória, que visa auxiliar o crescimento econômico das famílias, principalmente, do público infanto-juvenil do bairro Élison Pietro. Dessa forma, a atividade desenvolvida nomeada como PET Ensinando o ABC consistiu em explicar conceitos de química, física e matemática de maneira lúdica, atrativa e acessível ao público atendido pela ONG, por meio de vídeos explicativos com experimentos práticos sobre o assunto e cartilhas informativas com exercícios dos temas apresentados. Por conseguinte, foi possível aprofundar o conhecimento das crianças e adolescentes na área das ciências exatas, além de mostrar as possibilidades existentes dentro da universidade. </p>
+																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> {{ensinoAlemDaUfu.descricao}}/p>
 																	</div>
 																</div>
 															</div>
@@ -107,32 +85,19 @@
 										<div class="flex flex-wrap">
 											<div class="w-full">
 												<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-													<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-														<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsSocial(1)" [ngClass]="{'text-emerald-500 bg-white': openTabSocial !== 1, 'text-black bg-emerald-500': openTabSocial === 1}">
-															<i class="fas fa-caret-right text-base mr-1"></i> Visitas de caráter social </a>
-													</li>
-													<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-														<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsSocial(2)" [ngClass]="{'text-emerald-500 bg-white': openTabSocial !== 2, 'text-black bg-emerald-500': openTabSocial === 2}">
-															<i class="fas fa-caret-right text-base mr-1"></i> Pet ensinando o ABC </a>
+													<li *ngFor="let acoesSociais of listAcoesSociais; let i = index" class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+														<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsSocial(i+1)" [ngClass]="{'text-emerald-500 bg-white': openTabSocial !== i+1, 'text-black bg-emerald-500': openTabSocial === i+1}">
+															<i class="fas fa-caret-right text-base mr-1"></i> {{acoesSociais.nome}} </a>
 													</li>
 												</ul>
 												<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 													<div class="px-4 py-5 flex-auto">
 														<div class="tab-content tab-space">
-															<div [ngClass]="{'hidden': openTabSocial !== 1, 'block': openTabSocial === 1}">
+															<div *ngFor="let acoesSociais of listAcoesSociais; let i = index" [ngClass]="{'hidden': openTabSocial !== i+1, 'block': openTabSocial === i+1}">
 																<div class="items-center flex flex-wrap">
 																	<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
 																		<div class="md:pr-12">
-																			<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;">Todos os anos são realizadas visitas de caráter social na cidade de Uberlândia pelo grupo PET Engenharia Química, onde o objetivo principal é cooperar com a comunidade local, conscientizando e ajudando as pessoas que necessitam de auxílio. As visitas promovidas pelo grupo são realizadas com o intuito de detectar possíveis faltas na vida dessas pessoas, podendo preencher esse vazio com o que o grupo pode oferecer, indo desde atividades que promovem a leitura de livros, reforço de matérias básicas, até práticas de química envolvendo reagentes do nosso cotidiano. Essas atividades geralmente são realizadas em um centro assistência, casa de auxílio para idosos ou abrigo infantil. No ano de 2021, devido a pandemia do COVID-19, o grupo adaptou suas ações e, em parceria com outras entidades do curso de Engenharia Química e da UFU, foi realizada uma arrecadação de brinquedos na época do Natal, beneficiando as crianças do Centro Comunitário Sal da Terra.</p>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div [ngClass]="{'hidden': openTabSocial !== 2, 'block': openTabSocial === 2}">
-																<div class="items-center flex flex-wrap">
-																	<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
-																		<div class="md:pr-12">
-																			<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Com objetivo de aproximar a comunidade acadêmica da comunidade externa e respeitando as restrições estabelecidas devido à pandemia na época, o grupo PET Engenharia Química realizou uma atividade em parceria com a Organização Não Governamental ABC do Glória. O projeto procurou auxiliar o crescimento econômico das famílias, principalmente do público infanto-juvenil do bairro Élison Pietro, realizando atividades que consistiam em explicar conceitos de química, física e matemática de maneira lúdica, atrativa e acessível ao público atendido pela ONG, utilizando vídeos explicativos com experimentos práticos sobre o assunto e cartilhas informativas com exercícios dos temas apresentados. Assim, foi possível aprofundar o conhecimento das crianças e adolescentes na área de ciências exatas, além de mostrar as possibilidades existentes dentro da universidade.</p>
+																			<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;">{{acoesSociais.descricao}}</p>
 																		</div>
 																	</div>
 																</div>
@@ -158,45 +123,19 @@
 									<div class="flex flex-wrap">
 										<div class="w-full">
 											<ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsDivulga(1)" [ngClass]="{'text-emerald-500 bg-white': openTabDivulga !== 1, 'text-black bg-emerald-500': openTabDivulga === 1}">
-														<i class="fas fa-caret-right text-base mr-1"></i> Vem pra UFU </a>
-												</li>
-												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsDivulga(2)" [ngClass]="{'text-emerald-500 bg-white': openTabDivulga !== 2, 'text-black bg-emerald-500': openTabDivulga === 2}">
-														<i class="fas fa-caret-right text-base mr-1"></i> Vem pra Engenharia </a>
-												</li>
-												<li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsDivulga(3)" [ngClass]="{'text-emerald-500 bg-white': openTabDivulga !== 3, 'text-black bg-emerald-500': openTabDivulga === 3}">
-														<i class="fas fa-caret-right text-base mr-1"></i> Atividades temáticas </a>
+												<li *ngFor="let divulgacao of listDivulgacao; let i = index" class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+													<a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabsDivulga(i+1)" [ngClass]="{'text-emerald-500 bg-white': openTabDivulga !== i+1, 'text-black bg-emerald-500': openTabDivulga === i+1}">
+														<i class="fas fa-caret-right text-base mr-1"></i> {{divulgacao.nome}} </a>
 												</li>
 											</ul>
 											<div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
 												<div class="px-4 py-5 flex-auto">
 													<div class="tab-content tab-space">
-														<div [ngClass]="{'hidden': openTabDivulga !== 1, 'block': openTabDivulga === 1}">
+														<div *ngFor="let divulgacao of listDivulgacao; let i = index" [ngClass]="{'hidden': openTabDivulga !== i+1, 'block': openTabDivulga === i+1}">
 															<div class="items-center flex flex-wrap">
 																<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
 																	<div class="md:pr-12">
-																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Com o intuito de aproximar a Universidade Federal de Uberlândia dos futuros universitários, o “Vem pra UFU” se consolida como um evento anual de grande importância, promovido pela Pró-Reitoria de Graduação (PROGRAD) e contando com o apoio fundamental dos grupos PET. O evento, que acontece em diferentes campis da UFU, tem como objetivo principal apresentar aos alunos do ensino médio e região a diversidade de cursos oferecidos pela instituição, desde as áreas biológicas e exatas até as humanas. Indo além da simples divulgação dos cursos, o programa “Vem pra UFU” oferece também aos estudantes uma imersão completa no ambiente universitário, apresentando aos alunos as atividades extracurriculares da UFU, como os programas de Iniciação Científica, as bolsas de auxílio, atividades dos diretórios acadêmicos e as atléticas, além de trazer informações sobre o programa de mobilidade internacional. A programação rica e abrangente durante os dias de evento são voltadas ao esclarecimento acerca das peculiaridades de cada curso oferecido dentro da universidade, apresentando essas diferentes áreas de conhecimento e incentivando os alunos a darem o próximo passo em suas trajetórias acadêmicas. O impacto é notável: a partir do “Vem pra UFU”, os alunos se sentem mais bem preparados para escolher o curso ideal, o que contribui para uma melhor definição da demanda e, consequentemente, para a redução das taxas de desistência. </p>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div [ngClass]="{'hidden': openTabDivulga !== 2, 'block': openTabDivulga === 2}">
-															<div class="items-center flex flex-wrap">
-																<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
-																	<div class="md:pr-12">
-																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> Com o desconhecimento, dúvidas e incertezas de muitos estudantes do ensino médio da rede pública sobre os cursos de Engenharia, o “Vem pra Engenharia – UFU” é uma iniciativa conjunta de diversos grupos PET que surgiu com o objetivo de despertar o interesse desses estudantes de Uberlândia nas diferentes áreas da Engenharia, levando informações sobre seus diferentes cursos, como Engenharia Civil, Engenharia Elétrica e Engenharia Química, atividades extracurriculares que estão relacionadas e também informações sobre as diferentes áreas de atuação dos engenheiros. Além disso, o programa espera incentivar os alunos da rede pública sobre a possibilidade de ingresso na Universidade, mostrando que este sonho pode realmente se tornar realidade. Dessa forma, foi criado pelos grupos PET um canal no YouTube para essa atividade: o <strong><a style="color:blue" href="https://youtube.com/channel/UCPuxX26p6_AD7V33wzB7a3Q">Vem Pra Engenharia - UFU</a></strong>, com vários vídeos informativos sobre os diferentes cursos de Engenharia que os estudantes podem seguir.  </p>
-																	</div>
-																</div>
-															</div>
-														</div>
-														<div [ngClass]="{'hidden': openTabDivulga !== 3, 'block': openTabDivulga === 3}">
-															<div class="items-center flex flex-wrap">
-																<div class="w-full md:w-9/12 ml-auto mr-auto px-4">
-																	<div class="md:pr-12">
-																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> O grupo PET Engenharia Química da UFU, consciente da importância de promover a igualdade e o respeito, busca desmitificar preconceitos e construir pontes de diálogo realizando algumas atividades temáticas durante o ano, que são direcionadas principalmente á comunidade acadêmica e ao público externo da faculdade. O objetivo principal é promover a discussão, geralmente com a participação de palestrantes externos, sobre alguns temas polêmicos, tendo como base a conscientização e educação da sociedade, promovendo a reflexão, o respeito e a tolerância entre as pessoas ali presentes. Assim, através dessas atividades de diálogo e da construção de pontes de compreensão, o PET Engenharia Química da UFU busca contribuir com a transformação social e com o desenvolvimento de um futuro mais tolerante e inclusivo para todos.</p>
+																		<p class="mt-4 leading-relaxed text-blueGray-500" style="text-align: justify;"> {{divulgacao.descricao}} </p>
 																	</div>
 																</div>
 															</div>
