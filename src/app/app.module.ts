@@ -127,7 +127,7 @@ export function MSALInstanceFactory(): PublicClientApplication {
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
-  protectedResourceMap.set("https://graph.microsoft.com/v1.0/me", ["User.Read"]);
+  protectedResourceMap.set("https://graph.microsoft.com/v1.0/me", ["User.Read.All"]);
 
   return {
     interactionType: InteractionType.Redirect,

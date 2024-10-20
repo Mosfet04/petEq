@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginPopup(loginRequest)
       .subscribe({
         next: (result) => {
-          //console.log("Login successful:", result);
+          const accessToken = result.accessToken;
         },
         error: (error) => {
           console.error("Login failed:", error);
