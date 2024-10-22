@@ -6,9 +6,11 @@ import { MsalService } from "@azure/msal-angular";
 })
 export class AppComponent {
   title = "angular-dashboard-page";
+  isIframe = false;
   constructor(private authService: MsalService) {}
 
   ngOnInit(): void {
+    this.isIframe = window !== window.parent && !window.opener;
     this.authService.instance.initialize();
   }
 }

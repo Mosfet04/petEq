@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
-import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
+import { EventMessage, EventType, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -18,6 +18,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener;
+
+    this.broadcastService.msalSubject$
+      .pipe(
+        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
+      )
+      .subscribe((result: EventMessage) => {
+        this.setLoginDisplay();
+        this.router.navigate(['/admin/dashboard']);
+      });
 
     this.broadcastService.inProgress$
     .pipe(
@@ -43,6 +52,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+    console.log(this.loginDisplay);
     if(this.loginDisplay){
       const account = this.authService.instance.getAllAccounts()[0];
       this.authService.acquireTokenSilent({

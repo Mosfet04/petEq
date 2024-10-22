@@ -1286,6 +1286,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
 }
+.bg-emerald-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(5, 150, 105, var(--tw-bg-opacity));
+}
 
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
