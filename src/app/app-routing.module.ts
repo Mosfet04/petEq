@@ -35,6 +35,7 @@ import { ProcessoSeletivoComponent } from "./views/processoSeletivo/processoSele
 import { SobreComponent } from "./views/sobre/sobre.component";
 import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
 import { MsalGuard } from "@azure/msal-angular";
+import { BrowserUtils } from "@azure/msal-browser";
 
 const routes: Routes = [
   // admin views
@@ -87,7 +88,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    // Don't perform initial navigation in iframes or popups
+    initialNavigation:
+      !BrowserUtils.isInIframe() && !BrowserUtils.isInPopup()
+        ? "enabledNonBlocking"
+        : "disabled", // Set to enabledBlocking to use Angular Universal
+  }),],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -117,23 +117,10 @@ import { ParticipeComponent } from "./views/jorneq/participe/participe.component
 import { ResponsaveisComponent } from "./views/jorneq/responsaveis/responsaveis.component";
 import { SobreJorneqComponent } from "./views/jorneq/sobre/sobre-jorneq.component";
 import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
-import { MsalModule, MsalInterceptor, MsalService, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalInterceptorConfiguration } from "@azure/msal-angular";
+import { MsalModule, MsalInterceptor, MsalService, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalInterceptorConfiguration, MsalRedirectComponent, MsalGuard } from "@azure/msal-angular";
 import { PublicClientApplication, InteractionType } from "@azure/msal-browser";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { msalConfig, loginRequest } from "./auth-config";
-export function MSALInstanceFactory(): PublicClientApplication {
-  return new PublicClientApplication(msalConfig);
-}
-
-export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
-  const protectedResourceMap = new Map<string, Array<string>>();
-  protectedResourceMap.set("https://graph.microsoft.com/v1.0/me", ["User.Read.All"]);
-
-  return {
-    interactionType: InteractionType.Redirect,
-    protectedResourceMap,
-  };
-}
+import { msalConfig } from "./auth-config";
 @NgModule({
   declarations: [
     AppComponent,
@@ -240,7 +227,18 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ScrollingModule,
     FormsModule,
     CommonModule,
-    MsalModule,
+    MsalModule.forRoot(new PublicClientApplication(msalConfig), {
+      interactionType: InteractionType.Redirect, // MSAL Guard Configuration
+            authRequest: {
+              scopes: ["User.Read.All"],
+            },
+    }, 
+    {
+      interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
+      protectedResourceMap: new Map([
+        ["https://graph.microsoft.com/v1.0/me", ["User.Read.All"]],
+      ]),
+    }),
    ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
     {
@@ -248,17 +246,9 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
       useClass: MsalInterceptor,
       multi: true,
     },
-    {
-      provide: MSAL_INSTANCE,
-      useFactory: MSALInstanceFactory,
-    },
-    {
-      provide: MSAL_INTERCEPTOR_CONFIG,
-      useFactory: MSALInterceptorConfigFactory,
-    },
-    MsalService,
+    MsalGuard,
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, MsalRedirectComponent],
 })
 export class AppModule {}
 
