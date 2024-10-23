@@ -36,6 +36,7 @@ import { SobreComponent } from "./views/sobre/sobre.component";
 import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
 import { MsalGuard } from "@azure/msal-angular";
 import { BrowserUtils } from "@azure/msal-browser";
+import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.component";
 
 const routes: Routes = [
   // admin views
@@ -46,7 +47,7 @@ const routes: Routes = [
     children: [
       { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },
-      { path: "tables", component: TablesComponent },
+      { path: "integrantes", component: IntegrantesComponent },
       { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],

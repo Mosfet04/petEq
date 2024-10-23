@@ -121,6 +121,7 @@ import { MsalModule, MsalInterceptor, MsalService, MSAL_INSTANCE, MSAL_INTERCEPT
 import { PublicClientApplication, InteractionType } from "@azure/msal-browser";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { msalConfig } from "./auth-config";
+import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -178,7 +179,8 @@ import { msalConfig } from "./auth-config";
     ParticipeComponent,
     ResponsaveisComponent,
     SobreJorneqComponent,
-    ContatoJorneqComponent
+    ContatoJorneqComponent,
+    IntegrantesComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,
