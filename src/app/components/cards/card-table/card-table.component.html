@@ -2,6 +2,12 @@
   class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
   [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
 >
+  <modal-generico
+    [barra]="barra"
+    [conteudo]="selectedRow"
+    (conteudoAlterado)="atualizarConteudo($event)"
+    (modalFechado)="fecharModal()"
+  ></modal-generico>
   <div class="rounded-t mb-0 px-4 py-3 border-0">
     <div class="flex flex-wrap items-center">
       <div class="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -29,6 +35,16 @@
           >
             {{coluna}}
           </th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >
+            Editar/Excluir
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -43,6 +59,14 @@
             <span *ngIf="i !== 0">
               {{ cont[key] }}
             </span>
+          </td>
+          <td>
+            <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="abrirModal(cont)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="bg-red-400 text-white active:bg-red-500 font-bold uppercase text-xs px-4 py-2 rounded-full shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="deletarRegistro()">
+              <i class="fas fa-trash"></i>
+            </button>
           </td>
         </tr>
       </tbody>

@@ -122,6 +122,7 @@ import { PublicClientApplication, InteractionType } from "@azure/msal-browser";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { msalConfig } from "./auth-config";
 import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.component";
+import { ModalGenericoComponent } from "./components/modal-generico/modal-generico.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -180,7 +181,8 @@ import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.comp
     ResponsaveisComponent,
     SobreJorneqComponent,
     ContatoJorneqComponent,
-    IntegrantesComponent
+    IntegrantesComponent,
+    ModalGenericoComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,

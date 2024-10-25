@@ -16,6 +16,7 @@ interface Integrante {
 export class IntegrantesComponent implements OnInit {
   constructor() {}
   integrantes: Integrante[] = [];
+  barra: string[] = [];
   async ngOnInit() {
     let page = 1;
     let hasNextPage = true;
@@ -33,6 +34,9 @@ export class IntegrantesComponent implements OnInit {
           Data_de_desligamento: integranteBack.dataDesligamento,
         };
         this.integrantes.push(integrante);
+      }
+      if (this.integrantes.length > 0) {
+        this.barra = Object.keys(this.integrantes[0]);
       }
 
       hasNextPage = response.data.hasNextPage;
