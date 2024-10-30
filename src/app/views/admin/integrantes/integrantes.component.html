@@ -4,6 +4,7 @@
       [titulo]="'Lista de Integrantes do PET'"
       [barra] = "barra"
       [conteudo]="integrantes"
+      (conteudoAlterado)="atualizarConteudo($event)"
       ></app-card-table>
     </div>
 </div>

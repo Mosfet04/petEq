@@ -15,10 +15,10 @@
       </div>
       <!--body-->
       <div class="relative p-6 flex-auto">
-        <form>
+        <form [formGroup]="conteudoForm">
           <div *ngFor="let key of getObjectKeys(conteudo)">
             <label class="block text-gray-700 text-sm font-bold mb-2">{{key}}</label>
-            <input  value="{{conteudo[key]}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
+            <input [formControlName]="key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" />
           </div>
         </form>
       </div>

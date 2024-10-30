@@ -26,6 +26,7 @@
     "@angular/platform-browser": "18.1.1",
     "@angular/platform-browser-dynamic": "18.1.1",
     "@angular/router": "18.1.1",
+    "@auth0/angular-jwt": "^5.2.0",
     "@azure/msal-angular": "^3.0.25",
     "@azure/msal-browser": "^3.26.1",
     "@fortawesome/fontawesome-free": "6.6.0",

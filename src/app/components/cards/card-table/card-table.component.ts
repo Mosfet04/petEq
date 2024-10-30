@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy, Output, EventEmitter } from "@angular/core";
 
 interface Item {
   [key: string]: any;
@@ -49,6 +49,9 @@ export class CardTableComponent implements OnInit {
   private _titulo = "Titulo";
   private _barra: string[] = ["1", "2", "3", "4", "5"];
   private _conteudo: Item[] = [{}, {}, {}, {}, {}];
+
+  @Output()
+  conteudoAlterado = new EventEmitter<Item>();
   mostrarModal = false;
   selectedRow: Item = {};
 
@@ -78,6 +81,7 @@ export class CardTableComponent implements OnInit {
     const index = this._conteudo.findIndex(item => item[key] == this.selectedRow[key]);
     if (index !== -1) {
       this._conteudo[index] = conteudo;
+      this.conteudoAlterado.emit(conteudo);
       this.cdr.markForCheck();
     }
     this.mostrarModal = false;
