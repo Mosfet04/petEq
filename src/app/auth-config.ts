@@ -1,4 +1,5 @@
 import { Configuration, InteractionType, LogLevel } from "@azure/msal-browser";
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 export const msalConfig: Configuration = {
   auth: {
@@ -11,3 +12,9 @@ export const msalConfig: Configuration = {
     storeAuthStateInCookie: true,
   },
 };
+
+export function isTokenExpired(token: string): boolean {
+  const helper = new JwtHelperService();
+  console.log(helper.isTokenExpired(token), helper.getTokenExpirationDate(token));
+  return helper.isTokenExpired(token);
+}

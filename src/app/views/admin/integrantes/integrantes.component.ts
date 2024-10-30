@@ -43,5 +43,11 @@ export class IntegrantesComponent implements OnInit {
       page++;
     }
   }
-
+  atualizarConteudo(conteudo: Integrante){
+    const index = this.integrantes.findIndex(item => item.Matricula === conteudo.Matricula);
+    if (index !== -1) {
+      this.integrantes[index] = conteudo;
+      console.log("Atualizar Conteudo", conteudo);
+    }
+  }
 }
