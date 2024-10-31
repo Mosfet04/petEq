@@ -91,7 +91,7 @@ export class IntegrantesComponent implements OnInit {
       }
     }
     const responseDelete = await axios.delete(
-      `${environment.urlBackEnd}/integrantes/${conteudo.Id}?matricula=123`,
+      `${environment.urlBackEnd}/integrantes/${conteudo.Id}`,
       config
     );
   }
