@@ -63,15 +63,9 @@ export class CardTableComponent implements OnInit {
     return Object.keys(obj);
   }
 
-  deletarRegistro(conteudo: Item) {
-    if (!conteudo || !this.selectedRow) {
-      console.error('Conteúdo ou linha selecionada não pode ser nulo.');
-      return;
-    }
+  deletarRegistro(conteudo: string) {
 
-    const key = this.getObjectKeys(conteudo)[0];
-    const index = this._conteudo.findIndex(item => item["id"] == this.selectedRow["id"]);
-
+    const index = this._conteudo.findIndex(item => item["Id"] == conteudo);
     if (index !== -1) {
       const deletedItem = this._conteudo.splice(index, 1)[0];
       console.log('Item deletado:', deletedItem); 
