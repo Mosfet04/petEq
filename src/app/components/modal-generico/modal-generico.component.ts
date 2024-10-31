@@ -45,7 +45,21 @@ export class ModalGenericoComponent implements OnInit, OnChanges {
   }
 
   saveChanges() {
+    Object.keys(this.conteudoForm.controls).forEach(key => {
+      const control = this.conteudoForm.get(key);
+      if (control.disabled) {
+        control.enable({ emitEvent: false });
+      }
+    });
+
+    console.log("Valor vindo do conteudoForm", this.conteudoForm.value);
     this.conteudoAlterado.emit(this.conteudoForm.value);
+    Object.keys(this.conteudoForm.controls).forEach(key => {
+      const control = this.conteudoForm.get(key);
+      if (key.toLowerCase() === 'id') {
+        control.disable({ emitEvent: false });
+      }
+    });
     this.closeEditModal();
   }
 
@@ -72,7 +86,8 @@ export class ModalGenericoComponent implements OnInit, OnChanges {
       this.conteudoForm = this.fb.group({});
       for (const key in this._conteudo) {
         if (this._conteudo.hasOwnProperty(key)) {
-          this.conteudoForm.addControl(key, new FormControl(this._conteudo[key]));
+          const isDisabled = key.toLowerCase() === 'id';
+          this.conteudoForm.addControl(key, new FormControl({ value: this.conteudo[key] != "None" ? this.conteudo[key]: "", disabled: isDisabled }));
         }
       }
     }
