@@ -45,16 +45,21 @@ export class CardTableComponent implements OnInit {
     this.cdr.markForCheck(); // Adicione esta linha para detectar mudanças quando o conteúdo for definido
   }
 
+
   private _color = "light";
   private _titulo = "Titulo";
   private _barra: string[] = ["1", "2", "3", "4", "5"];
   private _conteudo: Item[] = [{}, {}, {}, {}, {}];
+  itemVazio: Item = {};
 
   @Output()
   conteudoAlterado = new EventEmitter<Item>();
 
   @Output()
   conteudoDeletado = new EventEmitter<Item>();
+
+  @Output()
+  conteudoAdicionado = new EventEmitter<Item>();
 
   mostrarModal = false;
   selectedRow: Item = {};
@@ -68,7 +73,6 @@ export class CardTableComponent implements OnInit {
     const index = this._conteudo.findIndex(item => item["Id"] == conteudo);
     if (index !== -1) {
       const deletedItem = this._conteudo.splice(index, 1)[0];
-      console.log('Item deletado:', deletedItem); 
       this.conteudoDeletado.emit(deletedItem);
       this.cdr.markForCheck();
     } else {
@@ -78,8 +82,12 @@ export class CardTableComponent implements OnInit {
     this.mostrarModal = false;
   }
 
-  salvarRegistro(){
-    console.log("Salvar registro");
+  abrirModalAdicionar(barra: string[]) {
+    this.itemVazio = {};
+    barra.forEach((item, index) => {
+      this.itemVazio[item] = "";
+    });
+    this.abrirModal(this.itemVazio);
   }
 
   abrirModal(row: Item){
@@ -92,13 +100,21 @@ export class CardTableComponent implements OnInit {
   }
 
   atualizarConteudo(conteudo: Item){
-    const key = this.getObjectKeys(conteudo)[0];
-    const index = this._conteudo.findIndex(item => item[key] == this.selectedRow[key]);
-    if (index !== -1) {
-      this._conteudo[index] = conteudo;
-      this.conteudoAlterado.emit(conteudo);
+    if (this.selectedRow["Id"] === undefined || this.selectedRow["Id"] === "") {
+      this._conteudo.push(conteudo);
+      this.conteudoAdicionado.emit(conteudo);
       this.cdr.markForCheck();
     }
+    else{
+      const key = this.getObjectKeys(conteudo)[0];
+      const index = this._conteudo.findIndex(item => item[key] == this.selectedRow[key]);
+      if (index !== -1) {
+        this._conteudo[index] = conteudo;
+        this.conteudoAlterado.emit(conteudo);
+        this.cdr.markForCheck();
+      }
+    }
+    
     this.mostrarModal = false;
   }
 

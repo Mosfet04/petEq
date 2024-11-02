@@ -52,7 +52,6 @@ export class ModalGenericoComponent implements OnInit, OnChanges {
       }
     });
 
-    console.log("Valor vindo do conteudoForm", this.conteudoForm.value);
     this.conteudoAlterado.emit(this.conteudoForm.value);
     Object.keys(this.conteudoForm.controls).forEach(key => {
       const control = this.conteudoForm.get(key);

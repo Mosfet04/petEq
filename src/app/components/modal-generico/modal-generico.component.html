@@ -1,4 +1,4 @@
-<div *ngIf="conteudo && getObjectKeys(conteudo).length > 1" class="z-50 w-6/12 fixed">
+<div *ngIf="conteudo && getObjectKeys(conteudo).length > 1" class="z-50 w-6/12 fixed" style="margin-left:15%">
   <div class="relative w-auto my-6 mx-auto max-w-6xl">
     <!--content-->
     <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -14,11 +14,24 @@
         </button>
       </div>
       <!--body-->
-      <div class="relative p-6 flex-auto">
+      <div class="relative p-6 flex-auto ml-3 mr-3">
         <form [formGroup]="conteudoForm">
           <div *ngFor="let key of getObjectKeys(conteudo)">
-            <label class="ml-2 block text-gray-700 text-sm font-bold mb-2">{{key}}</label>
-            <input [formControlName]="key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" [ngClass] = "{'bg-gray-200 cursor-not-allowed opacity-50': key.toLowerCase() === 'id'}" />
+            <label class="ml-2 block text-gray-700 text-sm font-bold mb-2 mt-2">{{key}}</label>
+            <ng-container *ngIf="key.toLowerCase() === 'setor'; else defaultInput">
+              <select [formControlName]="key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="Computação">Computação</option>
+                <option value="Ata">Ata</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Orientador">Orientador</option>
+              </select>
+            </ng-container>
+            <ng-template #defaultInput>
+              <input [formControlName]="key" 
+                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                     [type]="key.toLowerCase().includes('data') ? 'date' : 'text'" 
+                     [ngClass]="{'bg-gray-200 cursor-not-allowed opacity-50': key.toLowerCase() === 'id'}" />
+            </ng-template>
           </div>
         </form>
       </div>
@@ -34,4 +47,4 @@
     </div>
   </div>
 </div>
-<div *ngIf="conteudo && getObjectKeys(conteudo).length > 1" class="opacity-25 z-40 fixed"></div>
+<div *ngIf="conteudo && getObjectKeys(conteudo).length > 1" class="bg-indigo-500 opacity-25 z-40 min-w-full min-h-full fixed"></div>

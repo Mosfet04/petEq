@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
-    console.log(this.loginDisplay);
     if(this.loginDisplay){
       const account = this.authService.instance.getAllAccounts()[0];
       this.authService.acquireTokenSilent({

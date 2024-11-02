@@ -20,6 +20,15 @@ interface IntegranteUpdate {
   dataIngresso: string;
   setorId: number;
 }
+interface IntegranteAdicionar {
+  nome: string;
+  matricula: string;
+  linkSelfie: string;
+  email: string;
+  dataDesligamento?: string | null;
+  dataIngresso: string;
+  setorId: number;
+}
 enum SetorId {
   "Computação" = 1,
   "Ata" = 2,
@@ -79,12 +88,10 @@ export class IntegrantesComponent implements OnInit {
         integranteUpdate,
         config
       );
-      console.log(responseAtualizacao);
     }
   }
 
   async deletarConteudo(conteudo: Integrante){
-    console.log("Entrou para deletar conteudo", conteudo);
     const config = {
       headers:{
         Authorization: "Bearer " + localStorage.getItem("accessToken")	
@@ -92,6 +99,20 @@ export class IntegrantesComponent implements OnInit {
     }
     const responseDelete = await axios.delete(
       `${environment.urlBackEnd}/integrantes/${conteudo.Id}`,
+      config
+    );
+  }
+
+  async adicionarConteudo(conteudo: Integrante){
+    const integranteAdicionar: IntegranteAdicionar = this.mapIntegranteToAdicionar(conteudo);
+    const config = {
+      headers:{
+        Authorization: "Bearer " + localStorage.getItem("accessToken")	
+      }
+    }
+    const responseAdd = await axios.post(
+      `${environment.urlBackEnd}/integrantes`,
+      integranteAdicionar,
       config
     );
   }
@@ -106,5 +127,19 @@ export class IntegrantesComponent implements OnInit {
       dataIngresso: integrante.Data_de_entrada,
       setorId: SetorId[integrante.Setor as keyof typeof SetorId]
     };
+  }
+  mapIntegranteToAdicionar(integrante: Integrante): IntegranteAdicionar {
+    let mapeametoRetorno : IntegranteAdicionar = {
+      nome: integrante.Nome,
+      matricula: integrante.Matricula,
+      linkSelfie: integrante.Link_selfie,
+      email: integrante.Email,
+      dataIngresso: integrante.Data_de_entrada,
+      setorId: SetorId[integrante.Setor as keyof typeof SetorId]
+    };
+    if (integrante.Data_de_desligamento) {
+      mapeametoRetorno.dataDesligamento = integrante.Data_de_desligamento;
+    }
+    return mapeametoRetorno;
   }
 }
