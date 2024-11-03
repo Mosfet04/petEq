@@ -84,7 +84,7 @@
           <a
             [routerLink]="['/admin/dashboard']"
             class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
+            routerLinkActive="active"
             #adminDashboard="routerLinkActive"
             [ngClass]="
               adminDashboard.isActive
@@ -106,7 +106,7 @@
           <a
             [routerLink]="['/admin/settings']"
             class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
+            routerLinkActive="active"
             #adminSettings="routerLinkActive"
             [ngClass]="
               adminSettings.isActive
@@ -128,10 +128,10 @@
           <a
             [routerLink]="['/admin/integrantes']"
             class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
-            #adminTables="routerLinkActive"
+            routerLinkActive="active"
+            #adminIntegrantes="routerLinkActive"
             [ngClass]="
-              adminTables.isActive
+              adminIntegrantes.isActive
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-blueGray-700 hover:text-blueGray-500'
             "
@@ -139,7 +139,7 @@
             <i
               class="fas fa-table mr-2 text-sm"
               [ngClass]="
-                adminTables.isActive ? 'opacity-75' : 'text-blueGray-300'
+                adminIntegrantes.isActive ? 'opacity-75' : 'text-blueGray-300'
               "
             ></i>
             Integrantes
@@ -148,9 +148,53 @@
 
         <li class="items-center">
           <a
+            [routerLink]="['/admin/planejamentoRelatorio']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive="active"
+            #adminPlanejamentoRelatorio="routerLinkActive"
+            [ngClass]="
+              adminPlanejamentoRelatorio.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-blueGray-700 hover:text-blueGray-500'
+            "
+          >
+            <i
+              class="fas fa-table mr-2 text-sm"
+              [ngClass]="
+                adminPlanejamentoRelatorio.isActive ? 'opacity-75' : 'text-blueGray-300'
+              "
+            ></i>
+            Planejamento e Relatório
+          </a>
+        </li>
+        
+        <li class="items-center">
+          <a
+            [routerLink]="['/admin/processoSeletivo']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive="active"
+            #adminProcessoSeletivo="routerLinkActive"
+            [ngClass]="
+              adminProcessoSeletivo.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-blueGray-700 hover:text-blueGray-500'
+            "
+          >
+            <i
+              class="fas fa-table mr-2 text-sm"
+              [ngClass]="
+                adminProcessoSeletivo.isActive ? 'opacity-75' : 'text-blueGray-300'
+              "
+            ></i>
+            Processos Seletivos
+          </a>
+        </li>
+
+        <li class="items-center">
+          <a
             [routerLink]="['/admin/maps']"
             class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
+            routerLinkActive="active"
             #adminMaps="routerLinkActive"
             [ngClass]="
               adminMaps.isActive

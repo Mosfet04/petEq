@@ -37,6 +37,8 @@ import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jo
 import { MsalGuard } from "@azure/msal-angular";
 import { BrowserUtils } from "@azure/msal-browser";
 import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.component";
+import { PlanejamentoRelatorioComponent } from "./views/admin/planejamentoRelatorio/planejamentoRelatorio.component";
+import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/processoSeletivoAdmin.component";
 
 const routes: Routes = [
   // admin views
@@ -48,6 +50,8 @@ const routes: Routes = [
       { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },
       { path: "integrantes", component: IntegrantesComponent },
+      { path: "planejamentoRelatorio", component: PlanejamentoRelatorioComponent},
+      { path: "processoSeletivo", component: ProcessoSeletivoAdminComponent},
       { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],

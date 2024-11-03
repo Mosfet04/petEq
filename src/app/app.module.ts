@@ -123,6 +123,8 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { msalConfig } from "./auth-config";
 import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.component";
 import { ModalGenericoComponent } from "./components/modal-generico/modal-generico.component";
+import { PlanejamentoRelatorioComponent } from "./views/admin/planejamentoRelatorio/planejamentoRelatorio.component";
+import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/processoSeletivoAdmin.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -182,7 +184,9 @@ import { ModalGenericoComponent } from "./components/modal-generico/modal-generi
     SobreJorneqComponent,
     ContatoJorneqComponent,
     IntegrantesComponent,
-    ModalGenericoComponent
+    ModalGenericoComponent,
+    PlanejamentoRelatorioComponent,
+    ProcessoSeletivoAdminComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,

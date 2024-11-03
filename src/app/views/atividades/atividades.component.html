@@ -92,10 +92,10 @@
 											<div class="px-4 py-5 flex-auto">
 												<div class="tab-content tab-space">
 													<div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
-														<a *ngFor="let planejamento of planejamentos" class="font-bold text-emerald-500 mt-8" href="{{planejamento.link}}"> Planejamento {{ converterDataParaAnoSemestre(planejamento.anoDocumento) }} </a>
+														<a *ngFor="let planejamento of planejamentos" class="font-bold text-emerald-500 mt-8" href="{{planejamento.link}}"> Planejamento {{ converterDataParaAnoSemestre(planejamento.anoDocumento) }} <br></a>
 													</div>
 													<div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
-														<a *ngFor="let relatorio of relatorios" class="font-bold text-emerald-500 mt-8" href="{{relatorio.link}}"> Relatorio {{ converterDataParaAnoSemestre(relatorio.anoDocumento) }} </a>
+														<a *ngFor="let relatorio of relatorios" class="font-bold text-emerald-500 mt-8" href="{{relatorio.link}}"> Relatorio {{ converterDataParaAnoSemestre(relatorio.anoDocumento) }} <br></a>
 													</div>
 												</div>
 											</div>

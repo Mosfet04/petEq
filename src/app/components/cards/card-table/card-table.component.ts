@@ -44,12 +44,20 @@ export class CardTableComponent implements OnInit {
     this._conteudo = conteudo;
     this.cdr.markForCheck(); // Adicione esta linha para detectar mudanças quando o conteúdo for definido
   }
+  @Input()
+  get atualiza(): boolean {
+    return this._atualiza;
+  }
+  set atualiza(atualiza: boolean) {
+    this._atualiza = atualiza;
+  }
 
 
   private _color = "light";
   private _titulo = "Titulo";
   private _barra: string[] = ["1", "2", "3", "4", "5"];
   private _conteudo: Item[] = [{}, {}, {}, {}, {}];
+  private _atualiza = true;
   itemVazio: Item = {};
 
   @Output()
