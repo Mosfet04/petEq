@@ -167,7 +167,7 @@
             Planejamento e Relatório
           </a>
         </li>
-        
+
         <li class="items-center">
           <a
             [routerLink]="['/admin/processoSeletivo']"
@@ -187,6 +187,28 @@
               "
             ></i>
             Processos Seletivos
+          </a>
+        </li>
+
+        <li class="items-center">
+          <a
+            [routerLink]="['/admin/pesquisa']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive="active"
+            #adminPesquisa="routerLinkActive"
+            [ngClass]="
+              adminPesquisa.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-blueGray-700 hover:text-blueGray-500'
+            "
+          >
+            <i
+              class="fas fa-table mr-2 text-sm"
+              [ngClass]="
+                adminPesquisa.isActive ? 'opacity-75' : 'text-blueGray-300'
+              "
+            ></i>
+            Pesquisas Coletivas
           </a>
         </li>
 

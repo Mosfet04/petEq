@@ -125,6 +125,7 @@ import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.comp
 import { ModalGenericoComponent } from "./components/modal-generico/modal-generico.component";
 import { PlanejamentoRelatorioComponent } from "./views/admin/planejamentoRelatorio/planejamentoRelatorio.component";
 import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/processoSeletivoAdmin.component";
+import { PesquisaAdminComponent } from "./views/admin/pesquisa/pesquisa.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -186,7 +187,8 @@ import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/p
     IntegrantesComponent,
     ModalGenericoComponent,
     PlanejamentoRelatorioComponent,
-    ProcessoSeletivoAdminComponent
+    ProcessoSeletivoAdminComponent,
+    PesquisaAdminComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,

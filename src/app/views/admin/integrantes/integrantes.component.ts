@@ -49,7 +49,7 @@ export class IntegrantesComponent implements OnInit {
     let hasNextPage = true;
 
     while (hasNextPage) {
-      const response = await axios.get(environment.urlBackEnd + "/integrantes?page=" + page);
+      const response = await axios.get(environment.urlBackEnd + "/integrantes?page=" + page + "&per_page=100");
 
       for (let integranteBack of response.data.items) {
         let integrante: Integrante = {

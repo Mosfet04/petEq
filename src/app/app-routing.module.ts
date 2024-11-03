@@ -39,6 +39,7 @@ import { BrowserUtils } from "@azure/msal-browser";
 import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.component";
 import { PlanejamentoRelatorioComponent } from "./views/admin/planejamentoRelatorio/planejamentoRelatorio.component";
 import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/processoSeletivoAdmin.component";
+import { PesquisaAdminComponent } from "./views/admin/pesquisa/pesquisa.component";
 
 const routes: Routes = [
   // admin views
@@ -52,6 +53,7 @@ const routes: Routes = [
       { path: "integrantes", component: IntegrantesComponent },
       { path: "planejamentoRelatorio", component: PlanejamentoRelatorioComponent},
       { path: "processoSeletivo", component: ProcessoSeletivoAdminComponent},
+      { path: "pesquisa", component: PesquisaAdminComponent},
       { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
