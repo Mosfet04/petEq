@@ -17,8 +17,7 @@
       [routerLink]="['/']"
       class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
     >
-      <span class="block sm:hidden"> Tailwind Angular </span>
-      <span class="hidden sm:block"> Notus Angular </span>
+      <span class="hidden sm:block"> Pagina Inicial </span>
     </a>
     <!-- User -->
     <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -44,7 +43,7 @@
               [routerLink]="['/']"
               class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
             >
-              Notus Angular
+              Pagina Inicial
             </a>
           </div>
           <div class="w-6/12 flex justify-end">
@@ -75,7 +74,7 @@
       <h6
         class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
       >
-        Admin Layout Pages
+        Adiministracão de registros
       </h6>
       <!-- Navigation -->
 
@@ -98,7 +97,7 @@
                 adminDashboard.isActive ? 'opacity-75' : 'text-blueGray-300'
               "
             ></i>
-            Dashboard
+            Administracao Inicial
           </a>
         </li>
 
@@ -209,6 +208,39 @@
               "
             ></i>
             Pesquisas Coletivas
+          </a>
+        </li>
+
+        <li class="items-center">
+          <a
+            [routerLink]="['/admin/extensao']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive="active"
+            #adminExtensao="routerLinkActive"
+            [ngClass]="
+              adminExtensao.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-blueGray-700 hover:text-blueGray-500'
+            "
+          >
+            <i
+              class="fas fa-table mr-2 text-sm"
+              [ngClass]="
+                adminExtensao.isActive ? 'opacity-75' : 'text-blueGray-300'
+              "
+            ></i>
+            Extensão
+          </a>
+        </li>
+
+        <li class="items-center">
+          <a
+            href="https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/"
+            target="_blank"
+            class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+          >
+            <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
+            Registrar Administrador
           </a>
         </li>
 

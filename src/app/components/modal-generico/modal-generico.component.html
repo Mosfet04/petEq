@@ -18,7 +18,7 @@
         <form [formGroup]="conteudoForm">
           <div *ngFor="let key of getObjectKeys(conteudo)">
             <label class="ml-2 block text-gray-700 text-sm font-bold mb-2 mt-2">{{key}}</label>
-            <ng-container *ngIf="key.toLowerCase() === 'setor' || key.toLowerCase() === 'tipo_registro' || key.toLowerCase() == 'ativo'; else defaultInput">
+            <ng-container *ngIf="key.toLowerCase() === 'setor' || key.toLowerCase() === 'tipo_registro' || key.toLowerCase() == 'ativo' || key.toLowerCase() == 'tipo_extensao'; else defaultInput">
               <select *ngIf="key.toLowerCase() === 'setor'" [formControlName]="key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="Computação">Computação</option>
                 <option value="Ata">Ata</option>
@@ -32,6 +32,11 @@
               <select *ngIf="key.toLowerCase() == 'ativo'" [formControlName]="key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="true">Ativa</option>
                 <option value="false">Desativada</option>
+              </select>
+              <select *ngIf="key.toLowerCase() == 'tipo_extensao'" [formControlName]="key" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="Ensino para alem">Ensino para alem</option>
+                <option value="Acoes Sociais">Acoes Sociais</option>
+                <option value="Divulgacao Esclarecimento">Divulgacao Esclarecimento</option>
               </select>
             </ng-container>
             <ng-template #defaultInput>
