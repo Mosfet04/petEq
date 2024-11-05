@@ -127,6 +127,7 @@ import { PlanejamentoRelatorioComponent } from "./views/admin/planejamentoRelato
 import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/processoSeletivoAdmin.component";
 import { PesquisaAdminComponent } from "./views/admin/pesquisa/pesquisa.component";
 import { ExtensaoAdminComponent } from "./views/admin/extensao/extensao.component";
+import { MinicursosAdminComponent } from "./views/admin/minicursos/minicursos.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -190,7 +191,8 @@ import { ExtensaoAdminComponent } from "./views/admin/extensao/extensao.componen
     PlanejamentoRelatorioComponent,
     ProcessoSeletivoAdminComponent,
     PesquisaAdminComponent,
-    ExtensaoAdminComponent
+    ExtensaoAdminComponent,
+    MinicursosAdminComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,
