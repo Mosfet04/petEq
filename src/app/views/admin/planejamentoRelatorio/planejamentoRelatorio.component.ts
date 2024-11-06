@@ -34,7 +34,7 @@ export class PlanejamentoRelatorioComponent implements OnInit {
       for (let planejamentoRelatorioBack of response.data.items) {
         let parsedDate = new Date(planejamentoRelatorioBack.anoDocumento);
         parsedDate.setDate(parsedDate.getDate() + 1);
-        console.log("Data do Back: ", planejamentoRelatorioBack.anoDocumento, "Data formatada: ", parsedDate);
+
         let year = parsedDate.getFullYear();
         let month = parsedDate.getMonth() + 1; // getMonth() retorna 0-11, então adicionamos 1
         let semester = Math.ceil(month / 6);

@@ -71,6 +71,48 @@ export class CardTableComponent implements OnInit {
 
   mostrarModal = false;
   selectedRow: Item = {};
+  sortedColumn: string | null = null;
+  sortDirection: 'asc' | 'desc' | null = null;
+
+  sortTable(column: string) {
+    if (this.sortedColumn === column) {
+      if (this.sortDirection === 'asc') {
+        this.sortDirection = 'desc';
+      } else if (this.sortDirection === 'desc') {
+        this.sortDirection = null;
+        this.sortedColumn = 'Id'; // Ordenar pela coluna 'Id'
+      } else {
+        this.sortDirection = 'asc';
+      }
+    } else {
+      this.sortedColumn = column;
+      this.sortDirection = 'asc';
+    }
+
+    if (this.sortDirection) {
+      this._conteudo.sort((a, b) => {
+        if (a[column] < b[column]) {
+          return this.sortDirection === 'asc' ? -1 : 1;
+        } else if (a[column] > b[column]) {
+          return this.sortDirection === 'asc' ? 1 : -1;
+        } else {
+          return 0;
+        }
+      });
+    } else {
+      // Ordenar pela coluna 'Id' quando sortDirection for null
+      this._conteudo.sort((a, b) => {
+        if (a['Id'] < b['Id']) {
+          return -1;
+        } else if (a['Id'] > b['Id']) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    }
+    this.cdr.markForCheck();
+  }
 
   getObjectKeys(obj: any): string[] {
     return Object.keys(obj);

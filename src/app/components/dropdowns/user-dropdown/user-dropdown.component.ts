@@ -42,7 +42,7 @@ export class UserDropdownComponent implements AfterViewInit, OnInit {
     const headers = { Authorization: `Bearer ${localStorage.getItem("accessToken")}` };
     try {
       const response = await axios.get('https://graph.microsoft.com/v1.0/me/photo/$value', { headers, responseType: 'blob' });
-      console.log(response);
+
       const reader = new FileReader();
       reader.onloadend = () => {
         this.userPhoto = reader.result;
