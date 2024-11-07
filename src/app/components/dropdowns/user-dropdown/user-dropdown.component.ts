@@ -11,7 +11,7 @@ export class UserDropdownComponent implements AfterViewInit, OnInit {
   dropdownPopoverShow = false;
   @ViewChild("btnDropdownRef", { static: false }) btnDropdownRef: ElementRef;
   @ViewChild("popoverDropdownRef", { static: false })
-  userPhoto: string | ArrayBuffer | null = 'assets/img/default-avatar.png';
+  userPhoto: string | ArrayBuffer | null = 'assets/img/team-1-800x800.jpg';
   popoverDropdownRef: ElementRef;
 
   constructor(private router: Router) {}

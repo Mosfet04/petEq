@@ -257,6 +257,28 @@
 
         <li class="items-center">
           <a
+            [routerLink]="['/admin/calendarioAtividades']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive="active"
+            #adminCalendarioAtividades="routerLinkActive"
+            [ngClass]="
+              adminCalendarioAtividades.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-blueGray-700 hover:text-blueGray-500'
+            "
+          >
+            <i
+              class="fas fa-table mr-2 text-sm"
+              [ngClass]="
+                adminCalendarioAtividades.isActive ? 'opacity-75' : 'text-blueGray-300'
+              "
+            ></i>
+            Atividades do Calendário
+          </a>
+        </li>
+
+        <li class="items-center">
+          <a
             href="https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/"
             target="_blank"
             class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"

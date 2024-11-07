@@ -170,5 +170,27 @@ export class CardTableComponent implements OnInit {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
+  // Função para gerar o CSV e fazer o download
+  downloadCSV() {
+    const csvData = this.convertToCSV(this._conteudo);
+    const blob = new Blob([csvData], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('style', 'display: none');
+    a.href = url;
+    a.download = 'data.csv';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    a.remove();
+  }
+
+  // Função para converter os dados para CSV
+  convertToCSV(objArray: Item[]): string {
+    const header = Object.keys(objArray[0]);
+    const rows = objArray.map(obj => header.map(fieldName => JSON.stringify(obj[fieldName])).join(','));
+    return [header.join(','), ...rows].join('\r\n');
+  }
+
   ngOnInit(): void {}
 }

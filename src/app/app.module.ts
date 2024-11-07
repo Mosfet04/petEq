@@ -128,6 +128,7 @@ import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/p
 import { PesquisaAdminComponent } from "./views/admin/pesquisa/pesquisa.component";
 import { ExtensaoAdminComponent } from "./views/admin/extensao/extensao.component";
 import { MinicursosAdminComponent } from "./views/admin/minicursos/minicursos.component";
+import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtividades/calendarioAtividades.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -192,7 +193,8 @@ import { MinicursosAdminComponent } from "./views/admin/minicursos/minicursos.co
     ProcessoSeletivoAdminComponent,
     PesquisaAdminComponent,
     ExtensaoAdminComponent,
-    MinicursosAdminComponent
+    MinicursosAdminComponent,
+    CalendarioAtividadesAdminComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,

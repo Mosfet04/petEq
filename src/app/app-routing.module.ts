@@ -42,6 +42,7 @@ import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/p
 import { PesquisaAdminComponent } from "./views/admin/pesquisa/pesquisa.component";
 import { ExtensaoAdminComponent } from "./views/admin/extensao/extensao.component";
 import { MinicursosAdminComponent } from "./views/admin/minicursos/minicursos.component";
+import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtividades/calendarioAtividades.component";
 
 const routes: Routes = [
   // admin views
@@ -58,6 +59,7 @@ const routes: Routes = [
       { path: "extensao", component: ExtensaoAdminComponent},
       { path: "pesquisa", component: PesquisaAdminComponent},
       { path: "minicursos", component: MinicursosAdminComponent},
+      { path: "calendarioAtividades", component: CalendarioAtividadesAdminComponent},
       { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
