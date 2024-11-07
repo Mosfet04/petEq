@@ -6,6 +6,7 @@ interface Integrante {
   Nome: string;
   Matricula: string;
   Link_selfie: string;
+  Linkedin: string;
   Setor: string;
   Email: string;
   Data_de_entrada: string;
@@ -15,6 +16,7 @@ interface IntegranteUpdate {
   nome: string;
   matricula: string;
   linkSelfie: string;
+  linkedin: string;
   email: string;
   desligamento: boolean;
   dataIngresso: string;
@@ -24,6 +26,7 @@ interface IntegranteAdicionar {
   nome: string;
   matricula: string;
   linkSelfie: string;
+  linkedin: string;
   email: string;
   dataDesligamento?: string | null;
   dataIngresso: string;
@@ -57,6 +60,7 @@ export class IntegrantesComponent implements OnInit {
           Nome: integranteBack.nome,
           Matricula: integranteBack.matricula,
           Link_selfie: integranteBack.linkSelfie,
+          Linkedin: integranteBack.linkedin,
           Setor: integranteBack.setorNome,
           Email: integranteBack.email,
           Data_de_entrada: integranteBack.dataIngresso,
@@ -122,6 +126,7 @@ export class IntegrantesComponent implements OnInit {
       nome: integrante.Nome,
       matricula: integrante.Matricula,
       linkSelfie: integrante.Link_selfie,
+      linkedin: integrante.Linkedin,
       email: integrante.Email,
       desligamento: !!integrante.Data_de_desligamento, // Converte para booleano
       dataIngresso: integrante.Data_de_entrada,
@@ -133,6 +138,7 @@ export class IntegrantesComponent implements OnInit {
       nome: integrante.Nome,
       matricula: integrante.Matricula,
       linkSelfie: integrante.Link_selfie,
+      linkedin: integrante.Linkedin,
       email: integrante.Email,
       dataIngresso: integrante.Data_de_entrada,
       setorId: SetorId[integrante.Setor as keyof typeof SetorId]

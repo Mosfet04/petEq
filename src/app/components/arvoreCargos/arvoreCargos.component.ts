@@ -40,7 +40,7 @@ export class ArvoreCargosComponent implements OnInit, OnChanges {
           color: '#e0e0e0',
         },
         tooltip:
-          '<div style= "background-color: #666666; color: white; border-radius: 4px; padding: 4px;" class="tooltipBox">Email: <b>%email</b></div>',
+          '<div style= "background-color: #666666; color: white; border-radius: 4px; padding: 4px;" class="tooltipBox">Email: <b>%email</b></br>Linkedin: <b><a href="%linkedin" style: >clique aqui</a></b></div>',
         annotation: {
           padding: 3,
           asHTML: true,
@@ -70,6 +70,7 @@ export class ArvoreCargosComponent implements OnInit, OnChanges {
       attributes: {
         position: `<span style="font-size:13px;">${integrantes.orientador.setorNome}</span>`,
         email: integrantes.orientador.email,
+        linkedin: integrantes.orientador.linkedin,
         photo: integrantes.orientador.linkSelfie,
       },
     });
@@ -82,6 +83,7 @@ export class ArvoreCargosComponent implements OnInit, OnChanges {
         attributes: {
           position: `<span style="font-size:13px;">${orientado.setorNome}</span>`,
           email: orientado.email,
+          linkedin: orientado.linkedin,
           photo: orientado.linkSelfie,
         },
       });
