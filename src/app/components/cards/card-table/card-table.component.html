@@ -14,7 +14,7 @@
         <div class="flex justify-between items-center">
           <h3
             class="font-semibold text-lg"
-            [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+            [ngClass]="color === 'light' ? 'text-slate-700' : 'text-white'"
           >
             {{titulo}}
           </h3>
@@ -34,7 +34,7 @@
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left cursor-pointer"
             [ngClass]="
               color === 'light'
-                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                ? 'bg-slate-50 text-slate-500 border-slate-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             "
             (click)="sortTable(coluna)"
@@ -45,7 +45,7 @@
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
             [ngClass]="
               color === 'light'
-                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                ? 'bg-slate-50 text-slate-500 border-slate-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
@@ -59,7 +59,7 @@
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
             [ngClass]="i === 0 ? 'text-left flex items-center' : ''"
           >
-            <span *ngIf="i === 0" class="ml-3 font-bold" [ngClass]="color === 'light' ? 'text-blueGray-600' : 'text-white'">
+            <span *ngIf="i === 0" class="ml-3 font-bold" [ngClass]="color === 'light' ? 'text-slate-600' : 'text-white'">
               {{ cont[key] }}
             </span>
             <span *ngIf="i !== 0">

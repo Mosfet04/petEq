@@ -3,7 +3,7 @@
     <!--content-->
     <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
       <!--header-->
-      <div class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+      <div class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
         <h3 class="text-3xl font-semibold"> Buscar Noticia </h3>
       </div>
       <!--body-->
@@ -11,28 +11,28 @@
         <div class="flex flex-wrap">
           <div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
-              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"> Categoria </label>
-              <select class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" [(ngModel)]="opcaoSelecionada">
+              <label class="block uppercase text-slate-600 text-xs font-bold mb-2"> Categoria </label>
+              <select class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" [(ngModel)]="opcaoSelecionada">
                 <option *ngFor="let opcao of opcoes" [value]="opcao">{{ opcao }}</option>
               </select>
             </div>
           </div>
           <div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
-              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"> Data Inicial </label>
-              <input type="date" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+              <label class="block uppercase text-slate-600 text-xs font-bold mb-2"> Data Inicial </label>
+              <input type="date" class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
             </div>
           </div>
           <div class="w-full lg:w-4/12 px-4">
             <div class="relative w-full mb-3">
-              <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"> Data Final </label>
-              <input type="date" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+              <label class="block uppercase text-slate-600 text-xs font-bold mb-2"> Data Final </label>
+              <input type="date" class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
             </div>
           </div>
         </div>
       </div>
       <!--footer-->
-      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+      <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
         <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModalSearch()"> Fechar </button>
         <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModalSearch()"> Buscar </button>
       </div>

@@ -10,12 +10,13 @@
     "module": "esnext", // Ou "commonjs" se necessário
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015", // Ou "es5" se necessário
+    "target": "ES2022", // Ajustado para ES2022
+    "useDefineForClassFields": false, // Adicionado para definir como false
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2018",
+      "es2021", // Ajustado para es2021 para compatibilidade com ES2022
       "dom"
     ]
   },
