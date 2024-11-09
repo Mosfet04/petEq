@@ -4,7 +4,7 @@
       <a href="/" class="-m-1.5 p-1.5">
         <span class="sr-only">LOGO JORNEQ</span>
         <img
-          alt=""
+          alt="LOGO JORNEQ"
           src="https://tailwindui.com/plus/img/logos/mark.svg?color=cyan&shade=600"
           class="h-8 w-auto"
         />
@@ -38,7 +38,7 @@
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">LOGO JORNEQ</span>
           <img
-            alt=""
+            alt="LOGO JORNEQ"
             src="https://tailwindui.com/plus/img/logos/mark.svg?color=cyan&shade=600"
             class="h-8 w-auto"
           />
@@ -60,6 +60,7 @@
             <a
               *ngFor="let item of navigation"
               [routerLink]="item.rota"
+              (click)="setMobileMenuOpen(false)"
               class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
             >
               {{ item.name }}

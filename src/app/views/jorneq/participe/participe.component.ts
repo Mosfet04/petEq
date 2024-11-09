@@ -13,6 +13,7 @@ export class ParticipeComponent {
       price: 'R$ 0,00',
       description: "Apresente seu trabalho na Jorneq e bla bla bla",
       features: ['Ganhe visibilidade em seu trabalho', 'Apresentações serão pontuadas e premiadas'],
+      atention: ['Só é possivel apresentar seu trabalho tendo feito a inscrição de participante'],
       featured: false,
     },
     {
