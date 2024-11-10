@@ -1,1 +1,19 @@
-<a href="{{link}}" aria-describedby="tier-enterprise" class="rounded-md bg-cyan-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600">{{text}}</a>
+<a 
+    href="{{link}}" 
+    aria-describedby="tier-enterprise" 
+    class="rounded-md 
+            px-3.5 
+            py-2.5 
+            text-sm 
+            font-semibold 
+            text-white 
+            shadow-sm 
+            hover:bg-cyan-500 
+            focus-visible:outline 
+            focus-visible:outline-2 
+            focus-visible:outline-offset-2 
+            focus-visible:outline-cyan-600"
+    [ngStyle]="{'background-color': primaryColor, 'border-color': primaryColor}">
+                {{text}}
+    
+</a>

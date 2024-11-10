@@ -1,7 +1,6 @@
 <div class="relative isolate px-6 py-24 sm:py-32 lg:px-8">
-
   <div class="mx-auto max-w-2xl text-center lg:max-w-4xl">
-    <h2 class="text-base font-semibold leading-7 text-cyan-600">Como participar?</h2>
+    <h2 id="subtitle" class="text-base font-semibold leading-7 text-cyan-600">Como participar?</h2>
     <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
       Escolha a melhor opção para você
     </p>
@@ -11,7 +10,7 @@
   </p>
   <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 sm:grid-cols-2 gap-6 sm:mt-20 lg:max-w-4xl">
     <div *ngFor="let tier of tiers; let tierIdx = index" class="w-full py-4">
-      <div [ngClass]="classNames(
+      <div id="card{{tierIdx}}" [ngClass]="classNames(
         tier.featured ? 'relative bg-gray-900 shadow-2xl' : 'bg-white/60 sm:mx-8 lg:mx-0',
         tier.featured ? '' : tierIdx === 0 ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-bl-3xl lg:rounded-tr-none' : 'sm:rounded-t-none lg:rounded-bl-none lg:rounded-tr-3xl',
         'rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10'
@@ -39,7 +38,7 @@
             {{ atention }}
           </li>
         </ul>   
-        <a [href]="tier.href" [attr.aria-describedby]="tier.id" [ngClass]="classNames(
+        <a id="botao{{tierIdx}}" [href]="tier.href" [attr.aria-describedby]="tier.id" [ngClass]="classNames(
           tier.featured ? 'bg-cyan-500 text-white shadow-sm hover:bg-cyan-400 focus-visible:outline-cyan-500' : 'text-cyan-600 ring-1 ring-inset ring-cyan-200 hover:ring-cyan-300 focus-visible:outline-cyan-600',
           'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10'
         )">

@@ -114,7 +114,6 @@ import { NavBarJorneqComponent } from "./components/navbars/jorneq-navbar/navbar
 import { JorneqIndexComponent } from "./layouts/jorneq/jorneq-index.component";
 import { JorneqComponent } from "./views/jorneq/jorneq.component";
 import { ParticipeComponent } from "./views/jorneq/participe/participe.component";
-import { ResponsaveisComponent } from "./views/jorneq/responsaveis/responsaveis.component";
 import { SobreJorneqComponent } from "./views/jorneq/sobre/sobre-jorneq.component";
 import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
 import { MsalModule, MsalInterceptor, MsalService, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalInterceptorConfiguration, MsalRedirectComponent, MsalGuard } from "@azure/msal-angular";
@@ -129,6 +128,8 @@ import { PesquisaAdminComponent } from "./views/admin/pesquisa/pesquisa.componen
 import { ExtensaoAdminComponent } from "./views/admin/extensao/extensao.component";
 import { MinicursosAdminComponent } from "./views/admin/minicursos/minicursos.component";
 import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtividades/calendarioAtividades.component";
+import { EstiloJorneqComponent } from "./views/admin/estilo-jorneq/estilo-jorneq.component";
+import { ColorService } from "./services/color.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -184,7 +185,6 @@ import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtiv
     JorneqIndexComponent,
     JorneqComponent,
     ParticipeComponent,
-    ResponsaveisComponent,
     SobreJorneqComponent,
     ContatoJorneqComponent,
     IntegrantesComponent,
@@ -194,7 +194,8 @@ import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtiv
     PesquisaAdminComponent,
     ExtensaoAdminComponent,
     MinicursosAdminComponent,
-    CalendarioAtividadesAdminComponent
+    CalendarioAtividadesAdminComponent,
+    EstiloJorneqComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,
@@ -263,6 +264,7 @@ import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtiv
       multi: true,
     },
     MsalGuard,
+    ColorService
   ],
   bootstrap: [AppComponent, MsalRedirectComponent],
 })

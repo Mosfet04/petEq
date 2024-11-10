@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-responsaveis',
   templateUrl: './responsaveis.component.html'
 })
-export class ResponsaveisComponent {
+export class ResponsaveisComponent implements OnInit {
   people = [
     {
       name: 'Leslie Alexander',
@@ -53,4 +54,33 @@ export class ResponsaveisComponent {
       lastSeen: null,
     },
   ];
+  primaryColor: string = '#0891B2';
+  secondaryColor: string = '#ff80b5';
+  iconLink: string = '#000000';
+
+  constructor(private renderer: Renderer2, private el: ElementRef, private colorService: ColorService) {
+    this.colorService.primaryColor$.subscribe(color => {
+      this.primaryColor = color;
+      this.updateStyles();
+    });
+    this.colorService.secondaryColor$.subscribe(color => {
+      this.secondaryColor = color;
+      this.updateStyles();
+    });
+    this.colorService.iconLink$.subscribe(link => {
+      this.iconLink = link;
+      this.updateStyles();
+    });
+  }
+
+  updateStyles(): void {
+    const h2 = this.el.nativeElement.querySelector('#subtitle');
+    if (h2) {
+      this.renderer.setStyle(h2, 'color', this.primaryColor);
+    }
+  }
+
+  ngOnInit(): void {
+    this.updateStyles();
+  }
 }

@@ -19,7 +19,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 //jorneq views
 import { JorneqComponent } from "./views/jorneq/jorneq.component";
 import { ParticipeComponent } from "./views/jorneq/participe/participe.component";
-import { ResponsaveisComponent } from "./views/jorneq/responsaveis/responsaveis.component";
+
 import { SobreJorneqComponent } from "./views/jorneq/sobre/sobre-jorneq.component";
 
 // no layouts views
@@ -43,7 +43,7 @@ import { PesquisaAdminComponent } from "./views/admin/pesquisa/pesquisa.componen
 import { ExtensaoAdminComponent } from "./views/admin/extensao/extensao.component";
 import { MinicursosAdminComponent } from "./views/admin/minicursos/minicursos.component";
 import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtividades/calendarioAtividades.component";
-
+import { EstiloJorneqComponent } from "./views/admin/estilo-jorneq/estilo-jorneq.component";
 const routes: Routes = [
   // admin views
   {
@@ -60,6 +60,7 @@ const routes: Routes = [
       { path: "pesquisa", component: PesquisaAdminComponent},
       { path: "minicursos", component: MinicursosAdminComponent},
       { path: "calendarioAtividades", component: CalendarioAtividadesAdminComponent},
+      { path: "estiloJorneq", component: EstiloJorneqComponent},
       { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
@@ -91,7 +92,6 @@ const routes: Routes = [
     children:[
       {path:"", component: JorneqComponent},
       {path:"participe", component: ParticipeComponent},
-      {path:"responsaveis", component: ResponsaveisComponent},
       {path:"sobre", component: SobreJorneqComponent},
       {path:"contato", component: ContatoJorneqComponent}
     ]
