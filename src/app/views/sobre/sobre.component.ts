@@ -18,7 +18,7 @@ export class SobreComponent implements OnInit {
 
   async fetchIntegrantes()
   {
-    const endpoint = "/integrantes?ativo=true";
+    const endpoint = "/integrantes?ativo=true&page=1&per_page=100";
 
     try{
       const response = await axios.get(environment.urlBackEnd + endpoint);
