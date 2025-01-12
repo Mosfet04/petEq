@@ -130,6 +130,7 @@ import { MinicursosAdminComponent } from "./views/admin/minicursos/minicursos.co
 import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtividades/calendarioAtividades.component";
 import { EstiloJorneqComponent } from "./views/admin/estilo-jorneq/estilo-jorneq.component";
 import { ColorService } from "./services/color.service";
+import { CertificadosDialogComponent } from "./components/certificados-dialog/certificados-dialog.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -195,7 +196,8 @@ import { ColorService } from "./services/color.service";
     ExtensaoAdminComponent,
     MinicursosAdminComponent,
     CalendarioAtividadesAdminComponent,
-    EstiloJorneqComponent
+    EstiloJorneqComponent,
+    CertificadosDialogComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,
