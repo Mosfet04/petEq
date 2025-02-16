@@ -40,6 +40,17 @@ export class PesquisaAdminComponent implements OnInit {
       if (this.pesquisaLista.length > 0) {
         this.barra = Object.keys(this.pesquisaLista[0]);
       }
+      else
+      {
+        let emptyObject: Pesquisa;
+        emptyObject = {
+          Id: 0,
+          Nome: "",
+          Ativo: false,
+          Descricao: ""
+        }
+        this.barra = Object.keys(emptyObject);
+      }
 
       hasNextPage = response.data.hasNextPage;
       page++;
@@ -61,6 +72,7 @@ export class PesquisaAdminComponent implements OnInit {
         pesquisaUpdate,
         config
       );
+      window.location.reload();
     }
   }
 
@@ -74,6 +86,7 @@ export class PesquisaAdminComponent implements OnInit {
       `${environment.urlBackEnd}/pesquisa/${conteudo.Id}`,
       config
     );
+    window.location.reload();
   }
 
   async adicionarConteudo(conteudo: Pesquisa){
@@ -88,6 +101,7 @@ export class PesquisaAdminComponent implements OnInit {
       pesquisaAdicionar,
       config
     );
+    window.location.reload();
   }
 
   mapPesquisaToUpdate(pesquisa: Pesquisa): PesquisaUpdate {

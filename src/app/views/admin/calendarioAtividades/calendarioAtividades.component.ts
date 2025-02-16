@@ -46,6 +46,19 @@ export class CalendarioAtividadesAdminComponent implements OnInit {
       if (this.calendarioAtividadesLista.length > 0) {
         this.barra = Object.keys(this.calendarioAtividadesLista[0]);
       }
+      else{
+        let emptyObject: CalendarioAtividades;
+        emptyObject = 
+        {
+          Id: 0,
+          Titulo: "",
+          Descricao: "",
+          Data_Inicio: "",
+          Local: "",
+          Ativo: false
+        };
+        this.barra = Object.keys(emptyObject);
+      }
 
       hasNextPage = response.data.hasNextPage;
       page++;
@@ -67,6 +80,7 @@ export class CalendarioAtividadesAdminComponent implements OnInit {
         calendarioAtividadesUpdate,
         config
       );
+      window.location.reload();
     }
   }
 
@@ -80,6 +94,7 @@ export class CalendarioAtividadesAdminComponent implements OnInit {
       `${environment.urlBackEnd}/calendario_atividades/${conteudo.Id}`,
       config
     );
+    window.location.reload();
   }
 
   async adicionarConteudo(conteudo: CalendarioAtividades){
@@ -94,6 +109,7 @@ export class CalendarioAtividadesAdminComponent implements OnInit {
       extensaoAdicionar,
       config
     );
+    window.location.reload();
   }
 
   mapCalendarioAtividadesToUpdate(atividades: CalendarioAtividades): CalendarioAtividadesUpdate {

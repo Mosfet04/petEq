@@ -45,6 +45,17 @@ export class ProcessoSeletivoAdminComponent implements OnInit {
       if (this.processoSeletivoLista.length > 0) {
         this.barra = Object.keys(this.processoSeletivoLista[0]);
       }
+      else
+      {
+        let emptyObject: ProcessoSeletivo;
+        emptyObject = {
+          Id: 0,
+          Link: "",
+          Titulo: "",
+          Data_do_edital: ""
+        }
+        this.barra = Object.keys(emptyObject);
+      }
 
       hasNextPage = response.data.hasNextPage;
       page++;
@@ -65,6 +76,7 @@ export class ProcessoSeletivoAdminComponent implements OnInit {
       `${environment.urlBackEnd}/processo_seletivo/${conteudo.Id}`,
       config
     );
+    window.location.reload();
   }
 
   async adicionarConteudo(conteudo: ProcessoSeletivo){
@@ -79,6 +91,7 @@ export class ProcessoSeletivoAdminComponent implements OnInit {
       integranteAdicionar,
       config
     );
+    window.location.reload();
   }
 
   mapProcessoSeletivoToAdicionar(conteudo: ProcessoSeletivo): ProcessoSeletivoAdicionar {

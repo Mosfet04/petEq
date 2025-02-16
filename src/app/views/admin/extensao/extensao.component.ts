@@ -48,6 +48,17 @@ export class ExtensaoAdminComponent implements OnInit {
       if (this.extensaoLista.length > 0) {
         this.barra = Object.keys(this.extensaoLista[0]);
       }
+      else{
+        let emptyObject: Extensao;
+        emptyObject = {
+          Id: 0,
+          Nome: "",
+          Tipo_extensao: "",
+          Descricao: "",
+          Ativo: false
+        }
+        this.barra = Object.keys(emptyObject);
+      }
 
       hasNextPage = response.data.hasNextPage;
       page++;
@@ -69,6 +80,7 @@ export class ExtensaoAdminComponent implements OnInit {
         extensaoUpdate,
         config
       );
+      window.location.reload();
     }
   }
 
@@ -82,6 +94,7 @@ export class ExtensaoAdminComponent implements OnInit {
       `${environment.urlBackEnd}/extensao/${conteudo.Id}`,
       config
     );
+    window.location.reload();
   }
 
   async adicionarConteudo(conteudo: Extensao){
@@ -96,6 +109,7 @@ export class ExtensaoAdminComponent implements OnInit {
       extensaoAdicionar,
       config
     );
+    window.location.reload();
   }
 
   mapExtensaoToUpdate(extensao: Extensao): ExtensaoUpdate {

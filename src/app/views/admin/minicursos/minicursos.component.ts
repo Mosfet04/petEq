@@ -45,6 +45,17 @@ export class MinicursosAdminComponent implements OnInit {
       if (this.minicursosLista.length > 0) {
         this.barra = Object.keys(this.minicursosLista[0]);
       }
+      else{
+        let emptyObject: Minicursos;
+        emptyObject = {
+          Id: 0,
+          Titulo: "",
+          Ativo: false,
+          Descricao: "",
+          Imagem: ""
+        }
+        this.barra = Object.keys(emptyObject);
+      }
 
       hasNextPage = response.data.hasNextPage;
       page++;
@@ -66,6 +77,7 @@ export class MinicursosAdminComponent implements OnInit {
         minicursoUpdate,
         config
       );
+      window.location.reload();
     }
   }
 
@@ -79,6 +91,7 @@ export class MinicursosAdminComponent implements OnInit {
       `${environment.urlBackEnd}/mini_cursos/${conteudo.Id}`,
       config
     );
+    window.location.reload();
   }
 
   async adicionarConteudo(conteudo: Minicursos){
@@ -93,6 +106,7 @@ export class MinicursosAdminComponent implements OnInit {
       minicursoAdicionar,
       config
     );
+    window.location.reload();
   }
 
   mapMinicursoToUpdate(minicursos: Minicursos): MinicursosUpdate {

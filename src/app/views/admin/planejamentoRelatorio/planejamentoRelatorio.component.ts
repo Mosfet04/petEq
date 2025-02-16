@@ -51,6 +51,16 @@ export class PlanejamentoRelatorioComponent implements OnInit {
       if (this.planejamentoRelatorioLista.length > 0) {
         this.barra = Object.keys(this.planejamentoRelatorioLista[0]);
       }
+      else{
+        let emptyObject: PlanejamentoRelatorio;
+        emptyObject = {
+          Id: 0,
+          Link: "",
+          Tipo_registro: "",
+          Ano_do_documento: ""
+        }
+        this.barra = Object.keys(emptyObject);
+      }
 
       hasNextPage = response.data.hasNextPage;
       page++;
@@ -71,6 +81,7 @@ export class PlanejamentoRelatorioComponent implements OnInit {
       `${environment.urlBackEnd}/planejamento_relatorio/${conteudo.Id}`,
       config
     );
+    window.location.reload();
   }
 
   async adicionarConteudo(conteudo: PlanejamentoRelatorio){
@@ -85,6 +96,7 @@ export class PlanejamentoRelatorioComponent implements OnInit {
       integranteAdicionar,
       config
     );
+    window.location.reload();
   }
 
   mapPlanejamentoRelatorioToAdicionar(conteudo: PlanejamentoRelatorio): PlanejamentoRelatorioAdicionar {

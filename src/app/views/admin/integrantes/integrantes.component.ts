@@ -71,6 +71,21 @@ export class IntegrantesComponent implements OnInit {
       if (this.integrantes.length > 0) {
         this.barra = Object.keys(this.integrantes[0]);
       }
+      else{
+        let emptyObject: Integrante;
+        emptyObject = {
+          Id: 0,
+          Nome: "",
+          Matricula: "",
+          Link_selfie: "",
+          Linkedin: "",
+          Setor: "",
+          Email: "",
+          Data_de_entrada: "",
+          Data_de_desligamento: "",
+        }
+        this.barra = Object.keys(emptyObject);
+      }
 
       hasNextPage = response.data.hasNextPage;
       page++;
@@ -92,6 +107,7 @@ export class IntegrantesComponent implements OnInit {
         integranteUpdate,
         config
       );
+      window.location.reload();
     }
   }
 
@@ -105,6 +121,7 @@ export class IntegrantesComponent implements OnInit {
       `${environment.urlBackEnd}/integrantes/${conteudo.Id}`,
       config
     );
+    window.location.reload();
   }
 
   async adicionarConteudo(conteudo: Integrante){
@@ -119,6 +136,7 @@ export class IntegrantesComponent implements OnInit {
       integranteAdicionar,
       config
     );
+    window.location.reload();
   }
 
   mapIntegranteToUpdate(integrante: Integrante): IntegranteUpdate {
