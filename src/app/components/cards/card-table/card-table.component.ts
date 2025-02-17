@@ -42,7 +42,7 @@ export class CardTableComponent implements OnInit {
     if (conteudo.length > 0 && Object.keys(conteudo[0]).length !== this._barra.length)
       throw new Error("O conteudo deve ter o mesmo tamanho da barra");
     this._conteudo = conteudo;
-    this.cdr.markForCheck(); // Adicione esta linha para detectar mudanças quando o conteúdo for definido
+    this.cdr.markForCheck(); 
   }
   @Input()
   get atualiza(): boolean {

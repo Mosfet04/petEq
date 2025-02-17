@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 interface Integrante {
@@ -43,7 +43,7 @@ enum SetorId {
   templateUrl: './integrantes.component.html'
 })
 export class IntegrantesComponent implements OnInit {
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   integrantes: Integrante[] = [];
   barra: string[] = [];
 
@@ -107,7 +107,6 @@ export class IntegrantesComponent implements OnInit {
         integranteUpdate,
         config
       );
-      window.location.reload();
     }
   }
 
@@ -121,7 +120,8 @@ export class IntegrantesComponent implements OnInit {
       `${environment.urlBackEnd}/integrantes/${conteudo.Id}`,
       config
     );
-    window.location.reload();
+    this.integrantes = this.integrantes.filter(item => item.Id !== conteudo.Id);
+    this.cdr.markForCheck();
   }
 
   async adicionarConteudo(conteudo: Integrante){
@@ -136,7 +136,9 @@ export class IntegrantesComponent implements OnInit {
       integranteAdicionar,
       config
     );
-    window.location.reload();
+    this.integrantes.find(x=> x.Nome == responseAdd.data.nome && x.Matricula == responseAdd.data.matricula).Id = responseAdd.data.id;
+    this.integrantes = [...this.integrantes];
+    this.cdr.markForCheck();
   }
 
   mapIntegranteToUpdate(integrante: Integrante): IntegranteUpdate {

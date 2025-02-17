@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 interface CalendarioAtividades {
@@ -21,7 +21,7 @@ interface CalendarioAtividadesUpdate {
   templateUrl: './calendarioAtividades.component.html'
 })
 export class CalendarioAtividadesAdminComponent implements OnInit {
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   calendarioAtividadesLista: CalendarioAtividades[] = [];
   barra: string[] = [];
 
@@ -80,7 +80,6 @@ export class CalendarioAtividadesAdminComponent implements OnInit {
         calendarioAtividadesUpdate,
         config
       );
-      window.location.reload();
     }
   }
 
@@ -94,7 +93,8 @@ export class CalendarioAtividadesAdminComponent implements OnInit {
       `${environment.urlBackEnd}/calendario_atividades/${conteudo.Id}`,
       config
     );
-    window.location.reload();
+    this.calendarioAtividadesLista = this.calendarioAtividadesLista.filter(item => item.Id !== conteudo.Id);
+    this.cdr.markForCheck();
   }
 
   async adicionarConteudo(conteudo: CalendarioAtividades){
@@ -109,7 +109,9 @@ export class CalendarioAtividadesAdminComponent implements OnInit {
       extensaoAdicionar,
       config
     );
-    window.location.reload();
+    this.calendarioAtividadesLista.find(x => x.Titulo == responseAdd.data.titulo && x.Descricao == responseAdd.data.descricao).Id = responseAdd.data.id;
+    this.calendarioAtividadesLista = [...this.calendarioAtividadesLista];
+    this.cdr.markForCheck();
   }
 
   mapCalendarioAtividadesToUpdate(atividades: CalendarioAtividades): CalendarioAtividadesUpdate {

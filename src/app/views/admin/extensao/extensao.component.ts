@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 interface Extensao {
@@ -24,7 +24,7 @@ enum TipoExtensao {
   templateUrl: './extensao.component.html'
 })
 export class ExtensaoAdminComponent implements OnInit {
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   extensaoLista: Extensao[] = [];
   barra: string[] = [];
 
@@ -80,7 +80,6 @@ export class ExtensaoAdminComponent implements OnInit {
         extensaoUpdate,
         config
       );
-      window.location.reload();
     }
   }
 
@@ -94,7 +93,8 @@ export class ExtensaoAdminComponent implements OnInit {
       `${environment.urlBackEnd}/extensao/${conteudo.Id}`,
       config
     );
-    window.location.reload();
+    this.extensaoLista = this.extensaoLista.filter(item => item.Id !== conteudo.Id);
+    this.cdr.markForCheck();
   }
 
   async adicionarConteudo(conteudo: Extensao){
@@ -109,7 +109,9 @@ export class ExtensaoAdminComponent implements OnInit {
       extensaoAdicionar,
       config
     );
-    window.location.reload();
+    this.extensaoLista.find(x=> x.Nome == responseAdd.data.nome && x.Tipo_extensao == responseAdd.data.tipo && x.Descricao == responseAdd.data.descricao).Id = responseAdd.data.id;
+    this.extensaoLista = [...this.extensaoLista];
+    this.cdr.markForCheck();
   }
 
   mapExtensaoToUpdate(extensao: Extensao): ExtensaoUpdate {

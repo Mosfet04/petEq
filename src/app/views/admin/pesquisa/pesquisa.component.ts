@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 interface Pesquisa {
@@ -18,7 +18,7 @@ interface PesquisaUpdate {
   templateUrl: './pesquisa.component.html'
 })
 export class PesquisaAdminComponent implements OnInit {
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   pesquisaLista: Pesquisa[] = [];
   barra: string[] = [];
 
@@ -72,7 +72,6 @@ export class PesquisaAdminComponent implements OnInit {
         pesquisaUpdate,
         config
       );
-      window.location.reload();
     }
   }
 
@@ -86,7 +85,8 @@ export class PesquisaAdminComponent implements OnInit {
       `${environment.urlBackEnd}/pesquisa/${conteudo.Id}`,
       config
     );
-    window.location.reload();
+    this.pesquisaLista = this.pesquisaLista.filter(item => item.Id !== conteudo.Id);
+    this.cdr.markForCheck();
   }
 
   async adicionarConteudo(conteudo: Pesquisa){
@@ -101,7 +101,9 @@ export class PesquisaAdminComponent implements OnInit {
       pesquisaAdicionar,
       config
     );
-    window.location.reload();
+    this.pesquisaLista.find(x => x.Nome == responseAdd.data.nome && x.Descricao == responseAdd.data.descricao).Id = responseAdd.data.id;
+    this.pesquisaLista = [...this.pesquisaLista];
+    this.cdr.markForCheck();
   }
 
   mapPesquisaToUpdate(pesquisa: Pesquisa): PesquisaUpdate {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 
@@ -20,7 +20,7 @@ interface PlanejamentoRelatorioAdicionar
   templateUrl: './planejamentoRelatorio.component.html'
 })
 export class PlanejamentoRelatorioComponent implements OnInit {
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   planejamentoRelatorioLista: PlanejamentoRelatorio[] = [];
   barra: string[] = [];
   atualiza = false;
@@ -81,7 +81,8 @@ export class PlanejamentoRelatorioComponent implements OnInit {
       `${environment.urlBackEnd}/planejamento_relatorio/${conteudo.Id}`,
       config
     );
-    window.location.reload();
+    this.planejamentoRelatorioLista = this.planejamentoRelatorioLista.filter(item => item.Id !== conteudo.Id);
+    this.cdr.markForCheck();
   }
 
   async adicionarConteudo(conteudo: PlanejamentoRelatorio){
@@ -96,7 +97,9 @@ export class PlanejamentoRelatorioComponent implements OnInit {
       integranteAdicionar,
       config
     );
-    window.location.reload();
+    this.planejamentoRelatorioLista.find(x=> x.Link == responseAdd.data.link && x.Tipo_registro == responseAdd.data.tipo).Id = responseAdd.data.id;
+    this.planejamentoRelatorioLista = [...this.planejamentoRelatorioLista];
+    this.cdr.markForCheck();
   }
 
   mapPlanejamentoRelatorioToAdicionar(conteudo: PlanejamentoRelatorio): PlanejamentoRelatorioAdicionar {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 
@@ -20,7 +20,7 @@ interface ProcessoSeletivoAdicionar
   templateUrl: './processoSeletivoAdmin.component.html'
 })
 export class ProcessoSeletivoAdminComponent implements OnInit {
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   processoSeletivoLista: ProcessoSeletivo[] = [];
   barra: string[] = [];
   atualiza = false;
@@ -76,7 +76,8 @@ export class ProcessoSeletivoAdminComponent implements OnInit {
       `${environment.urlBackEnd}/processo_seletivo/${conteudo.Id}`,
       config
     );
-    window.location.reload();
+    this.processoSeletivoLista = this.processoSeletivoLista.filter((item) => item.Id !== conteudo.Id);
+    this.cdr.markForCheck();
   }
 
   async adicionarConteudo(conteudo: ProcessoSeletivo){
@@ -91,7 +92,9 @@ export class ProcessoSeletivoAdminComponent implements OnInit {
       integranteAdicionar,
       config
     );
-    window.location.reload();
+    this.processoSeletivoLista.find(x=> x.Titulo == responseAdd.data.titulo && x.Link == responseAdd.data.link).Id = responseAdd.data.id;
+    this.processoSeletivoLista = [...this.processoSeletivoLista];
+    this.cdr.markForCheck();
   }
 
   mapProcessoSeletivoToAdicionar(conteudo: ProcessoSeletivo): ProcessoSeletivoAdicionar {

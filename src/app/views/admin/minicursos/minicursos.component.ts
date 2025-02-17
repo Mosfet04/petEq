@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 interface Minicursos {
@@ -20,7 +20,7 @@ interface MinicursosUpdate {
   templateUrl: './minicursos.component.html'
 })
 export class MinicursosAdminComponent implements OnInit {
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   minicursosLista: Minicursos[] = [];
   barra: string[] = [];
 
@@ -77,7 +77,6 @@ export class MinicursosAdminComponent implements OnInit {
         minicursoUpdate,
         config
       );
-      window.location.reload();
     }
   }
 
@@ -91,7 +90,8 @@ export class MinicursosAdminComponent implements OnInit {
       `${environment.urlBackEnd}/mini_cursos/${conteudo.Id}`,
       config
     );
-    window.location.reload();
+    this.minicursosLista = this.minicursosLista.filter(item => item.Id !== conteudo.Id);
+    this.cdr.markForCheck();
   }
 
   async adicionarConteudo(conteudo: Minicursos){
@@ -106,7 +106,9 @@ export class MinicursosAdminComponent implements OnInit {
       minicursoAdicionar,
       config
     );
-    window.location.reload();
+    this.minicursosLista.find(x=> x.Titulo == responseAdd.data.titulo && x.Descricao == responseAdd.data.descricao).Id = responseAdd.data.id;
+    this.minicursosLista = [...this.minicursosLista];
+    this.cdr.markForCheck();
   }
 
   mapMinicursoToUpdate(minicursos: Minicursos): MinicursosUpdate {
