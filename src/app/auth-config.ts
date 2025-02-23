@@ -5,7 +5,7 @@ export const msalConfig: Configuration = {
   auth: {
     clientId: "2f6d798c-85c5-4c07-ab80-04bcabfd0f01",
     authority: "https://login.microsoftonline.com/3faa0a62-eaff-4053-986f-9ecf9237e044",
-    redirectUri: "http://localhost:4200/admin/dashboard",
+    redirectUri: "https://pet-eq.vercel.app/admin/dashboard",
   },
   cache: {
     cacheLocation: "localStorage",
