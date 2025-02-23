@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
-    "install:clean": "rmdir /s /q node_modules && del package-lock.json && npm install && npm start"
+    "install:clean": "rm -rf node_modules && rm -f package-lock.json && npm install && npm start"
   },
   "dependencies": {
     "@angular/animations": "18.1.1",
