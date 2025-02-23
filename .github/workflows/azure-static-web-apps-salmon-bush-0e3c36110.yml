@@ -37,8 +37,8 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: 'upload'
-          app_location: '/'  # Caminho para o diretório da aplicação
-          output_location: 'dist'  # Caminho para o diretório de saída da construção
+          app_location: '/src'  # Caminho para o diretório da aplicação
+          output_location: 'dist/notus-angular'  # Caminho para o diretório de saída da construção
 
   close_pull_request_job: 
     if: github.event_name == 'pull_request' && github.event.action == 'closed' 
