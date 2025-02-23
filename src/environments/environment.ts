@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  urlBackEnd: 'https://petback1-37607olh.b4a.run/api',
+  urlBackEnd: 'http://127.0.0.1:5000/api',
 };
 
 /*
