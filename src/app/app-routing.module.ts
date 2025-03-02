@@ -44,6 +44,7 @@ import { ExtensaoAdminComponent } from "./views/admin/extensao/extensao.componen
 import { MinicursosAdminComponent } from "./views/admin/minicursos/minicursos.component";
 import { CalendarioAtividadesAdminComponent } from "./views/admin/calendarioAtividades/calendarioAtividades.component";
 import { EstiloJorneqComponent } from "./views/admin/estilo-jorneq/estilo-jorneq.component";
+import { ManutencaoComponent } from "./views/manutencao/manutencao.component";
 const routes: Routes = [
   // admin views
   {
@@ -83,19 +84,19 @@ const routes: Routes = [
   { path: "atividades/extensao", component: ExtensaoComponent},
   { path: "", component: LandingComponent },
   { path: "page", component: IndexComponent },
-  { path: "noticias", component: NoticiasComponent},
+  { path: "noticias", component: ManutencaoComponent},
   { path: "processoSeletivo", component:ProcessoSeletivoComponent},
   { path: "sobre", component:SobreComponent},
-  {
-    path: "jorneq",
-    component: JorneqIndexComponent,
-    children:[
-      {path:"", component: JorneqComponent},
-      {path:"participe", component: ParticipeComponent},
-      {path:"sobre", component: SobreJorneqComponent},
-      {path:"contato", component: ContatoJorneqComponent}
-    ]
-  },
+  // {
+  //   path: "jorneq",
+  //   component: JorneqIndexComponent,
+  //   children:[
+  //     {path:"", component: JorneqComponent},
+  //     {path:"participe", component: ParticipeComponent},
+  //     {path:"sobre", component: SobreJorneqComponent},
+  //     {path:"contato", component: ContatoJorneqComponent}
+  //   ]
+  // },
   { path: "**", redirectTo: "", pathMatch: "full" }
   
 ];
