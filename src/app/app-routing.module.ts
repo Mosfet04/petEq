@@ -24,7 +24,6 @@ import { SobreJorneqComponent } from "./views/jorneq/sobre/sobre-jorneq.componen
 // no layouts views
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
-import { ProfileComponent } from "./views/profile/profile.component";
 import { EnsinoComponent } from "./views/atividades/ensino/ensino.component";
 import { AtividadesComponent } from "./views/atividades/atividades.component";
 import { PesquisaComponent } from "./views/atividades/pesquisa/pesquisa.component";
@@ -75,7 +74,6 @@ const routes: Routes = [
     ],
   },
   // no layout views
-  { path: "profile", component: ProfileComponent },
   { path: "atividades/ensino", component: EnsinoComponent },
   { path: "atividades", component: AtividadesComponent},
   { path: "atividades/pesquisa", component: PesquisaComponent},

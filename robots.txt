@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /auth/
+
+# Allow all other pages
+Allow: /
+
+# Sitemap location
+Sitemap: https://petequfu.com.br/sitemap.xml

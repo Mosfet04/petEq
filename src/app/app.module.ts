@@ -21,7 +21,6 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 // no layouts views
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
-import { ProfileComponent } from "./views/profile/profile.component";
 import { EnsinoComponent } from "./views/atividades/ensino/ensino.component";
 import { AtividadesComponent } from "./views/atividades/atividades.component";
 import { PesquisaComponent } from "./views/atividades/pesquisa/pesquisa.component";
@@ -166,7 +165,6 @@ import { ManutencaoComponent } from "./views/manutencao/manutencao.component";
     RegisterComponent,
     IndexComponent,
     LandingComponent,
-    ProfileComponent,
     EnsinoComponent,
     AtividadesComponent, 
     PesquisaComponent,
