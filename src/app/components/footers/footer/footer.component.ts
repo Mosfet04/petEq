@@ -12,7 +12,8 @@ export class FooterComponent implements OnInit {
   telefone = window.innerWidth < 770 ? true : false;
   constructor() {}
   readonly dialog = inject(MatDialog);
-    openDialog() {
+    openDialog(event) {
+      event.preventDefault();
       const dialogRef = this.dialog.open(CertificadosDialogComponent, {
         width: '90%',
         maxWidth: '600px'
