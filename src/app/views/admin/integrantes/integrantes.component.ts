@@ -36,7 +36,7 @@ enum SetorId {
   "Computação" = 1,
   "Ata" = 2,
   "Marketing" = 3,
-  "Orientador" = 4
+  "Tutor" = 4
 }
 @Component({
   selector: 'app-integrantes',

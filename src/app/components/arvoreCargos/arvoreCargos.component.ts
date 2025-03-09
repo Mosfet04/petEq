@@ -13,7 +13,7 @@ export class ArvoreCargosComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.integrantes && changes.integrantes.currentValue && changes.integrantes.currentValue.orientador && changes.integrantes.currentValue.orientados) {
+    if (changes.integrantes && changes.integrantes.currentValue && changes.integrantes.currentValue.tutor && changes.integrantes.currentValue.orientados) {
       this.chart = this.renderChart(this.makeSeriesRequest(this.integrantes));
     }
   }
@@ -64,14 +64,14 @@ export class ArvoreCargosComponent implements OnInit, OnChanges {
     }];
   
     retornoFuncao[0].points.push({
-      name: integrantes.orientador.nome,
+      name: integrantes.tutor.nome,
       id: "md",
       parent: "",
       attributes: {
-        position: `<span style="font-size:13px;">${integrantes.orientador.setorNome}</span>`,
-        email: integrantes.orientador.email,
-        linkedin: integrantes.orientador.linkedin,
-        photo: integrantes.orientador.linkSelfie,
+        position: `<span style="font-size:13px;">${integrantes.tutor.setorNome}</span>`,
+        email: integrantes.tutor.email,
+        linkedin: integrantes.tutor.linkedin,
+        photo: integrantes.tutor.linkSelfie,
       },
     });
   
