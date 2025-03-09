@@ -1,6 +1,17 @@
 {
     "navigationFallback": {
         "rewrite": "/index.html"
-    }
+    },
+    "routes": [
+        {
+            "route": "/robots.txt",
+            "serve": "/robots.txt",
+            "statusCode": 200
+        },
+        {
+            "route": "/sitemap.xml",
+            "serve": "/sitemap.xml",
+            "statusCode": 200
+        }
+    ]
 }
-  
