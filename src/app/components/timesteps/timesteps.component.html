@@ -1,7 +1,7 @@
 <div *ngIf="vertical">
-  <mat-vertical-stepper role="group">
+  <mat-vertical-stepper role="tablist" aria-orientation="vertical">
     <div *ngFor="let i of dataAtividade; let index = index">
-      <mat-step [label]="i.nome" step="atividade" role="step">
+      <mat-step [label]="i.nome" role="tabpanel">
         <ng-template matStepperIcon="edit">
           <mat-icon>edit</mat-icon>
         </ng-template>
@@ -18,9 +18,9 @@
   </mat-vertical-stepper>
 </div> 
 <div *ngIf="vertical == false">
-  <mat-horizontal-stepper role="group">
+  <mat-horizontal-stepper role="tablist" aria-orientation="horizontal">
     <div *ngFor="let i of dataAtividade; let index = index">
-      <mat-step [label]="i.nome" step="atividade" role="step">
+      <mat-step [label]="i.nome" role="tabpanel">
         <ng-template matStepperIcon="edit">
           <mat-icon>edit</mat-icon>
         </ng-template>
