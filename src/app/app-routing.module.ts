@@ -8,7 +8,6 @@ import { JorneqIndexComponent } from "./layouts/jorneq/jorneq-index.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
 import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
 
@@ -62,7 +61,6 @@ const routes: Routes = [
       { path: "minicursos", component: MinicursosAdminComponent},
       { path: "calendarioAtividades", component: CalendarioAtividadesAdminComponent},
       { path: "estiloJorneq", component: EstiloJorneqComponent},
-      { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
