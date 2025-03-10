@@ -21,7 +21,6 @@ export const config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function () {},
   },
   onPrepare() {
     register({

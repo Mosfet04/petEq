@@ -11,8 +11,15 @@ export class CardLineChartComponent implements OnInit, AfterViewInit {
   constructor() {}
 
   ngOnInit() {}
+
   ngAfterViewInit() {
-    const config: ChartConfiguration<'line', number[], string> = {
+    const config = this.getChartConfig();
+    const ctx: any = document.getElementById("line-chart");
+    new Chart(ctx, config);
+  }
+
+  private getChartConfig(): ChartConfiguration<'line', number[], string> {
+    return {
       type: "line",
       data: {
         labels: [
@@ -66,12 +73,7 @@ export class CardLineChartComponent implements OnInit, AfterViewInit {
             },
             grid: {
               display: false,
-              //borderDash: [2],
-              //borderDashOffset: [2],
               color: "rgba(33, 37, 41, 0.3)",
-              //zeroLineColor: "rgba(0, 0, 0, 0)",
-              //zeroLineBorderDash: [2],
-              //zeroLineBorderDashOffset: [2],
             },
           },
           y: {
@@ -85,20 +87,11 @@ export class CardLineChartComponent implements OnInit, AfterViewInit {
               color: "white",
             },
             grid: {
-              //borderDash: [3],
-              //borderDashOffset: [3],
-              //drawBorder: false,
               color: "rgba(255, 255, 255, 0.15)",
-              //zeroLineColor: "rgba(33, 37, 41, 0)",
-              //zeroLineBorderDash: [2],
-              //zeroLineBorderDashOffset: [2],
             },
           },
         },
       },
     };
-
-    const ctx: any = document.getElementById("line-chart");
-    new Chart(ctx, config);
   }
 }
