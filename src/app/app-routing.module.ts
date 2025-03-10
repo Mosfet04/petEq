@@ -8,12 +8,10 @@ import { JorneqIndexComponent } from "./layouts/jorneq/jorneq-index.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
-import { RegisterComponent } from "./views/auth/register/register.component";
 
 //jorneq views
 import { JorneqComponent } from "./views/jorneq/jorneq.component";
@@ -51,7 +49,6 @@ const routes: Routes = [
     canActivate: [MsalGuard],
     children: [
       { path: "dashboard", component: DashboardComponent },
-      { path: "settings", component: SettingsComponent },
       { path: "integrantes", component: IntegrantesComponent },
       { path: "planejamentoRelatorio", component: PlanejamentoRelatorioComponent},
       { path: "processoSeletivo", component: ProcessoSeletivoAdminComponent},
@@ -69,7 +66,6 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent },
       { path: "", redirectTo: "login", pathMatch: "full" },
     ],
   },

@@ -1,3 +1,4 @@
+/* global require, module */
 const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
 
@@ -11,9 +12,7 @@ module.exports = {
     "./*.ts",
   ],
   theme: {
-    colors: {
-      ...colors,
-    },
+    colors: Object.assign({}, colors), // Substitua o operador spread por Object.assign
     extend: {
       minHeight: {
         "screen-75": "75vh",

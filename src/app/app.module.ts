@@ -11,12 +11,10 @@ import { AuthComponent } from "./layouts/auth/auth.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
-import { RegisterComponent } from "./views/auth/register/register.component";
 
 // no layouts views
 import { IndexComponent } from "./views/index/index.component";
@@ -159,10 +157,8 @@ import { ManutencaoComponent } from "./views/manutencao/manutencao.component";
     IndexNavbarComponent,
     AdminComponent,
     AuthComponent,
-    SettingsComponent,
     TablesComponent,
     LoginComponent,
-    RegisterComponent,
     IndexComponent,
     LandingComponent,
     EnsinoComponent,
