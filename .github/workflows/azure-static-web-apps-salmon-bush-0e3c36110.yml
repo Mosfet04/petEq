@@ -32,6 +32,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Debug environment variables
+        run: |
+          echo "Checking Firebase environment variables..."
+          echo "FIREBASE_API_KEY is set: ${{ secrets.FIREBASE_API_KEY != '' }}"
+          echo "FIREBASE_AUTH_DOMAIN is set: ${{ secrets.FIREBASE_AUTH_DOMAIN != '' }}"
+          echo "FIREBASE_PROJECT_ID is set: ${{ secrets.FIREBASE_PROJECT_ID != '' }}"
+      
       - name: Build Angular app
         run: npm run build:prod
         env:

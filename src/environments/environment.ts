@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   urlBackEnd: 'https://petback1-37607olh.b4a.run/api',
   firebase: {
     apiKey: "FIREBASE_API_KEY_PLACEHOLDER",
