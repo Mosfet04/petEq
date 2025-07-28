@@ -111,10 +111,9 @@ import { JorneqComponent } from "./views/jorneq/jorneq.component";
 import { ParticipeComponent } from "./views/jorneq/participe/participe.component";
 import { SobreJorneqComponent } from "./views/jorneq/sobre/sobre-jorneq.component";
 import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
-import { MsalModule, MsalInterceptor, MsalService, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalInterceptorConfiguration, MsalRedirectComponent, MsalGuard } from "@azure/msal-angular";
-import { PublicClientApplication, InteractionType } from "@azure/msal-browser";
+// Removido MSAL imports
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { msalConfig } from "./auth-config";
+// Removido msalConfig import
 import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.component";
 import { ModalGenericoComponent } from "./components/modal-generico/modal-generico.component";
 import { PlanejamentoRelatorioComponent } from "./views/admin/planejamentoRelatorio/planejamentoRelatorio.component";
@@ -127,6 +126,7 @@ import { EstiloJorneqComponent } from "./views/admin/estilo-jorneq/estilo-jorneq
 import { ColorService } from "./services/color.service";
 import { CertificadosDialogComponent } from "./components/certificados-dialog/certificados-dialog.component";
 import { ManutencaoComponent } from "./views/manutencao/manutencao.component";
+import { LogoutButtonComponent } from "./components/logout-button/logout-button.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -189,7 +189,8 @@ import { ManutencaoComponent } from "./views/manutencao/manutencao.component";
     CalendarioAtividadesAdminComponent,
     EstiloJorneqComponent,
     CertificadosDialogComponent,
-    ManutencaoComponent
+    ManutencaoComponent,
+    LogoutButtonComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,
@@ -238,29 +239,13 @@ import { ManutencaoComponent } from "./views/manutencao/manutencao.component";
     ScrollingModule,
     FormsModule,
     CommonModule,
-    MsalModule.forRoot(new PublicClientApplication(msalConfig), {
-      interactionType: InteractionType.Redirect, // MSAL Guard Configuration
-            authRequest: {
-              scopes: ["User.Read.All"],
-            },
-    }, 
-    {
-      interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
-      protectedResourceMap: new Map([
-        ["https://graph.microsoft.com/v1.0/me", ["User.Read.All"]],
-      ]),
-    }),
+    // Firebase será configurado no environment
    ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: MsalInterceptor,
-      multi: true,
-    },
-    MsalGuard,
+    // Removido MSAL interceptor e guard
     ColorService
   ],
-  bootstrap: [AppComponent, MsalRedirectComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 

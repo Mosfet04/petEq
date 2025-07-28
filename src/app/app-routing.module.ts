@@ -30,8 +30,8 @@ import { NoticiasComponent } from "./views/noticias/noticias.component";
 import { ProcessoSeletivoComponent } from "./views/processoSeletivo/processoSeletivo.component";
 import { SobreComponent } from "./views/sobre/sobre.component";
 import { ContatoJorneqComponent } from "./views/jorneq/contato-jorneq/contato-jorneq.component";
-import { MsalGuard } from "@azure/msal-angular";
-import { BrowserUtils } from "@azure/msal-browser";
+import { AuthGuard } from "./guards/auth.guard";
+// Removido BrowserUtils import do MSAL
 import { IntegrantesComponent } from "./views/admin/integrantes/integrantes.component";
 import { PlanejamentoRelatorioComponent } from "./views/admin/planejamentoRelatorio/planejamentoRelatorio.component";
 import { ProcessoSeletivoAdminComponent } from "./views/admin/processoSeletivo/processoSeletivoAdmin.component";
@@ -46,7 +46,7 @@ const routes: Routes = [
   {
     path: "admin",
     component: AdminComponent,
-    canActivate: [MsalGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: "dashboard", component: DashboardComponent },
       { path: "integrantes", component: IntegrantesComponent },
@@ -95,11 +95,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    // Don't perform initial navigation in iframes or popups
-    initialNavigation:
-      !BrowserUtils.isInIframe() && !BrowserUtils.isInPopup()
-        ? "enabledNonBlocking"
-        : "disabled", // Set to enabledBlocking to use Angular Universal
+    // Configuração padrão do Angular Router
+    initialNavigation: "enabledNonBlocking",
   }),],
   exports: [RouterModule],
 })

@@ -1,75 +1,150 @@
-import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
-import { EventMessage, EventType, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
-import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration, private broadcastService: MsalBroadcastService, private authService: MsalService, private router: Router) {}
-  
-  isIframe = false;
-  loginDisplay = false;
-  private readonly _destroying$ = new Subject<void>();
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
+  registerForm: FormGroup;
+  resetForm: FormGroup;
+  isLoading = false;
+  errorMessage = '';
+  successMessage = '';
+  showRegister = false;
+  showPasswordReset = false;
+
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    // Formulário de login
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+
+    // Formulário de cadastro
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]]
+    });
+
+    // Formulário de reset de senha
+    this.resetForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
 
   ngOnInit(): void {
-    this.isIframe = window !== window.parent && !window.opener;
-
-    this.broadcastService.msalSubject$
-      .pipe(
-        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
-      )
-      .subscribe((result: EventMessage) => {
-        this.setLoginDisplay();
-        this.router.navigate(['/admin/dashboard']);
-      });
-
-    this.broadcastService.inProgress$
-    .pipe(
-      filter((status: InteractionStatus) => status === InteractionStatus.None),
-      takeUntil(this._destroying$)
-    )
-    .subscribe(() => {
-      this.setLoginDisplay();
-    })
-    
-    if(localStorage.getItem('accessToken')){
+    // Se já estiver autenticado, redireciona para o dashboard
+    if (this.authService.isAuthenticated()) {
       this.router.navigate(['/admin/dashboard']);
     }
   }
 
-  login() {
-    if (this.msalGuardConfig.authRequest){
-      this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
+  // Login com email e senha
+  async loginWithEmail(): Promise<void> {
+    if (this.loginForm.valid) {
+      try {
+        this.isLoading = true;
+        this.errorMessage = '';
+        const { email, password } = this.loginForm.value;
+        await this.authService.loginWithEmailAndPassword(email, password);
+      } catch (error: any) {
+        this.errorMessage = error.message;
+      } finally {
+        this.isLoading = false;
+      }
     } else {
-      this.authService.loginRedirect();
+      this.errorMessage = 'Por favor, preencha todos os campos corretamente.';
     }
   }
 
-  setLoginDisplay() {
-    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
-    if(this.loginDisplay){
-      const account = this.authService.instance.getAllAccounts()[0];
-      this.authService.acquireTokenSilent({
-        account: account,
-        scopes: ["user.read.all"]
-      }).subscribe({
-        next: (response) => {
-          localStorage.setItem('accessToken', response.accessToken);
-        },
-        error: (error) => {
-          console.error(error);
-        }
-      });
+  // Cadastro com email e senha
+  async registerWithEmail(): Promise<void> {
+    if (this.registerForm.valid) {
+      const { email, password, confirmPassword } = this.registerForm.value;
+      
+      if (password !== confirmPassword) {
+        this.errorMessage = 'As senhas não coincidem.';
+        return;
+      }
+
+      try {
+        this.isLoading = true;
+        this.errorMessage = '';
+        await this.authService.registerWithEmailAndPassword(email, password);
+      } catch (error: any) {
+        this.errorMessage = error.message;
+      } finally {
+        this.isLoading = false;
+      }
+    } else {
+      this.errorMessage = 'Por favor, preencha todos os campos corretamente.';
     }
   }
 
-  ngOnDestroy(): void {
-    this._destroying$.next(undefined);
-    this._destroying$.complete();
+  // Reset de senha
+  async resetPassword(): Promise<void> {
+    if (this.resetForm.valid) {
+      try {
+        this.isLoading = true;
+        this.errorMessage = '';
+        const { email } = this.resetForm.value;
+        await this.authService.resetPassword(email);
+        this.successMessage = 'Email de recuperação enviado! Verifique sua caixa de entrada.';
+        this.showPasswordReset = false;
+      } catch (error: any) {
+        this.errorMessage = error.message;
+      } finally {
+        this.isLoading = false;
+      }
+    } else {
+      this.errorMessage = 'Por favor, digite um email válido.';
+    }
+  }
+
+  // Login com Google
+  async loginWithGoogle(): Promise<void> {
+    try {
+      this.isLoading = true;
+      this.errorMessage = '';
+      await this.authService.loginWithGoogle();
+    } catch (error: any) {
+      this.errorMessage = error.message || 'Erro ao fazer login com Google. Tente novamente.';
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  // Alternar entre login e cadastro
+  toggleRegister(): void {
+    this.showRegister = !this.showRegister;
+    this.showPasswordReset = false;
+    this.errorMessage = '';
+    this.successMessage = '';
+    this.resetForms();
+  }
+
+  // Alternar reset de senha
+  togglePasswordReset(): void {
+    this.showPasswordReset = !this.showPasswordReset;
+    this.showRegister = false;
+    this.errorMessage = '';
+    this.successMessage = '';
+    this.resetForms();
+  }
+
+  // Limpar formulários
+  private resetForms(): void {
+    this.loginForm.reset();
+    this.registerForm.reset();
+    this.resetForm.reset();
   }
 }

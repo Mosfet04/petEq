@@ -1,16 +1,17 @@
-import { Component } from "@angular/core";
-import { MsalService } from "@azure/msal-angular";
+import { Component, OnInit } from "@angular/core";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "angular-dashboard-page";
-  isIframe = false;
-  constructor(private authService: MsalService) {}
+  isIframe = false; // Propriedade necessária para o template
+  
+  constructor() {}
 
   ngOnInit(): void {
+    // Verifica se está rodando em iframe
     this.isIframe = window !== window.parent && !window.opener;
-    this.authService.instance.initialize();
   }
 }
