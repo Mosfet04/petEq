@@ -15,6 +15,9 @@ const requiredVars = [
 ];
 
 console.log('🔍 Verificando variáveis de ambiente do Firebase...');
+console.log('🌍 Ambiente:', process.env.NODE_ENV || 'development');
+console.log('🤖 CI Environment:', process.env.CI ? 'true' : 'false');
+console.log('🐙 GitHub Actions:', process.env.GITHUB_ACTIONS ? 'true' : 'false');
 
 // Verificar se todas as variáveis estão definidas
 const missingVars = requiredVars.filter(varName => !process.env[varName]);
@@ -23,10 +26,16 @@ if (missingVars.length > 0) {
   console.error('❌ Variáveis de ambiente faltando:', missingVars);
   console.error('💡 Certifique-se de configurar os GitHub Secrets ou arquivo .env');
   
+  // Se estiver no GitHub Actions, isso é um erro crítico
+  if (process.env.GITHUB_ACTIONS) {
+    console.error('🚨 ERRO CRÍTICO: GitHub Actions rodando sem secrets configurados!');
+    console.error('📋 Verifique: https://github.com/Mosfet04/petEq/settings/secrets/actions');
+    process.exit(1);
+  }
+  
   // Em desenvolvimento local, use valores padrão
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('⚠️  Modo desenvolvimento: usando valores padrão');
-    const envConfigFile = `export const environment = {
+  console.log('⚠️  Modo desenvolvimento: usando placeholders seguros');
+  const envConfigFile = `export const environment = {
   production: true,
   urlBackEnd: 'https://petback1-37607olh.b4a.run/api',
   firebase: {
@@ -39,13 +48,11 @@ if (missingVars.length > 0) {
   }
 };
 `;
-    fs.writeFileSync(targetPath, envConfigFile);
-    fs.writeFileSync(targetPath2, envConfigFile);
-    console.log('⚠️  Arquivo environment.prod.ts criado com placeholders');
-    return;
-  } else {
-    process.exit(1);
-  }
+  fs.writeFileSync(targetPath, envConfigFile);
+  fs.writeFileSync(targetPath2, envConfigFile);
+  console.log('⚠️  Arquivo environment.prod.ts criado com placeholders');
+  console.log('ℹ️  Para desenvolvimento local, use: npm start (carrega .env automaticamente)');
+  return;
 }
 
 const envConfigFile = `export const environment = {
@@ -65,4 +72,5 @@ const envConfigFile = `export const environment = {
 console.log('✅ Todas as variáveis Firebase encontradas');
 console.log('🔧 Configurando environment.prod.ts...');
 fs.writeFileSync(targetPath, envConfigFile);
+fs.writeFileSync(targetPath2, envConfigFile);
 console.log('✅ Arquivo environment.prod.ts atualizado com sucesso!');
