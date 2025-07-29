@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
+import { NotificationService } from 'src/app/services/notification.service';
 interface Integrante {
   Id: number;
   Nome: string;
@@ -43,102 +44,128 @@ enum SetorId {
   templateUrl: './integrantes.component.html'
 })
 export class IntegrantesComponent implements OnInit {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private notificationService: NotificationService
+  ) {}
   integrantes: Integrante[] = [];
   barra: string[] = [];
 
   async ngOnInit() {
-    let page = 1;
-    let hasNextPage = true;
+    try {
+      let page = 1;
+      let hasNextPage = true;
 
-    while (hasNextPage) {
-      const response = await axios.get(environment.urlBackEnd + "/integrantes?page=" + page + "&per_page=100");
+      while (hasNextPage) {
+        const response = await axios.get(environment.urlBackEnd + "/integrantes?page=" + page + "&per_page=100");
 
-      for (let integranteBack of response.data.items) {
-        let integrante: Integrante = {
-          Id: integranteBack.id,
-          Nome: integranteBack.nome,
-          Matricula: integranteBack.matricula,
-          Link_selfie: integranteBack.linkSelfie,
-          Linkedin: integranteBack.linkedin,
-          Setor: integranteBack.setorNome,
-          Email: integranteBack.email,
-          Data_de_entrada: integranteBack.dataIngresso,
-          Data_de_desligamento: integranteBack.dataDesligamento,
-        };
-        this.integrantes.push(integrante);
-      }
-      if (this.integrantes.length > 0) {
-        this.barra = Object.keys(this.integrantes[0]);
-      }
-      else{
-        let emptyObject: Integrante;
-        emptyObject = {
-          Id: 0,
-          Nome: "",
-          Matricula: "",
-          Link_selfie: "",
-          Linkedin: "",
-          Setor: "",
-          Email: "",
-          Data_de_entrada: "",
-          Data_de_desligamento: "",
+        for (let integranteBack of response.data.items) {
+          let integrante: Integrante = {
+            Id: integranteBack.id,
+            Nome: integranteBack.nome,
+            Matricula: integranteBack.matricula,
+            Link_selfie: integranteBack.linkSelfie,
+            Linkedin: integranteBack.linkedin,
+            Setor: integranteBack.setorNome,
+            Email: integranteBack.email,
+            Data_de_entrada: integranteBack.dataIngresso,
+            Data_de_desligamento: integranteBack.dataDesligamento,
+          };
+          this.integrantes.push(integrante);
         }
-        this.barra = Object.keys(emptyObject);
-      }
+        if (this.integrantes.length > 0) {
+          this.barra = Object.keys(this.integrantes[0]);
+        }
+        else{
+          let emptyObject: Integrante;
+          emptyObject = {
+            Id: 0,
+            Nome: "",
+            Matricula: "",
+            Link_selfie: "",
+            Linkedin: "",
+            Setor: "",
+            Email: "",
+            Data_de_entrada: "",
+            Data_de_desligamento: "",
+          }
+          this.barra = Object.keys(emptyObject);
+        }
 
-      hasNextPage = response.data.hasNextPage;
-      page++;
+        hasNextPage = response.data.hasNextPage;
+        page++;
+      }
+      
+      if (this.integrantes.length > 0) {
+        this.notificationService.showSuccess('Integrantes carregados com sucesso!');
+      }
+    } catch (error) {
+      this.notificationService.handleAxiosError(error);
     }
   }
 
   async atualizarConteudo(conteudo: Integrante){
-    const index = this.integrantes.findIndex(item => item.Matricula === conteudo.Matricula);
-    if (index !== -1) {
-      this.integrantes[index] = conteudo;
-      const integranteUpdate: IntegranteUpdate = this.mapIntegranteToUpdate(conteudo);
+    try {
+      const index = this.integrantes.findIndex(item => item.Matricula === conteudo.Matricula);
+      if (index !== -1) {
+        this.integrantes[index] = conteudo;
+        const integranteUpdate: IntegranteUpdate = this.mapIntegranteToUpdate(conteudo);
+        const config = {
+          headers:{
+            Authorization: "Bearer " + localStorage.getItem("accessToken")	
+          }
+        }
+        const responseAtualizacao = await axios.post(
+          `${environment.urlBackEnd}/integrantes/${conteudo.Id}`,
+          integranteUpdate,
+          config
+        );
+        this.notificationService.showSuccess('Integrante atualizado com sucesso!');
+      }
+    } catch (error) {
+      this.notificationService.handleAxiosError(error);
+    }
+  }
+
+  async deletarConteudo(conteudo: Integrante){
+    try {
       const config = {
         headers:{
           Authorization: "Bearer " + localStorage.getItem("accessToken")	
         }
       }
-      const responseAtualizacao = await axios.post(
+      const responseDelete = await axios.delete(
         `${environment.urlBackEnd}/integrantes/${conteudo.Id}`,
-        integranteUpdate,
         config
       );
+      this.integrantes = this.integrantes.filter(item => item.Id !== conteudo.Id);
+      this.cdr.markForCheck();
+      this.notificationService.showSuccess('Integrante removido com sucesso!');
+    } catch (error) {
+      this.notificationService.handleAxiosError(error);
     }
-  }
-
-  async deletarConteudo(conteudo: Integrante){
-    const config = {
-      headers:{
-        Authorization: "Bearer " + localStorage.getItem("accessToken")	
-      }
-    }
-    const responseDelete = await axios.delete(
-      `${environment.urlBackEnd}/integrantes/${conteudo.Id}`,
-      config
-    );
-    this.integrantes = this.integrantes.filter(item => item.Id !== conteudo.Id);
-    this.cdr.markForCheck();
   }
 
   async adicionarConteudo(conteudo: Integrante){
-    const integranteAdicionar: IntegranteAdicionar = this.mapIntegranteToAdicionar(conteudo);
-    const config = {
-      headers:{
-        Authorization: "Bearer " + localStorage.getItem("accessToken")	
+    try {
+      const integranteAdicionar: IntegranteAdicionar = this.mapIntegranteToAdicionar(conteudo);
+      const config = {
+        headers:{
+          Authorization: "Bearer " + localStorage.getItem("accessToken")	
+        }
       }
+      const responseAdd = await axios.post(
+        `${environment.urlBackEnd}/integrantes`,
+        integranteAdicionar,
+        config
+      );
+      this.integrantes.find(x=> x.Nome == responseAdd.data.nome && x.Matricula == responseAdd.data.matricula).Id = responseAdd.data.id;
+      this.integrantes = [...this.integrantes];
+      this.cdr.markForCheck();
+      this.notificationService.showSuccess('Integrante adicionado com sucesso!');
+    } catch (error) {
+      this.notificationService.handleAxiosError(error);
     }
-    const responseAdd = await axios.post(
-      `${environment.urlBackEnd}/integrantes`,
-      integranteAdicionar,
-      config
-    );
-    this.integrantes.find(x=> x.Nome == responseAdd.data.nome && x.Matricula == responseAdd.data.matricula).Id = responseAdd.data.id;
-    this.integrantes = [...this.integrantes];
-    this.cdr.markForCheck();
   }
 
   mapIntegranteToUpdate(integrante: Integrante): IntegranteUpdate {

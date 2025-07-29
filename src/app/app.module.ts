@@ -127,6 +127,9 @@ import { ColorService } from "./services/color.service";
 import { CertificadosDialogComponent } from "./components/certificados-dialog/certificados-dialog.component";
 import { ManutencaoComponent } from "./views/manutencao/manutencao.component";
 import { LogoutButtonComponent } from "./components/logout-button/logout-button.component";
+import { CardHealthStatusComponent } from "./components/cards/card-health-status/card-health-status.component";
+import { CardPerformanceMetricsComponent } from "./components/cards/card-performance-metrics/card-performance-metrics.component";
+import { CardHealthAlertsComponent } from "./components/cards/card-health-alerts/card-health-alerts.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -190,7 +193,10 @@ import { LogoutButtonComponent } from "./components/logout-button/logout-button.
     EstiloJorneqComponent,
     CertificadosDialogComponent,
     ManutencaoComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    CardHealthStatusComponent,
+    CardPerformanceMetricsComponent,
+    CardHealthAlertsComponent
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, NoopAnimationsModule, MatNativeDateModule , ReactiveFormsModule,
     A11yModule,

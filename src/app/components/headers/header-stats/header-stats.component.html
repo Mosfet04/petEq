@@ -4,54 +4,58 @@
     <div>
       <!-- Card stats -->
       <div class="flex flex-wrap">
-        <!-- <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+        <!-- Status Geral -->
+        <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
           <app-card-stats
-            statSubtitle="TRAFFIC"
-            statTitle="350,897"
+            statSubtitle="STATUS GERAL"
+            [statTitle]="getOverallStatusText()"
             statArrow="up"
-            statPercent="3.48"
-            statPercentColor="text-emerald-500"
-            statDescripiron="Since last month"
-            statIconName="far fa-chart-bar"
+            [statPercent]="getOverallStatusPercent()"
+            [statPercentColor]="getOverallStatusColor()"
+            statDescripiron="Saúde da aplicação"
+            statIconName="fas fa-heartbeat"
             statIconColor="bg-red-500"
           ></app-card-stats>
         </div>
+        <!-- Tempo de Resposta -->
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
           <app-card-stats
-            statSubtitle="NEW USERS"
-            statTitle="2,356"
+            statSubtitle="TEMPO RESPOSTA DB"
+            [statTitle]="getDbResponseTime() + 'ms'"
             statArrow="down"
-            statPercent="3.48"
-            statPercentColor="text-red-500"
-            statDescripiron="Since last week"
-            statIconName="fas fa-chart-pie"
+            [statPercent]="getDbResponsePercent()"
+            [statPercentColor]="getDbResponseColor()"
+            statDescripiron="Tempo de resposta"
+            statIconName="fas fa-database"
             statIconColor="bg-orange-500"
           ></app-card-stats>
         </div>
+        <!-- CPU -->
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
           <app-card-stats
-            statSubtitle="SALES"
-            statTitle="924"
+            statSubtitle="USO DE CPU"
+            [statTitle]="getCpuUsage() + '%'"
             statArrow="down"
-            statPercent="1.10"
-            statPercentColor="text-orange-500"
-            statDescripiron="Since yesterday"
-            statIconName="fas fa-users"
+            [statPercent]="getCpuPercent()"
+            [statPercentColor]="getCpuColor()"
+            statDescripiron="Uso do processador"
+            statIconName="fas fa-microchip"
             statIconColor="bg-pink-500"
           ></app-card-stats>
         </div>
+        <!-- Memória -->
         <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
           <app-card-stats
-            statSubtitle="PERFORMANCE"
-            statTitle="49,65%"
+            statSubtitle="USO DE MEMÓRIA"
+            [statTitle]="getMemoryUsage() + '%'"
             statArrow="up"
-            statPercent="12"
-            statPercentColor="text-emerald-500"
-            statDescripiron="Since last month"
-            statIconName="fas fa-percent"
-            statIconColor="bg-emerald-500"
+            [statPercent]="getMemoryPercent()"
+            [statPercentColor]="getMemoryColor()"
+            statDescripiron="Uso da memória RAM"
+            statIconName="fas fa-memory"
+            statIconColor="bg-sky-500"
           ></app-card-stats>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
