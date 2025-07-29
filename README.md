@@ -21,6 +21,8 @@ O projeto que serviu como base para o desenvolvimento deste foi: [Notus Angular]
 - **Apresentacao da Organizacão**: Apresentacão da organizacão e um organograma para facil acesso aos membros de interesse do visitante.
 - **Relatórios Automatizados**: Gera relatórios de forma automatizada, em CSV.
 - **Redução de Custos**: Com a implementacão do projeto ocorreu a diminuicão de custos de sustentação da página web, utilizando arquitetura baseada em Azure e outros serviços gratuitos.
+- **Monitoramento em Tempo Real**: Sistema integrado de health check que monitora a saúde da aplicação, incluindo métricas de performance, uso de recursos do sistema e status dos serviços.
+- **Dashboard Inteligente**: Interface administrativa com alertas automatizados e indicadores visuais para facilitar o monitoramento mesmo por usuários não técnicos.
 - **Menor Necessidade de Alteração de Código**: Minimiza a necessidade de modificações no código, com a implementação de um banco de dados e uso de CDN, visto que o grupo é composto por futuros engenheiros químicos, não programadores.
 
 O portal foi desenvolvido com o intuito de reduzir a carga administrativa, permitindo que o grupo PET se concentre em suas atividades principais e continue a fornecer um impacto positivo na comunidade.
@@ -116,12 +118,57 @@ Para deploy em produção, configure os seguintes GitHub Secrets:
 - `src/app/config/authorized-emails.ts` - Lista de emails autorizados
 - `.gitignore` - Protege arquivos sensíveis
 
+## Sistema de Health Check e Monitoramento
+
+O projeto inclui um sistema completo de monitoramento da saúde da aplicação, integrado ao dashboard administrativo, proporcionando visibilidade em tempo real do estado da aplicação.
+
+### Funcionalidades do Health Check
+
+- **Monitoramento Automático**: Verificações automáticas a cada 15-30 segundos
+- **Métricas em Tempo Real**:
+  - Status geral da aplicação (Saudável/Atenção/Crítico)
+  - Tempo de resposta do banco de dados
+  - Uso de CPU, Memória e Disco
+  - Status dos serviços (Cache, Banco de dados)
+- **Sistema de Alertas Inteligente**:
+  - Alertas críticos para problemas que afetam a operação
+  - Avisos para situações que precisam de atenção
+  - Notificações informativas
+  - Reconhecimento manual de alertas
+- **Interface Amigável**: Projetada para ser compreensível por usuários não técnicos
+
+### Endpoints de Health Check
+
+O sistema consome os seguintes endpoints da API:
+
+- `/api/health` - Verificação básica da saúde da aplicação
+- `/api/health/detailed` - Verificação detalhada com métricas completas
+- `/api/health/ready` - Verifica se a aplicação está pronta para receber tráfego
+- `/api/health/live` - Verifica se a aplicação está respondendo
+
+### Configuração do Health Check
+
+O sistema utiliza **Axios** para comunicação com a API, configurado automaticamente através da variável `urlBackEnd` no environment. Os dados são atualizados automaticamente sem necessidade de intervenção manual.
+
+### Benefícios para Administradores
+
+- **Detecção Precoce**: Identifica problemas antes que afetem os usuários
+- **Linguagem Simples**: Status traduzidos para termos não técnicos
+- **Alertas Contextualizados**: Explicações claras sobre o impacto dos problemas
+- **Histórico de Eventos**: Mantém registro dos últimos alertas para análise
+- **Atualizações em Tempo Real**: Informações sempre atualizadas sem recarregar a página
+
 ## Páginas
 
 Falando um pouco especificamente sobre as páginas disponíveis neste projeto, temos:
 
 - **Administração**
-  - **Dashboard (Página Inicial)**: Visão geral e acesso rápido às principais funcionalidades administrativas.
+  - **Dashboard (Página Inicial)**: Visão geral e acesso rápido às principais funcionalidades administrativas. Inclui sistema de monitoramento em tempo real da saúde da aplicação com:
+    - **Status Geral da Aplicação**: Indicadores visuais do estado geral (Saudável/Atenção/Crítico)
+    - **Métricas de Performance**: Score de performance, tempo de resposta do banco de dados e uso de recursos
+    - **Alertas Inteligentes**: Sistema automatizado de alertas categorizados por criticidade (Crítico/Aviso/Informativo)
+    - **Monitoramento de Recursos**: Acompanhamento em tempo real de CPU, Memória e Disco
+    - **Status dos Serviços**: Monitoramento do banco de dados e cache
   - **Integrantes**: Gerenciamento dos membros ativos e inativos do grupo.
   - **Planejamento e Relatório**: Gerenciamento de anexos a serem disponibilizados no site sobre planejamento e relatório de atividades do grupo.
   - **Processo Seletivo**: Publicação de edital de processos seletivos e seus resultados.
@@ -218,6 +265,18 @@ Até o presente momento os seguintes navegadores foram validados para uso da apl
 **Build falha no GitHub Actions**
 - Solução: Verifique se todos os GitHub Secrets estão configurados corretamente
 
+**Health Check mostra "Desconhecido" ou "Falha na comunicação"**
+- Solução: Verifique se a API está rodando e acessível na URL configurada no environment
+- Verifique se os endpoints `/api/health/*` estão implementados na API
+
+**Alertas não aparecem no dashboard**
+- Solução: Verifique se a API está retornando dados válidos nos endpoints de health check
+- Abra o console do navegador (F12) para ver logs de erro do serviço
+
+**Métricas de performance mostram valores incorretos**
+- Solução: Verifique se a API está retornando os campos corretos (cpu_usage_percent, memory_usage_percent, etc.)
+- Confirme se os tipos de dados estão corretos (números para percentuais)
+
 ### Comandos Úteis
 
 ```bash
@@ -229,8 +288,18 @@ npm run install:clean
 
 # Verificar logs de build
 npm run build --verbose
+
+# Testar endpoints de health check (se a API estiver rodando)
+curl http://localhost:5000/api/health
+curl http://localhost:5000/api/health/detailed
+
+# Verificar conectividade com a API configurada
+curl https://petback1-37607olh.b4a.run/api/health
 ```
 
 ### Suporte
 
 Para mais informações ou suporte, consulte a documentação do Firebase ou entre em contato com a equipe de desenvolvimento.
+
+**Documentação Adicional**:
+- [HEALTH_CHECK_README.md](./HEALTH_CHECK_README.md) - Documentação completa do sistema de health check e monitoramento
