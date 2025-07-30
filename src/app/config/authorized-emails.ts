@@ -3,9 +3,8 @@
 
 export const AUTHORIZED_EMAILS = [
   // SUBSTITUA PELOS EMAILS REAIS DOS USUÁRIOS AUTORIZADOS:
-  'admin@pet-eq.com',              // Administrador principal
-  'coordenador@pet-eq.com',        // Coordenador do PET
-  'seu-email@gmail.com',           // Seu email pessoal
+  'pet@feq.ufu.br',        // Coordenador do PET
+  'ufupeteq@gmail.com',           // Seu email pessoal
   'mateusmr4@gmail.com', // Email institucional
   // Adicione mais emails conforme necessário:
   // 'membro1@gmail.com',
