@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://petback1-37607olh.b4a.run",
+    "target": "http://54.144.84.153:5000",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

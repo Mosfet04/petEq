@@ -37,7 +37,7 @@ if (missingVars.length > 0) {
   console.log('⚠️  Modo desenvolvimento: usando placeholders seguros');
   const envConfigFile = `export const environment = {
   production: true,
-  urlBackEnd: 'https://petback1-37607olh.b4a.run/api',
+  urlBackEnd: 'http://54.144.84.153:5000/api',
   firebase: {
     apiKey: "FIREBASE_API_KEY_PLACEHOLDER",
     authDomain: "FIREBASE_AUTH_DOMAIN_PLACEHOLDER", 
@@ -57,7 +57,7 @@ if (missingVars.length > 0) {
 
 const envConfigFile = `export const environment = {
   production: true,
-  urlBackEnd: 'https://petback1-37607olh.b4a.run/api',
+  urlBackEnd: 'http://54.144.84.153:5000/api',
   firebase: {
     apiKey: "${process.env.FIREBASE_API_KEY}",
     authDomain: "${process.env.FIREBASE_AUTH_DOMAIN}",
