@@ -54,7 +54,7 @@ function generateEnvironmentTs() {
 
 export const environment = {
   production: false,
-  urlBackEnd: 'http://54.144.84.153:5000/api',
+  urlBackEnd: 'https://api.petequfu.com.br/api',
   firebase: {
     apiKey: "${envVars.FIREBASE_API_KEY || 'FIREBASE_API_KEY_PLACEHOLDER'}",
     authDomain: "${envVars.FIREBASE_AUTH_DOMAIN || 'FIREBASE_AUTH_DOMAIN_PLACEHOLDER'}",

@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://54.144.84.153:5000",
+    "target": "https://api.petequfu.com.br",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

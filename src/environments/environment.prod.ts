@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  urlBackEnd: 'https://backendsite-xo4itlx2.b4a.run/api',
+  urlBackEnd: 'https://api.petequfu.com.br/api',
   firebase: {
     apiKey: "FIREBASE_API_KEY_PLACEHOLDER",
     authDomain: "FIREBASE_AUTH_DOMAIN_PLACEHOLDER", 
